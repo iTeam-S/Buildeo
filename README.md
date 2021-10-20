@@ -1,8 +1,10 @@
 # Buildeo
 Digitalisation du système de permis de construction.
 
+ <img height='50' src='https://seeklogo.com/images/F/flutter-logo-304BF94F55-seeklogo.com.png'>  <img height='50' src='https://static.djangoproject.com/img/logos/django-logo-negative.png'>
+ 
 ## Descriptif
-Plateforme complet pour la gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet. 
+Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet. 
 
 ### Côté Public
 - Envoie du demande de permis de construction en ligne.
