@@ -1,33 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:buildeo/view/splash.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(const MyApp());
+
+void main() async {
+  await GetStorage.init();
+  runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  MyApp({Key? key}) : super(key: key);
+
+  final box = GetStorage();
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Buildeo',
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      Get.offNamed('/');
+    });
+
+    return GetMaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primaryColor: Colors.lightBlue[800],
+        primarySwatch: Colors.blue,
+        fontFamily: "ProductSans",
       ),
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+      },
     );
   }
 }
