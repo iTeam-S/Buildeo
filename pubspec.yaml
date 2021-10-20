@@ -85,9 +85,7 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   
   assets:
-    - assets/images/cover.jpg
-    - assets/images/workout.jpg
-    - assets/images/logo.jpg
-    - assets/images/avatar.jpg
-    - assets/images/video_logo.jpg
-    - assets/images/work.png
+    - assets/images/logo_sb.png
+    - assets/images/logo_b.png
+    - assets/images/logo_r.png
+    - assets/images/logo_sr.png
