@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Container(
                 margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.31
+                    top: MediaQuery.of(context).size.height * 0.32
                 ),
                 height: MediaQuery.of(context).size.height * 0.30,
                 child: Image.asset('assets/images/logo_b.png')),

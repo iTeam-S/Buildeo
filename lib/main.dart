@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/splash.dart';
+import 'package:buildeo/view/home.dart';
 import 'package:get_storage/get_storage.dart';
 
 
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 2000), () {
-      Get.offNamed('/');
+    Future.delayed(const Duration(milliseconds: 3000), () {
+      Get.offNamed('/home');
     });
 
     return GetMaterialApp(
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }
