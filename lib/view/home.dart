@@ -1,4 +1,6 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:buildeo/controller/app.dart';
+import 'package:buildeo/translate.dart';
 import 'package:buildeo/view/validationMaire.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +15,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final RoundedLoadingButtonController _btnController =
-      RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+  final AppController appController = Get.put(AppController());
+
 
   AppDrawer drawer = AppDrawer();
 
@@ -70,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        child: const Text("Demandez et recevez votre permis de construction via Buildeo", textAlign: TextAlign.center,
+                        child: Text(translate("DEMANDER_ET_RECEVER", appController.lang), textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 14.5, color: Colors.white)
                         )
                       ),
@@ -91,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                           valueColor: Colors.white,
                           borderRadius: 90,
-                          child: Text("Demander",
+                          child: Text(translate("DEMANDER", appController.lang),
                               style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -108,25 +111,25 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (BuildContext context) => SimpleDialog(
               title: Text(
-                "Vérification de Permis", textAlign: TextAlign.center,
+                translate("VERIFICATON_PERMIS", appController.lang), textAlign: TextAlign.center,
               ),
               contentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
               children: [
-                ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text('Scanner'), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446)),),),
+                ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446)),),),
                Divider(color: Colors.white,),
-                    Text('--- OU ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
+                    Text('--- ${translate("OU", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
                     Divider(color: Colors.white,),
                 TextField(
                   style: TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
                   decoration: InputDecoration(
                     fillColor:  Color(0xffeb3446),
-                    hintText: "Numéro de permis",
+                    hintText: translate("NUMERO_DE_PERMIS", appController.lang),
                     prefixIcon: Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
                     suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send, color:  Color(0xffeb3446)),),
                   ),
                 ),
                     Divider(color: Colors.white,),
-                    Text('--- OU ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
+                    Text('--- ${translate("OU", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
                     Divider(color: Colors.white,),
                 TextField(
                   style: TextStyle(fontSize: 13, color: Colors.grey[800]),
