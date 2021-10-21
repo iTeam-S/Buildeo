@@ -2,7 +2,6 @@ import 'package:buildeo/view/widget/cardValidation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-late final height, widht;
 
 class ValidationMaire extends StatelessWidget {
   const ValidationMaire({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class ValidationMaire extends StatelessWidget {
             Container(
               height: 0.6 * height,
               decoration: BoxDecoration(
-                color: Colors.red,
+                color: Color(0xffeb3446),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(0.1 * width),
                     bottomRight: Radius.circular(0.1 * width)),
