@@ -65,7 +65,6 @@ def login_view(request):
 
 
 @csrf_exempt
-@verif_token
 def getpermis_view(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
