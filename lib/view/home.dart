@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       
                       Container(
                         alignment: Alignment.centerLeft,
-                        width: Get.width * 0.5,
+                        width: Get.width * 0.6,
                         margin: EdgeInsets.only(
                           // left: MediaQuery.of(context).size.width * 0.15,
                           top: MediaQuery.of(context).size.height * 0.03,
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                           valueColor: Colors.white,
                           borderRadius: 90,
-                          child: Text("Demander",
+                          child: Text("Faire une demande",
                               style: TextStyle(color: Colors.white)),
                         ),
                       ),
