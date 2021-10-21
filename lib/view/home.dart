@@ -151,38 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ));
       }),
-      
-      bottomNavigationBar: BottomBarWithSheet(
-        disableMainActionButton : true, 
-        selectedIndex: 0,
-        sheetChild: Center(child: Text("Place for your another content")),
-        bottomBarTheme: BottomBarTheme(
-          // selectedItemIconSize : 35,
-          itemIconColor : Colors.grey[500],
-          backgroundColor: Colors.white,
-          heightClosed : 32,
-          mainButtonPosition: MainButtonPosition.left,
-          selectedItemIconColor: const Color(0xffeb3446) ,
-        ),
-        mainActionButtonTheme: MainActionButtonTheme(
-          size: 60,
-          color: const Color(0xffeb3446),
-          icon: Icon(
-            Icons.send_sharp,
-            color: Colors.white,
-            size: 30,
-          ),
-        ),
-        onSelectItem: (index) => print('item $index was pressed'),
-        items: [
-          BottomBarWithSheetItem(icon: Icons.sort),
-          BottomBarWithSheetItem(icon: Icons.edit),
-          BottomBarWithSheetItem(icon: Icons.text_fields),
-          BottomBarWithSheetItem(icon: Icons.map_sharp),
-          BottomBarWithSheetItem(icon: Icons.bar_chart_sharp),
-          BottomBarWithSheetItem(icon: Icons.info_sharp),
-        ],
-      ),);
+      );
 
   }
 }

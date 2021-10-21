@@ -34,153 +34,153 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: [
-          Stack(
-            children: [
-            Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xffeb3446),
-                    Color(0xff8a0a16),
-                  ],
-                )
-              )),
+      child: SafeArea(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            Stack(
+              children: [
               Container(
-                // alignment: Alignment.center,
-                margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.03,
-                ),
-                child: Column(children: [
-                  Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                        left: MediaQuery.of(context).size.width * 0.03,
-                      ),
-                        child: CircleAvatar(
-                          radius: 40,
-                          backgroundColor: Color(0xffeb3446),
-                          child: Image.asset(
-                            'assets/images/logo_b.png',
-                            width: 45,
-                          ),
-                        )),
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: 8,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                            const Text("Buildeo",
-                              style: TextStyle(
-                                fontSize: 23,
-                                color: Colors.black87,
-                              )
-                            ),
-                            const Text("Non connecté",
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black87,
-                              )
-                            ),
-                          ]),
-                        ),
-                  ],
-                ),
-                Divider(),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xffeb3446),
+                      Color(0xff8a0a16),
+                    ],
+                  )
+                )),
                 Container(
-                  // alignment: Alignment.centerLeft,
-                  width: 120,
+                  // alignment: Alignment.center,
                   margin: EdgeInsets.only(
-                    // left: MediaQuery.of(context).size.width * 0.15,
-                    top: MediaQuery.of(context).size.height * 0.03,
+                    top: MediaQuery.of(context).size.height * 0.02,
                   ),
-                  child: RoundedLoadingButton(
-                    elevation : 0,
-                    height: 43,
-                    controller: _btnController,
-                    color: const Color(0xfffad9dd),
-                    successColor: Colors.blue,
-                    onPressed: () {
-                      Get.to('/confirm_pass');
-                    },
-                    valueColor: Colors.white,
-                    borderRadius: 90,
-                    child: Text("Se connecter",
-                        style: TextStyle(color: Color(0xffeb3446))),
+                  child: Column(children: [
+                    Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: MediaQuery.of(context).size.width * 0.03,
+                        ),
+                          child: CircleAvatar(
+                            radius: 40,
+                            backgroundColor: Color(0xffeb3446),
+                            child: Image.asset(
+                              'assets/images/logo_b.png',
+                              width: 45,
+                            ),
+                          )),
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: 8,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                              const Text("Buildeo",
+                                style: TextStyle(
+                                  fontSize: 23,
+                                  color: Colors.black87,
+                                )
+                              ),
+                              const Text("Non connecté",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.black87,
+                                )
+                              ),
+                            ]),
+                          ),
+                    ],
                   ),
-                ),
-                ]),
-              )],
-          ),
-          SizedBox(
-              height: MediaQuery.of(context).size.height * 0.73,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(children: [
-                      ListTile(
-                        leading: CircleAvatar(
-                          radius: 15,
-                          backgroundColor: const Color(0xff0cab56),
-                          child: const Icon(Icons.sort_by_alpha,
-                            color: Colors.white, size: 16,),
+                  Divider(),
+                  Container(
+                    margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.03,
+                    ),
+                    child: RoundedLoadingButton(
+                      elevation : 0,
+                      height: 37,
+                      width: 130,
+                      controller: _btnController,
+                      color: const Color(0xfffad9dd),
+                      successColor: Colors.blue,
+                      onPressed: () {
+                        Get.to('/confirm_pass');
+                      },
+                      valueColor: Colors.white,
+                      borderRadius: 90,
+                      child: Text("Se connecter",
+                          style: TextStyle(color: Color(0xffeb3446))),
+                    ),
+                  ),
+                  ]),
+                )],
+            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height * 0.73,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(children: [
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xff0cab56),
+                            child: const Icon(Icons.sort_by_alpha,
+                              color: Colors.white, size: 16,),
+                          ),
+                          title: const Text("Changer language"),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          trailing: const Icon(Icons.chevron_right),
+                          hoverColor: const Color(0xffddffdd) ,
                         ),
-                        title: const Text("Changer language"),
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        trailing: const Icon(Icons.chevron_right),
-                        hoverColor: const Color(0xffddffdd) ,
-                      ),
-                      ListTile(
-                        leading: CircleAvatar(
-                          radius: 15,
-                          backgroundColor: const Color(0xff0d94bd),
-                          child: const Icon(Icons.info,
-                            color: Colors.white, size: 16,),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xff0d94bd),
+                            child: const Icon(Icons.info,
+                              color: Colors.white, size: 16,),
+                          ),
+                          title: const Text("A propos"),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          hoverColor: const Color(0xffceeaf2) ,
                         ),
-                        title: const Text("A propos"),
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        hoverColor: const Color(0xffceeaf2) ,
-                      ),
-                      ListTile(
-                        leading: CircleAvatar(
-                          radius: 15,
-                          backgroundColor: const Color(0xffeb3446),
-                          child: const Icon(Icons.logout_outlined,
-                            color: Colors.white, size: 16,),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xffeb3446),
+                            child: const Icon(Icons.logout_outlined,
+                              color: Colors.white, size: 16,),
+                          ),
+                          title: const Text("Se deconnecter"),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          hoverColor: const Color(0xfffad9dd) ,
                         ),
-                        title: const Text("Se deconnecter"),
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        hoverColor: const Color(0xfffad9dd) ,
-                      ),
-                    ]),
-                    Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(
-                        // left: MediaQuery.of(context).size.width * 0.15,
-                        bottom: MediaQuery.of(context).size.height * 0.08,
-                      ),
-                      child: const Text(
-                        "Buileo 0.0.1",
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    )
-                  ]))
-        ],
+                      ]),
+                      Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(
+                          // left: MediaQuery.of(context).size.width * 0.15,
+                          bottom: MediaQuery.of(context).size.height * 0.08,
+                        ),
+                        child: const Text(
+                          "Buileo 0.0.1",
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      )
+                    ]))
+          ],
+        ),
       ),
     );
   }
