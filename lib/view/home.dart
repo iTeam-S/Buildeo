@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:buildeo/view/widget/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,8 +12,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  final RoundedLoadingButtonController _btnController  = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Image.asset(
                   'assets/images/cover.jpg',
-                   width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -37,37 +37,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Container(
-                        alignment: Alignment.topCenter,
-                        margin: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: () {}, icon: Icon(Icons.menu_sharp, color: Colors.white),
-                            ),
-                            Text(
-                              "Buildeo",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                              )
-                            ),
-                          ],
-                        )
-                      ),
+                          alignment: Alignment.topCenter,
+                          margin: EdgeInsets.only(
+                            right: MediaQuery.of(context).size.width * 0.02,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => AppDrawer(),
+                                    ),
+                                  );
+                                },
+                                icon:
+                                    Icon(Icons.menu_sharp, color: Colors.white),
+                              ),
+                              Text("Buildeo",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                  )),
+                            ],
+                          )),
                       Container(
-                        alignment: Alignment.centerLeft,
-                        margin: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.15,
-                          top: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        child: const Text("Demandez et recevez votre permis de construction via Buildeo",
-                            style: TextStyle(fontSize: 14.5, color: Colors.white)
-                        )
-                      ),
-                      
+                          alignment: Alignment.centerLeft,
+                          margin: EdgeInsets.only(
+                            left: MediaQuery.of(context).size.width * 0.15,
+                            top: MediaQuery.of(context).size.height * 0.04,
+                          ),
+                          child: const Text(
+                              "Demandez et recevez votre permis de construction via Buildeo",
+                              style: TextStyle(
+                                  fontSize: 14.5, color: Colors.white))),
                       Container(
                         alignment: Alignment.centerLeft,
                         width: Get.width * 0.5,
@@ -76,17 +81,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: MediaQuery.of(context).size.height * 0.03,
                         ),
                         child: RoundedLoadingButton(
-                              controller: _btnController,
-                              color: Color(0xffeb3446),
-                              successColor: Colors.blue,
-                              onPressed: () {
-                                Get.to('/confirm_pass');
-                              },
-                              valueColor: Colors.white,
-                              borderRadius: 90,
-                              child: Text("Demander",
-                                  style: TextStyle(
-                                      color: Colors.white)),
+                          controller: _btnController,
+                          color: Color(0xffeb3446),
+                          successColor: Colors.blue,
+                          onPressed: () {
+                            Get.to('/confirm_pass');
+                          },
+                          valueColor: Colors.white,
+                          borderRadius: 90,
+                          child: Text("Demander",
+                              style: TextStyle(color: Colors.white)),
                         ),
                       ),
                     ],
