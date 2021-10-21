@@ -110,14 +110,20 @@ class _HomeScreenState extends State<HomeScreen> {
        showDialog(
         context: context,
         builder: (BuildContext context) => SimpleDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               title: Text(
-                translate("VERIFICATON_PERMIS", appController.lang), textAlign: TextAlign.center,
+                translate("VERIFICATON_PERMIS", appController.lang), textAlign: TextAlign.center, style: TextStyle(fontSize: 18),
               ),
-              contentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+              contentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
               children: [
-                ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446)),),),
-               Divider(color: Colors.white,),
-                    Text('--- ${translate("OU", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
+                Container(
+                  height: 40,
+                  child: ElevatedButton.icon(
+                    onPressed: (){}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446), ),),
+                    )
+                ),
+                Divider(color: Colors.white,),
+                    Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
                     Divider(color: Colors.white,),
                 TextField(
                   style: TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
@@ -125,11 +131,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     fillColor:  Color(0xffeb3446),
                     hintText: translate("NUMERO_DE_PERMIS", appController.lang),
                     prefixIcon: Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
-                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send, color:  Color(0xffeb3446)),),
+                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send_rounded, color:  Colors.black38),),
                   ),
                 ),
                     Divider(color: Colors.white,),
-                    Text('--- ${translate("OU", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
+                    Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
                     Divider(color: Colors.white,),
                 TextField(
                   style: TextStyle(fontSize: 13, color: Colors.grey[800]),
@@ -137,7 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     fillColor:  Color(0xffeb3446),
                     hintText: "Qr Code",
                     prefixIcon: Icon(Icons.image_search_rounded, color:  Color(0xffeb3446)),
-                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send, color:  Color(0xffeb3446)),),
+                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send_rounded, color:  Colors.black38),),
                   ),
                 ),
                  Divider(color: Colors.white, height: 20,),
