@@ -1,22 +1,19 @@
+import 'package:buildeo/view/validationMaire.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/splash.dart';
 import 'package:buildeo/view/home.dart';
 import 'package:get_storage/get_storage.dart';
 
-
 void main() async {
   await GetStorage.init();
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
-
   MyApp({Key? key}) : super(key: key);
 
   final box = GetStorage();
-
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +32,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
+        '/validMaire': (context) => const ValidationMaire(),
       },
     );
   }

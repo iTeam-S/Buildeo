@@ -91,9 +91,9 @@ class AppDrawer extends StatelessWidget {
                       ListTile(
                         leading: Icon(Icons.add_outlined,
                             color: Colors.lightBlue[800]),
-                        title: const Text("Ajouter un module"),
+                        title: const Text("Permis à valider"),
                         onTap: () {
-                          Navigator.pop(context);
+                          Get.toNamed('/validMaire');
                         },
                       ),
                       const Divider(),

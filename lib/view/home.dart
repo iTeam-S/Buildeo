@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -13,8 +12,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  final RoundedLoadingButtonController _btnController  = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
   AppDrawer drawer = AppDrawer();
 
@@ -31,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Image.asset(
                   'assets/images/cover.jpg',
-                   width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -83,17 +82,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           top: MediaQuery.of(context).size.height * 0.03,
                         ),
                         child: RoundedLoadingButton(
-                              controller: _btnController,
-                              color: Color(0xffeb3446),
-                              successColor: Colors.blue,
-                              onPressed: () {
-                                Get.to('/confirm_pass');
-                              },
-                              valueColor: Colors.white,
-                              borderRadius: 90,
-                              child: Text("Demander",
-                                  style: TextStyle(
-                                      color: Colors.white)),
+                          controller: _btnController,
+                          color: Color(0xffeb3446),
+                          successColor: Colors.blue,
+                          onPressed: () {
+                            Get.to('/confirm_pass');
+                          },
+                          valueColor: Colors.white,
+                          borderRadius: 90,
+                          child: Text("Demander",
+                              style: TextStyle(color: Colors.white)),
                         ),
                       ),
                     ],
