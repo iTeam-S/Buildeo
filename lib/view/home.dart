@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:buildeo/view/validationMaire.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             IconButton(
                               onPressed: () {
                                 //
-                                drawer.scaffoldKey.currentState!.openEndDrawer();
+                               Get.to(ValidationMaire());
                               }, icon: Icon(Icons.sort, color: Colors.white),
                             ),
                             Text(
@@ -102,6 +103,43 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-    );
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.qr_code_scanner_outlined),elevation: 10, backgroundColor: Color(0xffeb3446), onPressed: (){
+       showDialog(
+        context: context,
+        builder: (BuildContext context) => SimpleDialog(
+              title: Text(
+                "Vérification de Permis", textAlign: TextAlign.center,
+              ),
+              contentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 15),
+              children: [
+                ElevatedButton.icon(onPressed: (){}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text('Scanner'), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446)),),),
+               Divider(color: Colors.white,),
+                    Text('--- OU ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
+                    Divider(color: Colors.white,),
+                TextField(
+                  style: TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
+                  decoration: InputDecoration(
+                    fillColor:  Color(0xffeb3446),
+                    hintText: "Numéro de permis",
+                    prefixIcon: Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
+                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send, color:  Color(0xffeb3446)),),
+                  ),
+                ),
+                    Divider(color: Colors.white,),
+                    Text('--- OU ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 11),),
+                    Divider(color: Colors.white,),
+                TextField(
+                  style: TextStyle(fontSize: 13, color: Colors.grey[800]),
+                 decoration: InputDecoration(
+                    fillColor:  Color(0xffeb3446),
+                    hintText: "Qr Code",
+                    prefixIcon: Icon(Icons.image_search_rounded, color:  Color(0xffeb3446)),
+                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send, color:  Color(0xffeb3446)),),
+                  ),
+                ),
+                 Divider(color: Colors.white, height: 20,),
+              ],
+            ));
+      },));
   }
 }

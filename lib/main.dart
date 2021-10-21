@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       theme: ThemeData(
-        primaryColor: Colors.lightBlue[800],
-        primarySwatch: Colors.blue,
+        primaryColor:  const Color(0xffeb3446),
+        primarySwatch: Colors.red,
         fontFamily: "ProductSans",
       ),
       debugShowCheckedModeBanner: false,
