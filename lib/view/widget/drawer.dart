@@ -9,6 +9,7 @@ import 'package:get_storage/get_storage.dart';
 
 class AppDrawer extends StatelessWidget {
   final bool isLoadingPath = false;
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   // final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
 
   final TextEditingController moduleAddController = TextEditingController();

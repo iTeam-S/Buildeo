@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:buildeo/view/widget/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
@@ -15,9 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final RoundedLoadingButtonController _btnController  = RoundedLoadingButtonController();
 
+  AppDrawer drawer = AppDrawer();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: drawer,
       body: Container(
         alignment: Alignment.center,
         color: Color(0xfffefefe),
@@ -45,7 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             IconButton(
-                              onPressed: () {}, icon: Icon(Icons.menu_sharp, color: Colors.white),
+                              onPressed: () {
+                                //
+                                drawer.scaffoldKey.currentState!.openEndDrawer();
+                              }, icon: Icon(Icons.sort, color: Colors.white),
                             ),
                             Text(
                               "Buildeo",
@@ -58,12 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       ),
                       Container(
-                        alignment: Alignment.centerLeft,
+                        alignment: Alignment.center,
+                        width: Get.width * 0.8,
                         margin: EdgeInsets.only(
-                          left: MediaQuery.of(context).size.width * 0.15,
                           top: MediaQuery.of(context).size.height * 0.04,
                         ),
-                        child: const Text("Demandez et recevez votre permis de construction via Buildeo",
+                        child: const Text("Demandez et recevez votre permis de construction via Buildeo", textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 14.5, color: Colors.white)
                         )
                       ),
