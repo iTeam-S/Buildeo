@@ -1,4 +1,5 @@
 import 'package:buildeo/view/AdminPage.dart';
+import 'package:buildeo/view/map.dart';
 import 'package:buildeo/view/validationAdmin.dart';
 import 'package:buildeo/view/validationMaire.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       theme: ThemeData(
-        primaryColor:  const Color(0xffeb3446),
+        primaryColor: const Color(0xffeb3446),
         primarySwatch: Colors.red,
         fontFamily: "ProductSans",
       ),
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
         '/validMaire': (context) => const ValidationMaire(),
         '/validAmin': (context) => const ValidationAdmin(),
         '/pageAmin': (context) => const AdminPage(),
-        '/login': (context) => const AdminPage(),
+        '/map': (context) => const CarteView()
       },
     );
   }
