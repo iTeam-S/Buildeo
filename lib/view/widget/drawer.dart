@@ -173,7 +173,7 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Validation maire"),
+                          title: const Text("Map"),
                           onTap: () {
                             Get.toNamed("/map");
                           },
