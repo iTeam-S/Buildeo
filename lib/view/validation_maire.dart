@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/cardValidation.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +55,7 @@ class ValidationMaire extends StatelessWidget {
                 ),
                 child: Center(
                   child: (!isMobile(context))
-                      ? Container(
+                      ? SizedBox(
                           width: Get.width,
                           child: OrientationBuilder(
                               builder: (context, orientation) {

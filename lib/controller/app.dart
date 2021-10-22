@@ -11,7 +11,13 @@ class AppController extends GetxController {
   TextEditingController numPermisController = TextEditingController();
   TextEditingController qRfiletitre = TextEditingController();
   String qrfilepath = '';
-    FocusNode qRfocus = FocusNode();
+  FocusNode qRfocus = FocusNode();
+
+  // LOGIN 
+  TextEditingController usrController = TextEditingController();
+  TextEditingController passwdController = TextEditingController();
+  
+
 
   final ApiController apiController = Get.put(ApiController());
 

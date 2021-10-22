@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -10,7 +12,7 @@ class PopUpMotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
         child: SimpleDialog(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
@@ -22,13 +24,13 @@ class PopUpMotif extends StatelessWidget {
               child: Column(
                 children: [
                   TextField(
-                    controller: this._controller,
+                    controller: _controller,
                     maxLines: 5,
                     maxLength: 500,
                     textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: '    Motif pas plus 500 caractères',
-                      hintText: '   votre texte ici...',
+                      hintText: '   Votre texte ici...',
                     ),
                     onChanged: (text) => setState(() {}),
                   ),
@@ -47,7 +49,7 @@ class PopUpMotif extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: new Text("Annuler"),
+                        child: Text("Annuler"),
                       ),
                       SizedBox(
                         width: 50,
@@ -62,7 +64,7 @@ class PopUpMotif extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: new Text("  Ouvrir  "),
+                        child: Text("  Ouvrir  "),
                       )
                     ],
                   )

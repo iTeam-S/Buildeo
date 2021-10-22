@@ -3,12 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser, models.Model):
-    cin = models.IntegerField(null=True, blank=True)
-    date_naissance = models.DateTimeField(null=True, blank=True)
-    adress = models.CharField(max_length=400, null=True, blank=True)
-    tel = models.CharField(max_length=13, null=True, blank=True)
-    type = models.CharField(max_length=10, null=True, blank=True)
-    commune = models.CharField(max_length=50, null=True, blank=True)
+    cin = models.IntegerField(null=True)
+    date_naissance = models.DateTimeField(default=None, blank=True, null=True)
+    adress = models.CharField(max_length=400, default=None, blank=True, null=True)
+    tel = models.CharField(max_length=13, default=None, blank=True, null=True)
+    type = models.CharField(max_length=10, default=None, blank=True, null=True)
+    commune = models.CharField(max_length=50, default=None, blank=True, null=True)
 
 
 class Province(models.Model):
@@ -44,9 +44,9 @@ class Commune(models.Model):
 
 class Permis(models.Model):
     req_date = models.DateTimeField()
-    req_user_id = models.ForeignKey(User, related_name='req_user_id', on_delete=models.CASCADE)
-    trtm_date = models.DateTimeField(null=True, blank=True)
-    trtm_user_id = models.ForeignKey(User, related_name='trtm_user_id', on_delete=models.CASCADE)
+    req_user_id = models.ForeignKey(User, related_name='req_user_id', on_delete=models.CASCADE, default=None, blank=True, null=True)
+    trtm_date = models.DateTimeField(default=None, blank=True, null=True)
+    trtm_user_id = models.ForeignKey(User, related_name='trtm_user_id', on_delete=models.CASCADE, default=None, blank=True, null=True)
     status = models.CharField(max_length=50 ,choices=[
         ('ATTENTE_TRTM', 'Attente Traitement'),
         ('EN_TRTM', 'En traitement'),

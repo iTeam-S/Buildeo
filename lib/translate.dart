@@ -11,7 +11,7 @@ var langages =  {
     "mg": "Mailaka na Laharan-tariby",
   },
   "se_connecter": {
-    "fr": "connecter",
+    "fr": "Connexion",
     "en": "connect",
     "mg": "Hiditra",
   },
@@ -144,6 +144,11 @@ var langages =  {
     "fr": "Délivré le",
     "en": "OR",
     "mg" : "NA",
+  },
+  "Se connecter": {
+    "fr": "Se connecter",
+    "en": "connect",
+    "mg": "Hiditra",
   },
 
 
