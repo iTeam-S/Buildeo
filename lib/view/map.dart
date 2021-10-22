@@ -37,22 +37,21 @@ class _CarteView extends State<CarteView> {
               panEnabled: true,
               constrained: true,
               child: CityPickerMap(
-                key: _mapKey,
-                width: double.infinity,
-                height: double.infinity,
-                map: Maps.MADAGASCAR,
-                onChanged: (city) {
-                  setState(() {
-                    selectedCity = city;
-                  });
-                  Get.snackbar('Redirection',
-                      'Recherche pour la région de ${selectedCity?.title.toString()}');
-                },
-                actAsToggle: true,
-                dotColor: Colors.white,
-                selectedColor: Colors.teal,
-                strokeColor: Colors.teal[600],
-              ),
+                  key: _mapKey,
+                  width: double.infinity,
+                  height: double.infinity,
+                  map: Maps.MADAGASCAR,
+                  onChanged: (city) {
+                    setState(() {
+                      selectedCity = city;
+                    });
+                    Get.snackbar('Redirection',
+                        'Recherche pour la région de ${selectedCity?.title.toString()}');
+                  },
+                  actAsToggle: true,
+                  dotColor: Colors.white,
+                  selectedColor: Color(0xffeb3446),
+                  strokeColor: Color(0xffeb3446)),
             ),
           ),
         ),

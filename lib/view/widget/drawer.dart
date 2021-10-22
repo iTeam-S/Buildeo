@@ -179,6 +179,22 @@ class AppDrawer extends StatelessWidget {
                           },
                           hoverColor: const Color(0xffceeaf2),
                         ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xFF00455A),
+                            child: const Icon(
+                              Icons.description,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Formulaire"),
+                          onTap: () {
+                            Get.toNamed("/form");
+                          },
+                          hoverColor: const Color(0xffceeaf2),
+                        ),
                         Text("PREFERENCES",
                             style: TextStyle(
                               fontSize: 13,
@@ -189,7 +205,7 @@ class AppDrawer extends StatelessWidget {
                             radius: 15,
                             backgroundColor: const Color(0xff0cab56),
                             child: const Icon(
-                              Icons.sort_by_alpha,
+                              Icons.translate,
                               color: Colors.white,
                               size: 16,
                             ),
