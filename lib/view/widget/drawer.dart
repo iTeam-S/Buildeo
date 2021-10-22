@@ -127,6 +127,38 @@ class AppDrawer extends StatelessWidget {
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
+                            backgroundColor: const Color(0xFFFF4800),
+                            child: const Icon(
+                              Icons.shield_outlined,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Validation admin"),
+                          onTap: () {
+                            Get.toNamed("/pageAmin");
+                          },
+                          hoverColor: const Color(0xffceeaf2),
+                        ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xFFDC06F0),
+                            child: const Icon(
+                              Icons.select_all_outlined,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Validation maire"),
+                          onTap: () {
+                            Get.toNamed("/validMaire");
+                          },
+                          hoverColor: const Color(0xffceeaf2),
+                        ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
                             backgroundColor: const Color(0xff0cab56),
                             child: const Icon(
                               Icons.sort_by_alpha,
