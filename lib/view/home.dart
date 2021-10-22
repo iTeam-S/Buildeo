@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Container(
               margin: EdgeInsets.only(
-                top: 10,
+                top: 20,
                 left : 12
               ),
               child:
@@ -201,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Container(
               margin: EdgeInsets.only(
-                top: 10,
+                top: 20,
                 left : 12
               ),
               child:
@@ -305,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Container(
               margin: EdgeInsets.only(
-                top: 10,
+                top: 20,
                 left : 12
               ),
               child:
@@ -314,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(children:[
               Card(
                   color: Colors.white,
-                  elevation: 2,
+                  elevation: 4,
                   margin: EdgeInsets.only(left: Get.width * 0.020,),
                   child: Container(
                     width: Get.width * 0.47,
@@ -347,7 +347,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Card(
                     color: Colors.white,
-                    elevation: 2,
+                    elevation: 4,
                     margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02 ,vertical: 6.0),
                     child: Container(
                       width: Get.width * 0.47,

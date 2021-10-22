@@ -97,6 +97,7 @@ class AppDrawer extends StatelessWidget {
                     Container(
                       margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.03,
+                        bottom: MediaQuery.of(context).size.height * 0.03,
                       ),
                       child: RoundedLoadingButton(
                         elevation: 0,
@@ -114,6 +115,7 @@ class AppDrawer extends StatelessWidget {
                             style: TextStyle(color: Color(0xffeb3446))),
                       ),
                     ),
+                    Divider(),
                   ]),
                 )
               ],
@@ -124,6 +126,12 @@ class AppDrawer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(children: [
+                        Text("LISTE DES VALIDATIONS",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey,
+                          )
+                        ),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
@@ -138,7 +146,7 @@ class AppDrawer extends StatelessWidget {
                           onTap: () {
                             Get.toNamed("/pageAmin");
                           },
-                          hoverColor: const Color(0xffceeaf2),
+                          hoverColor: const Color(0xfffcdfca),
                         ),
                         ListTile(
                           leading: CircleAvatar(
@@ -154,7 +162,13 @@ class AppDrawer extends StatelessWidget {
                           onTap: () {
                             Get.toNamed("/validMaire");
                           },
-                          hoverColor: const Color(0xffceeaf2),
+                          hoverColor: const Color(0xffe5c2fc),
+                        ),
+                        Text("PREFERENCES",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey,
+                          )
                         ),
                         ListTile(
                           leading: CircleAvatar(
