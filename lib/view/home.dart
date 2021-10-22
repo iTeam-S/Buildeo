@@ -154,7 +154,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 12),
+              margin: EdgeInsets.only(top: 20, left: 12),
               child: Text("Centre d'information",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
@@ -197,7 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 12),
+              margin: EdgeInsets.only(top: 20, left: 12),
               child: Text("Services",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
@@ -295,14 +295,14 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ]),
             Container(
-              margin: EdgeInsets.only(top: 10, left: 12),
+              margin: EdgeInsets.only(top: 20, left: 12),
               child: Text("Modèles de lettre",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
             Row(children: [
               Card(
                 color: Colors.white,
-                elevation: 2,
+                elevation: 4,
                 margin: EdgeInsets.only(
                   left: Get.width * 0.020,
                 ),
@@ -341,7 +341,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Card(
                 color: Colors.white,
-                elevation: 2,
+                elevation: 4,
                 margin: EdgeInsets.symmetric(
                     horizontal: Get.width * 0.02, vertical: 6.0),
                 child: Container(
@@ -373,7 +373,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             icon: Icon(Icons.edit,
                                 size: 20, color: Colors.black87)),
                       ],
-                    )
+                    ),
                   ]),
                 ),
               ),
@@ -389,7 +389,7 @@ class _HomeScreenState extends State<HomeScreen> {
             showDialog(
                 context: context,
                 builder: (BuildContext context) => BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+                    filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
                     child: SimpleDialog(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
