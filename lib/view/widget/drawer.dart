@@ -127,11 +127,10 @@ class AppDrawer extends StatelessWidget {
                     children: [
                       Column(children: [
                         Text("LISTE DES VALIDATIONS",
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.grey,
-                          )
-                        ),
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.grey,
+                            )),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
@@ -164,16 +163,10 @@ class AppDrawer extends StatelessWidget {
                           },
                           hoverColor: const Color(0xffe5c2fc),
                         ),
-                        Text("PREFERENCES",
-                          style: TextStyle(
-                            fontSize: 13,
-                            color: Colors.grey,
-                          )
-                        ),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
-                            backgroundColor: const Color(0xFFD9FF01),
+                            backgroundColor: const Color(0xFFEAFC47),
                             child: const Icon(
                               Icons.location_on,
                               color: Colors.white,
@@ -186,6 +179,11 @@ class AppDrawer extends StatelessWidget {
                           },
                           hoverColor: const Color(0xffceeaf2),
                         ),
+                        Text("PREFERENCES",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.grey,
+                            )),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
