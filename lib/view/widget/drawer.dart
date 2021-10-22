@@ -9,7 +9,7 @@ import 'package:get_storage/get_storage.dart';
 
 class AppDrawer extends StatelessWidget {
   final bool isLoadingPath = false;
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   // final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
 
   final TextEditingController moduleAddController = TextEditingController();
@@ -89,9 +89,18 @@ class AppDrawer extends StatelessWidget {
                   children: [
                     Column(children: [
                       ListTile(
-                        leading: Icon(Icons.add_outlined,
+                        leading:
+                            Icon(Icons.folder, color: Colors.lightBlue[800]),
+                        title: const Text("Permis à valider(Admin)"),
+                        onTap: () {
+                          Get.toNamed('/pageAmin');
+                        },
+                      ),
+                      const Divider(),
+                      ListTile(
+                        leading: Icon(Icons.assignment_turned_in,
                             color: Colors.lightBlue[800]),
-                        title: const Text("Permis à valider"),
+                        title: const Text("Permis à valider(Maire)"),
                         onTap: () {
                           Get.toNamed('/validMaire');
                         },

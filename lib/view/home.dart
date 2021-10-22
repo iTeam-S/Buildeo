@@ -40,40 +40,42 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Container(
-                        alignment: Alignment.topCenter,
-                        margin: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                //
-                                drawer.scaffoldKey.currentState!.openEndDrawer();
-                              }, icon: Icon(Icons.sort, color: Colors.white),
-                            ),
-                            Text(
-                              "Buildeo",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                              )
-                            ),
-                          ],
-                        )
-                      ),
+                          alignment: Alignment.topCenter,
+                          margin: EdgeInsets.only(
+                            right: MediaQuery.of(context).size.width * 0.02,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => AppDrawer(),
+                                    ),
+                                  );
+                                },
+                                icon: Icon(Icons.sort, color: Colors.white),
+                              ),
+                              Text("Buildeo",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                  )),
+                            ],
+                          )),
                       Container(
-                        alignment: Alignment.center,
-                        width: Get.width * 0.8,
-                        margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        child: const Text("Demandez et recevez votre permis de construction via Buildeo", textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14.5, color: Colors.white)
-                        )
-                      ),
-                      
+                          alignment: Alignment.center,
+                          width: Get.width * 0.8,
+                          margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.04,
+                          ),
+                          child: const Text(
+                              "Demandez et recevez votre permis de construction via Buildeo",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 14.5, color: Colors.white))),
                       Container(
                         alignment: Alignment.centerLeft,
                         width: Get.width * 0.5,

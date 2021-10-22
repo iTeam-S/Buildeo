@@ -1,5 +1,7 @@
+import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/popUp.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CardValidated extends StatelessWidget {
   const CardValidated({Key? key}) : super(key: key);
@@ -11,9 +13,11 @@ class CardValidated extends StatelessWidget {
       elevation: 8.0,
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
+        height: isMobile(context)
+            ? Get.height * 0.15
+            : 500 /*la taille ne s'applique pas à isDesktop */,
         decoration: BoxDecoration(
-            color: Colors.red.shade900,
-            borderRadius: BorderRadius.circular(20)),
+            color: Colors.blue, borderRadius: BorderRadius.circular(20)),
         child: ListTile(
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -33,7 +37,7 @@ class CardValidated extends StatelessWidget {
                     },
                     icon: Icon(
                       Icons.delete,
-                      color: Colors.white,
+                      color: Colors.red.shade400,
                       size: 30,
                     ))),
             title: Text(
