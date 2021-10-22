@@ -455,7 +455,7 @@ class AppDrawer extends StatelessWidget {
                                               child: RoundedLoadingButton(
                                                 color: const Color(0xffeb3446),
                                                 successColor: Colors.blue,
-                                                controller: _bstnController,
+                                                controller: _btnController,
                                                 onPressed: () {
                                                  
                                                 },
