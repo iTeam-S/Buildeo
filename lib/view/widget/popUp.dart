@@ -6,7 +6,11 @@ class PopUpMotif extends StatelessWidget {
   final _controller = TextEditingController();
 
   PopUpMotif({Key? key}) : super(key: key);
+<<<<<<< Updated upstream
 
+=======
+  
+>>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(

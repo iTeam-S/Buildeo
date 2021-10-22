@@ -47,12 +47,6 @@ dependencies:
   shimmer_animation: ^2.1.0+1
   pull_to_refresh: ^2.0.0
   qr_code_scanner:
-<<<<<<< HEAD
-  floating_action_bubble: ^1.1.2
-  flutter_arc_speed_dial: ^2.0.0
-=======
-  city_picker_from_map: ^0.0.1
->>>>>>> b430dcd8b15466854e46b59647b4fc193d919c0a
 
 
 dev_dependencies:
