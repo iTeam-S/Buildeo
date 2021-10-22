@@ -64,10 +64,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void reassemble() {
     super.reassemble();
+    try {
     if (Platform.isAndroid) {
       controller!.pauseCamera();
     }
     controller!.resumeCamera();
+    } catch (e){
+      print(e);
+    }
+   
   }
 
   @override
@@ -502,5 +507,8 @@ class _HomeScreenState extends State<HomeScreen> {
       overlayEntry.remove();
     });
   }
+
+
+
   
 }

@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/validMaire': (context) => const ValidationMaire(),
         '/validAmin': (context) => const ValidationAdmin(),
         '/pageAmin': (context) => const AdminPage(),
+        '/login': (context) => const AdminPage(),
       },
     );
   }
