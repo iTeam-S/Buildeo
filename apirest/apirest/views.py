@@ -151,3 +151,13 @@ def requestpermis(request):
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
     return Http404()
+
+
+@csrf_exempt
+def get_listcommune_view(request):
+    try:
+        communes = Commune.objects.all()
+        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': {commune.id:commune.nom for commune in communes}})
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})

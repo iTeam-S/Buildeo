@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/permis/', views.getpermis_view),
     path('api/requestpermis/', views.requestpermis),
     path('api/userpermis/', views.get_userpermis_view),
+    path('api/listcommune/', views.get_listcommune_view),
 ]
