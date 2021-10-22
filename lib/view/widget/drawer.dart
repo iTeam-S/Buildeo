@@ -202,7 +202,9 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Faire une demande de permis"),
-                          onTap: () {},
+                          onTap: () {
+                            Get.toNamed('/form');
+                          },
                           hoverColor: const Color(0xffceeaf2),
                           trailing: const Icon(Icons.chevron_right),
                         ),

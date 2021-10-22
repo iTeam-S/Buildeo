@@ -164,7 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               margin: EdgeInsets.only(top: 25, left: 12),
               child: Text("Centre d'information",
-                  style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.blueGrey))
+                style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.blueGrey)
+              )
             ),
             Card(
               color: Color(0xffedf7fa),

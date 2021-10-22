@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:buildeo/view/widget/drawer.dart';
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -9,16 +10,32 @@ class InfoScreen extends StatefulWidget {
 
 class _InfoScreen extends State<InfoScreen> {
 
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  AppDrawer drawer = AppDrawer();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: drawer,
+      appBar: AppBar(
+        leading: IconButton( onPressed: () {
+          //Get.to(AppDrawer());
+          _key.currentState!.openDrawer();
+          },
+          icon: const Icon(Icons.sort, color: Colors.white),
+        ),
+        title: Text("Centre d'information", style: TextStyle(fontSize: 15),),
+        backgroundColor: Color(0xffeb3446),
+        elevation: 5,
+      ),
       body:Container(
         alignment: Alignment.center,
         color: Colors.white,
         child: ListView(
           children: [
             Container(
-              margin: EdgeInsets.only(top: 25, left: 12),
+              margin: EdgeInsets.only(top: 20, left: 12),
               child: Text("Informations et pièces à fournir",
                 style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.blueGrey)
               )
