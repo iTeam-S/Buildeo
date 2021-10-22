@@ -10,7 +10,7 @@ class CardValidated extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.transparent,
-      elevation: 8.0,
+      elevation: 10.0,
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
         height: isMobile(context)
@@ -41,21 +41,21 @@ class CardValidated extends StatelessWidget {
                       size: 30,
                     ))),
             title: Text(
-              "Demande de construire\nn°011/21/CR-Fdt",
+              "Demande n°011/21/CR-Fdt",
               style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
             ),
             // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
 
             subtitle: Row(
               children: <Widget>[
-                Icon(Icons.watch_later_outlined, color: Colors.white),
+                Icon(Icons.watch_later_outlined, color: Colors.black45),
                 Text(" Il y a deux jours",
-                    style: TextStyle(color: Colors.white))
+                    style: TextStyle(color: Colors.black45))
               ],
             ),
-            trailing:
-                Icon(Icons.check_box_rounded, color: Colors.white, size: 30.0)),
+            trailing: Icon(Icons.check_box_outline_blank_rounded,
+                color: Colors.black45, size: 30.0)),
       ),
     );
   }
