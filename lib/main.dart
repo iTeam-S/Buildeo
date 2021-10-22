@@ -1,8 +1,8 @@
-import 'package:buildeo/view/AdminPage.dart';
 import 'package:buildeo/view/info.dart';
+import 'package:buildeo/view/admin_page.dart';
 import 'package:buildeo/view/map.dart';
-import 'package:buildeo/view/validationAdmin.dart';
-import 'package:buildeo/view/validationMaire.dart';
+import 'package:buildeo/view/validation_admin.dart';
+import 'package:buildeo/view/validation_maire.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/splash.dart';

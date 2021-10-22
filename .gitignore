@@ -50,3 +50,6 @@ __pycache__/
 .env
 venv
 *.http
+linux/
+web/
+pubspec.lock

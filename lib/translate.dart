@@ -1,4 +1,4 @@
-var langages =  {
+var langages = {
   "bienvenue": {"fr": "Bienvenue", "en": "Welcome", "mg": "Tongasoa"},
   "incorrect_pass": {
     "fr": "Mot de passe ou Nom d\"utilisateur incorrecte",
@@ -11,7 +11,7 @@ var langages =  {
     "mg": "Mailaka na Laharan-tariby",
   },
   "se_connecter": {
-    "fr": "connecter",
+    "fr": "Connexion",
     "en": "connect",
     "mg": "Hiditra",
   },
@@ -94,71 +94,74 @@ var langages =  {
     "fr": "camera",
     "en": "camara",
     "mg": "fakantsary",
-  }, 
-  "DEMANDER_ET_RECEVER" : {
-    "fr": "Demandez, suivez et recevez votre permis de construction via Buildeo",
-    "en": "Requestn follow receive your building license by Buildeo",
-    "mg" : "Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
   },
-  "DEMANDER" : {
+  "DEMANDER_ET_RECEVER": {
+    "fr":
+        "Demandez, suivez et recevez votre permis de construction via Buildeo",
+    "en": "Requestn follow receive your building license by Buildeo",
+    "mg":
+        "Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
+  },
+  "DEMANDER": {
     "fr": "Demander",
     "en": "Request",
-    "mg" : "Angataho",
+    "mg": "Angataho",
   },
-  "VERIFICATON_PERMIS" : {
+  "VERIFICATON_PERMIS": {
     "fr": "Vérification de Permis",
     "en": "License Verification",
-    "mg" : "Fanamarinana fahazoan-dàlana",
+    "mg": "Fanamarinana fahazoan-dàlana",
   },
-  "SCANNER" : {
+  "SCANNER": {
     "fr": "Scanner",
     "en": "Scanner",
-    "mg" : "Skanera",
+    "mg": "Skanera",
   },
-  "NUMERO_DE_PERMIS" : {
+  "NUMERO_DE_PERMIS": {
     "fr": "Numéro de permis",
     "en": "License number",
-    "mg" : "Laharana fahazoan-dàlana",
+    "mg": "Laharana fahazoan-dàlana",
   },
-   "OU" : {
+  "OU": {
     "fr": "OU",
     "en": "OR",
-    "mg" : "NA",
+    "mg": "NA",
   },
-  "PERMIS_INNEXISTANT": 
-  {
+  "PERMIS_INNEXISTANT": {
     "fr": "Ce permis n'existe pas ou n'est pas légale",
     "en": "OR",
-    "mg" : "NA",
+    "mg": "NA",
   },
-
-   "PERMIS_DE_CONSTRUIRE": 
-  {
+  "PERMIS_DE_CONSTRUIRE": {
     "fr": "Permis de Construire n°",
     "en": "OR",
-    "mg" : "NA",
+    "mg": "NA",
   },
-
-  "DELIVRE" : 
-  {
+  "DELIVRE": {
     "fr": "Délivré le",
     "en": "OR",
-    "mg" : "NA",
+    "mg": "NA",
   },
-
-
+  "Se connecter": {
+    "fr": "Se connecter",
+    "en": "connect",
+    "mg": "Hiditra",
+  },
+  "NON_CONNECTE": {
+    "fr": "Non connecté",
+    "en": "Not connected",
+    "mg": "Tsy tafiditra",
+  },
 };
-
-
 
 String translate(String cle, String lang) {
   var tmp = langages[cle];
   if (tmp == null) {
     return cle;
   } else {
-    if  (tmp[lang] == null){
+    if (tmp[lang] == null) {
       return cle;
-    } else{
+    } else {
       return tmp[lang]!;
     }
   }

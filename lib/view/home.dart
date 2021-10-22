@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_const_constructors
 import 'dart:io';
 import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
@@ -52,9 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
         appController.qrfilepath = file.path.toString();
         appController.qRfiletitre.text = file.name;
       } else {
+        // ignore: avoid_print
         print("Annuler");
       }
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print("Unsupported operation" + e.toString());
     }
   }
@@ -64,10 +67,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void reassemble() {
     super.reassemble();
-    if (Platform.isAndroid) {
-      controller!.pauseCamera();
+    try {
+      if (Platform.isAndroid) {
+        controller!.pauseCamera();
+      }
+      controller!.resumeCamera();
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
     }
-    controller!.resumeCamera();
   }
 
   @override

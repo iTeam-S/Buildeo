@@ -1,4 +1,6 @@
-import 'package:buildeo/view/widget/bardeProgression.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:buildeo/view/widget/barde_progression.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -128,14 +130,14 @@ class ValidationAdmin extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: new Text("non validé"),
+                                child: Text("non validé"),
                               )
                             ],
                           ),
                           SizedBox(
                             height: 9,
                           ),
-                          Container(
+                          SizedBox(
                             height: 151,
                             child: ListView.builder(
                               itemCount: 3,
@@ -215,7 +217,7 @@ class ValidationAdmin extends StatelessWidget {
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: new Text("validé"),
+                                child: Text("validé"),
                               )
                             ],
                           ),
@@ -254,7 +256,7 @@ class ValidationAdmin extends StatelessWidget {
                                         text: TextSpan(
                                           children: [
                                             TextSpan(
-                                              text: "${filesList[id]}",
+                                              text: filesList[id],
                                               style: TextStyle(
                                                   color: Color(0xff333333),
                                                   fontWeight: FontWeight.bold,
