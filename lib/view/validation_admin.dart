@@ -1,15 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 List<String> filesList = [
-  'photocopie_CIN.pdf',
-  'Plan_construction.zip',
-  'Autorisation_alignement',
-  'Statut_société.docx',
-  'PV_de_nomination.docx'
+  'Photocopie du CIN cértifié',
+  'Plan de construction',
+  "Autorisation d'alignement",
+  'Statut de la société',
+  'PV de nomination'
 ];
 
 class ValidationAdmin extends StatelessWidget {
@@ -139,61 +140,55 @@ class ValidationAdmin extends StatelessWidget {
                           ),
                           SizedBox(
                             height: 151,
-                            child: ListView.builder(
-                              itemCount: 3,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, id) {
-                                return Container(
-                                  width: 251,
-                                  margin: EdgeInsets.symmetric(
-                                      horizontal: 15.0, vertical: 5.0),
-                                  padding: EdgeInsets.all(15.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: Colors.white,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.shade400,
-                                        blurRadius: 9.0,
-                                        offset: Offset(0, 3),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Row(
-                                        children: <Widget>[
-                                          Image.network(
-                                            "http://download.seaicons.com/icons/dtafalonso/yosemite-flat/512/Folder-icon.png",
-                                            height: 51,
-                                            width: 51,
-                                          ),
-                                          Spacer(),
-                                          CircleAvatar(
-                                            child: Icon(Icons.download),
-                                          ),
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      Text(
-                                        "Villa bas",
-                                        style: TextStyle(
-                                          color: Color(0xff333333),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 21,
+                            child: Center(
+                              child: Container(
+                                width: isMobile(context) ? 251 : 420,
+                                margin: EdgeInsets.symmetric(
+                                    horizontal: 15.0, vertical: 5.0),
+                                padding: EdgeInsets.all(15.0),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.shade400,
+                                      blurRadius: 9.0,
+                                      offset: Offset(0, 3),
+                                    ),
+                                  ],
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        Image.network(
+                                          "http://download.seaicons.com/icons/dtafalonso/yosemite-flat/512/Folder-icon.png",
+                                          height: 51,
+                                          width: 51,
                                         ),
+                                        Spacer(),
+                                        CircleAvatar(
+                                          child: Icon(Icons.download),
+                                        ),
+                                      ],
+                                    ),
+                                    Spacer(),
+                                    Text(
+                                      "Villa bas",
+                                      style: TextStyle(
+                                        color: Color(0xff333333),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 21,
                                       ),
-                                      Text(
-                                        "Envoyer le : 17/07/2021",
-                                        style:
-                                            TextStyle(color: Colors.grey[500]),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
+                                    ),
+                                    Text(
+                                      "Envoyer le : 17/07/2021",
+                                      style: TextStyle(color: Colors.grey[500]),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -235,18 +230,11 @@ class ValidationAdmin extends StatelessWidget {
                             margin: EdgeInsets.symmetric(vertical: 15),
                             padding: EdgeInsets.all(15),
                             decoration: BoxDecoration(
-                              color: Color(0xffecf0f3),
+                              color: Color(0xFFFFFFFF),
                               borderRadius: BorderRadius.circular(9),
                             ),
                             child: Row(
                               children: <Widget>[
-                                Icon(
-                                  Icons.attach_file,
-                                  color: Colors.red,
-                                ),
-                                SizedBox(
-                                  width: 21,
-                                ),
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment:
@@ -265,13 +253,6 @@ class ValidationAdmin extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      Text(
-                                        "Villa_bas/dossier/fichiers/${filesList[id]}",
-                                        style:
-                                            TextStyle(color: Color(0xff8891a4)),
-                                        softWrap: false,
-                                        overflow: TextOverflow.fade,
-                                      )
                                     ],
                                   ),
                                 ),
