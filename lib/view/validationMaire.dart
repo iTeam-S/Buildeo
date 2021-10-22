@@ -36,7 +36,7 @@ class ValidationMaire extends StatelessWidget {
                       ),
                       Text("Vos validations en attente ...",
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 30, color: Colors.white)),
+                          style: TextStyle(fontSize: 25, color: Colors.white)),
                     ],
                   )),
               Container(
@@ -44,8 +44,8 @@ class ValidationMaire extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35),
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
                   ),
                   boxShadow: [
                     BoxShadow(blurRadius: 20.0, color: Colors.black26),
