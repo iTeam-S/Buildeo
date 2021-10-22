@@ -1,11 +1,15 @@
 from .models import Commune, Permis, User
 import jwt
 import json
+import time
 from os import environ
+from datetime import datetime
 from datetime import datetime, timedelta
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, Http404
+from werkzeug.utils import secure_filename
+from django.core.files.storage import FileSystemStorage
 
 
 def encode_auth_token(user_id):
@@ -69,7 +73,7 @@ def getpermis_view(request):
         data = json.loads(request.body.decode("utf-8"))
         numero_permis = data.get('numero_permis')
         if not numero_permis:
-            return JsonResponse({'status_code': 404, 'status': 'MISSING numero_permis', 'data': None})
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_NUM_PERMIS', 'data': None})
         try:
             permis = Permis.objects.get(id=numero_permis, status='VALIDE')
             commune = Commune.objects.get(id=permis.commune_id_id)
@@ -77,10 +81,10 @@ def getpermis_view(request):
                 'status_code': 200,
                 'status': 'OK',
                 'data': {
-                    'numero_permis': f"Permis de Construire n°{permis.id}/{permis.delivery_date.strftime('%y')}/{commune.nom}",
+                    'numero_permis': f"Permis de Construire n°{permis.id}/{permis.delivery_date}/{commune.nom}",
                     'id': permis.id,
                     'demande': permis.build_type,
-                    'delivery_date': permis.delivery_date.strftime('%Y-%m-%d'),
+                    'delivery_date': permis.delivery_date,
                     'adress': permis.build_adress
                 }
             }, safe=False, json_dumps_params={'ensure_ascii': False})
@@ -97,7 +101,7 @@ def get_userpermis_view(request):
         data = json.loads(request.body.decode("utf-8"))
         user_id = data.get('user_id')
         if not user_id:
-            return JsonResponse({'status_code': 404, 'status': 'MISSING user_id', 'data': None})
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
         try:
             permis = Permis.objects.filter(req_user_id = user_id)
             list_permi = []
@@ -110,3 +114,50 @@ def get_userpermis_view(request):
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS INNEXISTANT', 'data': None})
     return Http404()
+
+
+@csrf_exempt
+@verif_token
+def requestpermis(request):
+    if request.method == "POST":
+        #data = json.loads(request.body.decode("utf-8"))
+        
+        req_date = datetime.today()
+        attachement = request.FILES.get('file')
+        req_user_id = int(request.POST.get('user_id'))
+        req_user_id = User.objects.get(id=req_user_id)
+        commune_id = int(request.POST.get('commune_id'))
+        commune_id = Commune.objects.get(id=commune_id)
+        build_type = request.POST.get('build_type')
+        build_adress = request.POST.get('build_adress')
+
+        if attachement :
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_ATTACHEMENT', 'data': None})
+        try:
+            filename = str(time.time()) + '_' + secure_filename(attachement.name)
+            fss = FileSystemStorage(location='media/'+datetime.now().date().strftime('%d-%m-%Y'))
+            file = fss.save(filename, attachement)
+
+            Permis.objects.create(
+                req_date=req_date, 
+                build_type=build_type,
+                commune_id=commune_id,
+                req_user_id=req_user_id,
+                attachements=attachement,
+                build_adress=build_adress,
+            )
+            return JsonResponse({'status_code': 200, 'status': 'DEMANDE_ENVOYE', 'data': None})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
+    return Http404()
+
+
+@csrf_exempt
+def get_listcommune_view(request):
+    try:
+        communes = Commune.objects.all()
+        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': {commune.id:commune.nom for commune in communes}})
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})

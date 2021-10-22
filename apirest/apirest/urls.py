@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/login/', views.login_view),
     path('api/permis/', views.getpermis_view),
-    path('api/userpermis/', views.get_userpermis_view)
+    path('api/requestpermis/', views.requestpermis),
+    path('api/userpermis/', views.get_userpermis_view),
+    path('api/listcommune/', views.get_listcommune_view),
 ]

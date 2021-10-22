@@ -1,13 +1,15 @@
+// ignore_for_file: avoid_print
+
 import 'dart:async';
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 
-const String base_url = "192.168.137.86:8000";
-const String base_url_protocol = 'http://' + base_url;
+const String baseUrl = "192.168.137.86:8000";
+const String baseUrlprotocol = 'http://' + baseUrl;
 
 class ApiController extends GetxController {
   var client = dio.Dio(dio.BaseOptions(
-    baseUrl: base_url_protocol,
+    baseUrl: baseUrlprotocol,
   ));
 
   Future<List> getPermis(numPermis) async {
