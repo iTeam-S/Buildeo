@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'dart:io';
 
@@ -6,7 +5,9 @@ import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
 import 'package:buildeo/view/validationMaire.dart';
 import 'package:buildeo/view/widget/drawer.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -26,6 +27,35 @@ class _HomeScreenState extends State<HomeScreen> {
   late OverlayEntry overlayEntry;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   QRViewController? controller;
+  bool isLoadingPath = false;
+
+  void onFocusChange() {
+    debugPrint("Focus: " + appController.qRfocus.hasFocus.toString());
+    if (appController.qRfocus.hasFocus) _openFileExplorer();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    appController.qRfocus.addListener(onFocusChange);
+  }
+
+  dynamic _openFileExplorer() async {
+    setState(() => isLoadingPath = true);
+    try {
+      FilePickerResult? result =
+          await FilePicker.platform.pickFiles(type: FileType.any);
+      if (result != null) {
+        PlatformFile file = result.files.first;
+        appController.qrfilepath = file.path.toString();
+        appController.qRfiletitre.text = file.name;
+      } else {
+        print("Annuler");
+      }
+    } on PlatformException catch (e) {
+      print("Unsupported operation" + e.toString());
+    }
+  }
 
   AppDrawer drawer = AppDrawer();
 
@@ -123,7 +153,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(child: Icon(Icons.qr_code_scanner_outlined),elevation: 10, backgroundColor: Color(0xffeb3446), onPressed: (){
+      floatingActionButton: FloatingActionButton(child: const Icon(Icons.qr_code_scanner_outlined),elevation: 10, backgroundColor: Color(0xffeb3446), onPressed: (){
+       var qRfocus;
        showDialog(
         context: context,
         builder: (BuildContext context) => SimpleDialog(
@@ -133,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               contentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
               children: [
-                Container(
+                SizedBox(
                   height: 40,
                   child: ElevatedButton.icon(
                     onPressed: (){showQrCode();}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446), ),),
@@ -143,27 +174,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
                     Divider(color: Colors.white,),
                 TextField(
+                    controller: appController.numPermisController,
                   style: TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
                   decoration: InputDecoration(
                     fillColor:  Color(0xffeb3446),
                     hintText: translate("NUMERO_DE_PERMIS", appController.lang),
-                    prefixIcon: Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
-                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send_rounded, color:  Colors.black38),),
+                    prefixIcon: const Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
+                    suffixIcon: IconButton(onPressed: (){
+                          Navigator.of(context).pop();
+                      appController.getPermis( appController.numPermisController.text.split('/')[0] );
+                    }, icon: const Icon(Icons.send_rounded, color:  Colors.black38),),
                   ),
                 ),
-                    Divider(color: Colors.white,),
+                    const Divider(color: Colors.white,),
                     Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
-                    Divider(color: Colors.white,),
+                    const Divider(color: Colors.white,),
                 TextField(
+                  focusNode: appController.qRfocus,
                   style: TextStyle(fontSize: 13, color: Colors.grey[800]),
+                  keyboardType: TextInputType.none,
                  decoration: InputDecoration(
-                    fillColor:  Color(0xffeb3446),
-                    hintText: "Qr Code",
-                    prefixIcon: Icon(Icons.image_search_rounded, color:  Color(0xffeb3446)),
-                    suffixIcon: IconButton(onPressed: (){}, icon: Icon(Icons.send_rounded, color:  Colors.black38),),
+                    fillColor:  const Color(0xffeb3446),
+                    hintText: "QR Code",
+                    prefixIcon: const Icon(Icons.image_search_rounded, color:  Color(0xffeb3446)),
+                    suffixIcon: IconButton(onPressed: (){
+                  
+                    }, icon: const Icon(Icons.send_rounded, color:  Colors.black38),),
                   ),
                 ),
-                 Divider(color: Colors.white, height: 20,),
+                 const Divider(color: Colors.white, height: 20,),
               ],
             ));
       }),
@@ -204,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          ElevatedButton(
+                          TextButton(
                             onPressed: () {
                               overlayEntry.remove();
                             },
@@ -220,14 +259,19 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
     Overlay.of(context)!.insert(overlayEntry);
-    controller!.resumeCamera();
+    if (controller != null) controller!.resumeCamera();
   }
 
   _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {  
-      print(scanData.code);
+    controller.scannedDataStream.listen((scanData) { 
+      if (!appController.isscanning) {
+        appController.getPermis(scanData.code);
+        appController.isscanning = true;
+      }
+      appController.update();
       overlayEntry.remove();
     });
   }
+  
 }

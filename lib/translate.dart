@@ -125,6 +125,27 @@ var langages =  {
     "en": "OR",
     "mg" : "NA",
   },
+  "PERMIS_INNEXISTANT": 
+  {
+    "fr": "Ce permis n'existe pas ou n'est pas légale",
+    "en": "OR",
+    "mg" : "NA",
+  },
+
+   "PERMIS_DE_CONSTRUIRE": 
+  {
+    "fr": "Permis de Construire n°",
+    "en": "OR",
+    "mg" : "NA",
+  },
+
+  "DELIVRE" : 
+  {
+    "fr": "Délivré le",
+    "en": "OR",
+    "mg" : "NA",
+  },
+
 
 };
 
