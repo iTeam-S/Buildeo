@@ -141,11 +141,12 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Validation admin"),
+                          title: const Text("Validation administrateurs"),
                           onTap: () {
                             Get.toNamed("/pageAmin");
                           },
                           hoverColor: const Color(0xfffcdfca),
+                          trailing: const Icon(Icons.chevron_right),
                         ),
                         ListTile(
                           leading: CircleAvatar(
@@ -157,27 +158,82 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Validation maire"),
+                          title: const Text("Validation de maire"),
                           onTap: () {
                             Get.toNamed("/validMaire");
                           },
                           hoverColor: const Color(0xffe5c2fc),
+                          trailing: const Icon(Icons.chevron_right),
+                        ),
+                        Text("PLUS",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.grey,
+                        )),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xFFFF4800),
+                            child: const Icon(
+                              Icons.sort,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Liste des permis"),
+                          onTap: () {
+                          },
+                          hoverColor: const Color(0xfffcdfca),
+                          trailing: const Icon(Icons.chevron_right),
                         ),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
-                            backgroundColor: const Color(0xFFEAFC47),
+                            backgroundColor: const Color(0xff0d94bd),
+                            child: const Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Faire une demande de permis"),
+                          onTap: () {
+                          },
+                          hoverColor: const Color(0xffceeaf2),
+                          trailing: const Icon(Icons.chevron_right),
+                        ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xFFDC06F0),
+                            child: const Icon(
+                              Icons.info,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Centre d'information"),
+                          onTap: () {
+                          },
+                          hoverColor: const Color(0xffe5c2fc),
+                          trailing: const Icon(Icons.chevron_right),
+                        ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xff0cab56),
                             child: const Icon(
                               Icons.location_on,
                               color: Colors.white,
                               size: 16,
                             ),
                           ),
-                          title: const Text("Map"),
+                          title: const Text("Carte et statistique"),
                           onTap: () {
                             Get.toNamed("/map");
                           },
-                          hoverColor: const Color(0xffceeaf2),
+                          hoverColor: const Color(0xffddffdd),
+                          trailing: const Icon(Icons.chevron_right),
                         ),
                         Text("PREFERENCES",
                             style: TextStyle(
@@ -234,17 +290,6 @@ class AppDrawer extends StatelessWidget {
                           hoverColor: const Color(0xfffad9dd),
                         ),
                       ]),
-                      Container(
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.only(
-                          // left: MediaQuery.of(context).size.width * 0.15,
-                          bottom: MediaQuery.of(context).size.height * 0.08,
-                        ),
-                        child: const Text(
-                          "Buileo 0.0.1",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      )
                     ]))
           ],
         ),
