@@ -6,11 +6,11 @@ class PopUpMotif extends StatelessWidget {
   final _controller = TextEditingController();
 
   PopUpMotif({Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
         child: SimpleDialog(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
