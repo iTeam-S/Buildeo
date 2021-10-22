@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 20, left: 12),
+              margin: EdgeInsets.only(top: 25, left: 12),
               child: Text("Centre d'information",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
@@ -202,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 20, left: 12),
+              margin: EdgeInsets.only(top: 25, left: 12),
               child: Text("Services",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
@@ -300,7 +300,7 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ]),
             Container(
-              margin: EdgeInsets.only(top: 20, left: 12),
+              margin: EdgeInsets.only(top: 25, left: 12),
               child: Text("Modèles de lettre",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
@@ -334,11 +334,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         IconButton(
                             onPressed: () {},
                             icon: Icon(Icons.download,
-                                size: 20, color: Colors.black87)),
+                                size: 20, color: Colors.black54)),
                         IconButton(
                             onPressed: () {},
                             icon: Icon(Icons.edit,
-                                size: 20, color: Colors.black87)),
+                                size: 20, color: Colors.black54)),
                       ],
                     )
                   ]),
@@ -372,11 +372,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         IconButton(
                             onPressed: () {},
                             icon: Icon(Icons.download,
-                                size: 20, color: Colors.black87)),
+                                size: 20, color: Colors.black54)),
                         IconButton(
                             onPressed: () {},
                             icon: Icon(Icons.edit,
-                                size: 20, color: Colors.black87)),
+                                size: 20, color: Colors.black54)),
                       ],
                     ),
                   ]),

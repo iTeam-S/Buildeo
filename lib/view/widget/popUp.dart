@@ -6,7 +6,7 @@ class PopUpMotif extends StatelessWidget {
   final _controller = TextEditingController();
 
   PopUpMotif({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
@@ -28,7 +28,7 @@ class PopUpMotif extends StatelessWidget {
                     textCapitalization: TextCapitalization.sentences,
                     decoration: InputDecoration(
                       labelText: '    Motif pas plus 500 caractères',
-                      hintText: '   votre texte ici...',
+                      hintText: '   Votre texte ici...',
                     ),
                     onChanged: (text) => setState(() {}),
                   ),
