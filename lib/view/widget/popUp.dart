@@ -10,7 +10,7 @@ class PopUpMotif extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+        filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
         child: SimpleDialog(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
