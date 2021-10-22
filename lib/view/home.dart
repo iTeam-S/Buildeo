@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
 import 'package:buildeo/view/widget/drawer.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -106,7 +106,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                   //Get.to(AppDrawer());
                                   _key.currentState!.openDrawer();
                                 },
-                                icon: const Icon(Icons.sort, color: Colors.white),
+                                icon:
+                                    const Icon(Icons.sort, color: Colors.white),
                               ),
                               const Text("Buildeo",
                                   style: TextStyle(
@@ -153,12 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(
-                top: 10,
-                left : 12
-              ),
-              child:
-              Text("Centre d'information", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              margin: EdgeInsets.only(top: 10, left: 12),
+              child: Text("Centre d'information",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
             Card(
               color: Color(0xffedf7fa),
@@ -166,22 +164,21 @@ class _HomeScreenState extends State<HomeScreen> {
               margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Color(0xffedf7fa),
-                  borderRadius: BorderRadius.circular(15)
-                ),
+                    color: Color(0xffedf7fa),
+                    borderRadius: BorderRadius.circular(15)),
                 child: ListTile(
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                    title: Text(
-                      "Sur Buildeo, vous trouverez toutes les informations nécessaires pour mèner à bien la création de votre permis de construction.",
-                      style:
-                        TextStyle(color: Colors.black87, fontSize: 14),
-                      ),
-                    subtitle:                   Container(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  title: Text(
+                    "Sur Buildeo, vous trouverez toutes les informations nécessaires pour mèner à bien la création de votre permis de construction.",
+                    style: TextStyle(color: Colors.black87, fontSize: 14),
+                  ),
+                  subtitle: Container(
                     margin: EdgeInsets.only(
                       top: MediaQuery.of(context).size.height * 0.01,
                     ),
                     child: RoundedLoadingButton(
-                      elevation : 0,
+                      elevation: 0,
                       height: 37,
                       width: 130,
                       controller: _btnController,
@@ -200,243 +197,294 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(
-                top: 10,
-                left : 12
-              ),
-              child:
-              Text("Services", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              margin: EdgeInsets.only(top: 10, left: 12),
+              child: Text("Services",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
-            Row(children:[
+            Row(children: [
               Card(
-                  color: Colors.white,
-                  elevation: 2,
-                  margin: EdgeInsets.only(left: Get.width * 0.015,),
-                  child: Container(
-                    width: Get.width * 0.31,
-                    padding:  EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical : 10
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Column(children: [ 
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Color(0xffeb3446),
-                          child: Icon(Icons.edit, color: Colors.white,)
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "Demande", textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 14),
-                          ),
-                        ),
-                      ]
-                    ),
+                color: Colors.white,
+                elevation: 2,
+                margin: EdgeInsets.only(
+                  left: Get.width * 0.015,
                 ),
-              ),
-              Card(
-                  color: Colors.white,
-                  elevation: 2,
-                  margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02 ,vertical: 6.0),
-                  child: Container(
-                    width: Get.width * 0.31,
-                    padding:  EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical : 10
-                    ),
-                    decoration: BoxDecoration(
+                child: Container(
+                  width: Get.width * 0.31,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(children: [
+                    CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Color(0xffeb3446),
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        )),
+                    Container(
+                      margin: EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Demande",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      ),
                     ),
-                    child: Column(children: [ 
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundColor: Color(0xff6d5ced),
-                          child: Icon(Icons.qr_code_scanner, color: Colors.white,)
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "Vérification", textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 14),
-                          ),
-                        ),
-                      ]
-                    ),
+                  ]),
                 ),
               ),
               Card(
                 color: Colors.white,
                 elevation: 2,
-                margin: EdgeInsets.symmetric(horizontal: Get.width * 0.001, vertical: 6.0),
+                margin: EdgeInsets.symmetric(
+                    horizontal: Get.width * 0.02, vertical: 6.0),
                 child: Container(
                   width: Get.width * 0.31,
-                  padding:  EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical : 10
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15)
-                  ),
-                  child: Column(children: [ 
-                      CircleAvatar(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(children: [
+                    CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Color(0xff6d5ced),
+                        child: Icon(
+                          Icons.qr_code_scanner,
+                          color: Colors.white,
+                        )),
+                    Container(
+                      margin: EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Vérification",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      ),
+                    ),
+                  ]),
+                ),
+              ),
+              Card(
+                color: Colors.white,
+                elevation: 2,
+                margin: EdgeInsets.symmetric(
+                    horizontal: Get.width * 0.001, vertical: 6.0),
+                child: Container(
+                  width: Get.width * 0.31,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(children: [
+                    CircleAvatar(
                         radius: 20,
                         backgroundColor: Color(0xff15d48e),
-                        child: Icon(Icons.text_fields, color: Colors.white,)
+                        child: Icon(
+                          Icons.text_fields,
+                          color: Colors.white,
+                        )),
+                    Container(
+                      margin: EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Modèles",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 8),
-                        child: Text(
-                          "Modèles", textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.black87, fontSize: 14),
-                        ),
-                      ),
-                    ]
-                  ),
+                    ),
+                  ]),
                 ),
               )
-              ]
-            ),
+            ]),
             Container(
-              margin: EdgeInsets.only(
-                top: 10,
-                left : 12
-              ),
-              child:
-              Text("Modèles de lettre", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              margin: EdgeInsets.only(top: 10, left: 12),
+              child: Text("Modèles de lettre",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
-            Row(children:[
+            Row(children: [
               Card(
-                  color: Colors.white,
-                  elevation: 2,
-                  margin: EdgeInsets.only(left: Get.width * 0.020,),
-                  child: Container(
-                    width: Get.width * 0.47,
-                    padding:  EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical : 10
-                    ),
-                    decoration: BoxDecoration(
+                color: Colors.white,
+                elevation: 2,
+                margin: EdgeInsets.only(
+                  left: Get.width * 0.020,
+                ),
+                child: Container(
+                  width: Get.width * 0.47,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(children: [
+                    Image.asset('assets/images/docx.png',
+                        width: Get.width * 0.13),
+                    Container(
+                      margin: EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Modèle pour le fokontany",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      ),
                     ),
-                    child: Column(children: [ 
-                        Image.asset('assets/images/docx.png', width: Get.width * 0.13),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "Modèle pour le fokontany", textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 14),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                          IconButton(onPressed: () {}, icon: Icon(Icons.download, size: 20, color: Colors.black87)),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.edit, size: 20, color: Colors.black87)),
-                        ],)
-                      ]
-                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.download,
+                                size: 20, color: Colors.black87)),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.edit,
+                                size: 20, color: Colors.black87)),
+                      ],
+                    )
+                  ]),
                 ),
               ),
               Card(
-                    color: Colors.white,
-                    elevation: 2,
-                    margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02 ,vertical: 6.0),
-                    child: Container(
-                      width: Get.width * 0.47,
-                      padding:  EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical : 10
+                color: Colors.white,
+                elevation: 2,
+                margin: EdgeInsets.symmetric(
+                    horizontal: Get.width * 0.02, vertical: 6.0),
+                child: Container(
+                  width: Get.width * 0.47,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(children: [
+                    Image.asset('assets/images/docx.png',
+                        width: Get.width * 0.13),
+                    Container(
+                      margin: EdgeInsets.only(top: 8),
+                      child: Text(
+                        "Modèle pour la commune",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15)
-                      ),
-                      child: Column(children: [ 
-                          Image.asset('assets/images/docx.png', width: Get.width * 0.13),
-                          Container(
-                            margin: EdgeInsets.only(top: 8),
-                            child: Text(
-                              "Modèle pour la commune", textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black87, fontSize: 14),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                            IconButton(onPressed: () {}, icon: Icon(Icons.download, size: 20, color: Colors.black87)),
-                            IconButton(onPressed: () {}, icon: Icon(Icons.edit, size: 20, color: Colors.black87)),
-                          ],)
-                        ]
-                      ),
-                  ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.download,
+                                size: 20, color: Colors.black87)),
+                        IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.edit,
+                                size: 20, color: Colors.black87)),
+                      ],
+                    )
+                  ]),
                 ),
-              ]
-            ),
+              ),
+            ]),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(child: const Icon(Icons.qr_code_scanner_outlined),elevation: 10, backgroundColor: Color(0xffeb3446), onPressed: (){
-       showDialog(
-        context: context,
-        builder: (BuildContext context) => SimpleDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              title: Text(
-                translate("VERIFICATON_PERMIS", appController.lang), textAlign: TextAlign.center, style: const TextStyle(fontSize: 18),
-              ),
-              contentPadding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-              children: [
-                SizedBox(
-                  height: 40,
-                  child: ElevatedButton.icon(
-                    onPressed: (){showQrCode();}, icon: const Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446), ),),
-                    )
-                ),
-                const Divider(color: Colors.white,),
-                Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
-                const Divider(color: Colors.white,),
-                TextField(
-                    controller: appController.numPermisController,
-                  style: const TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
-                  decoration: InputDecoration(
-                    fillColor:  const Color(0xffeb3446),
-                    hintText: translate("NUMERO_DE_PERMIS", appController.lang),
-                    prefixIcon: const Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
-                    suffixIcon: IconButton(onPressed: (){
-                          Navigator.of(context).pop();
-                      appController.getPermis( appController.numPermisController.text.split('/')[0] );
-                    }, icon: const Icon(Icons.send_rounded, color:  Colors.black38),),
-                  ),
-                ),
-                    const Divider(color: Colors.white,),
-                    Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
-                    const Divider(color: Colors.white,),
-                TextField(
-                  focusNode: appController.qRfocus,
-                  style: TextStyle(fontSize: 13, color: Colors.grey[800]),
-                  keyboardType: TextInputType.none,
-                 decoration: InputDecoration(
-                    fillColor:  const Color(0xffeb3446),
-                    hintText: "QR Code",
-                    prefixIcon: const Icon(Icons.image_search_rounded, color:  Color(0xffeb3446)),
-                    suffixIcon: IconButton(onPressed: (){
-                  
-                    }, icon: const Icon(Icons.send_rounded, color:  Colors.black38),),
-                  ),
-                ),
-                 const Divider(color: Colors.white, height: 20,),
-              ],
-            ));
-      }),
-      );
-
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.qr_code_scanner_outlined),
+          elevation: 10,
+          backgroundColor: Color(0xffeb3446),
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) => BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+                    child: SimpleDialog(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      title: Text(
+                        translate("VERIFICATON_PERMIS", appController.lang),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 25, horizontal: 25),
+                      children: [
+                        SizedBox(
+                            height: 40,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                showQrCode();
+                              },
+                              icon: const Icon(Icons.qr_code_scanner_outlined),
+                              label: Text(
+                                  translate("SCANNER", appController.lang)),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                  Color(0xffeb3446),
+                                ),
+                              ),
+                            )),
+                        const Divider(
+                          color: Colors.white,
+                        ),
+                        Text(
+                          '--- ${translate("ou", appController.lang)} ---',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black38, fontSize: 14),
+                        ),
+                        const Divider(
+                          color: Colors.white,
+                        ),
+                        TextField(
+                          controller: appController.numPermisController,
+                          style: const TextStyle(
+                              fontSize: 13, color: Color(0xffeb3446)),
+                          decoration: InputDecoration(
+                            fillColor: const Color(0xffeb3446),
+                            hintText: translate(
+                                "NUMERO_DE_PERMIS", appController.lang),
+                            prefixIcon: const Icon(Icons.edit_outlined,
+                                color: Color(0xffeb3446)),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                appController.getPermis(appController
+                                    .numPermisController.text
+                                    .split('/')[0]);
+                              },
+                              icon: const Icon(Icons.send_rounded,
+                                  color: Colors.black38),
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          color: Colors.white,
+                        ),
+                        Text(
+                          '--- ${translate("ou", appController.lang)} ---',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black38, fontSize: 14),
+                        ),
+                        const Divider(
+                          color: Colors.white,
+                        ),
+                        TextField(
+                          focusNode: appController.qRfocus,
+                          style:
+                              TextStyle(fontSize: 13, color: Colors.grey[800]),
+                          keyboardType: TextInputType.text,
+                          decoration: InputDecoration(
+                            fillColor: const Color(0xffeb3446),
+                            hintText: "QR Code",
+                            prefixIcon: const Icon(Icons.image_search_rounded,
+                                color: Color(0xffeb3446)),
+                            suffixIcon: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.send_rounded,
+                                  color: Colors.black38),
+                            ),
+                          ),
+                        ),
+                        const Divider(
+                          color: Colors.white,
+                          height: 20,
+                        ),
+                      ],
+                    )));
+          }),
+    );
   }
 
   void showQrCode() {
@@ -476,7 +524,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {
                               overlayEntry.remove();
                             },
-                            child: const Icon(Icons.close, color: Color(0xFFBE0019)),
+                            child: const Icon(Icons.close,
+                                color: Color(0xFFBE0019)),
                           ),
                         ],
                       ),
@@ -493,7 +542,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _onQRViewCreated(QRViewController controller) {
     this.controller = controller;
-    controller.scannedDataStream.listen((scanData) { 
+    controller.scannedDataStream.listen((scanData) {
       if (!appController.isscanning) {
         appController.getPermis(scanData.code);
         appController.isscanning = true;
@@ -502,5 +551,4 @@ class _HomeScreenState extends State<HomeScreen> {
       overlayEntry.remove();
     });
   }
-  
 }
