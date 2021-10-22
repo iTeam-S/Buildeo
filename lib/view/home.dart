@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // Utiliser sur QR Code
   late OverlayEntry overlayEntry;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
   QRViewController? controller;
   bool isLoadingPath = false;
 
@@ -72,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
       drawer: drawer,
       body: Container(
         alignment: Alignment.center,
@@ -101,10 +103,10 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               IconButton(
                                 onPressed: () {
-                                  //
-                                  Get.to(AppDrawer());
+                                  //Get.to(AppDrawer());
+                                  _key.currentState!.openDrawer();
                                 },
-                                icon: Icon(Icons.sort, color: Colors.white),
+                                icon: const Icon(Icons.sort, color: Colors.white),
                               ),
                               const Text("Buildeo",
                                   style: TextStyle(
@@ -166,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: 40,
                   child: ElevatedButton.icon(
-                    onPressed: (){showQrCode();}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446), ),),
+                    onPressed: (){showQrCode();}, icon: const Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446), ),),
                     )
                 ),
                 const Divider(color: Colors.white,),
