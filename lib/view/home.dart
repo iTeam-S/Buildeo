@@ -223,8 +223,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(children: [ 
                         CircleAvatar(
                           radius: 20,
-                          backgroundColor: Colors.white,
-                          child: Text("B")
+                          backgroundColor: Color(0xffeb3446),
+                          child: Icon(Icons.edit, color: Colors.white,)
                         ),
                         Container(
                           margin: EdgeInsets.only(top: 8),
@@ -238,8 +238,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Card(
-                  color: Color(0xffedf7fa),
-                  elevation: 0,
+                  color: Colors.white,
+                  elevation: 2,
                   margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02 ,vertical: 6.0),
                   child: Container(
                     width: Get.width * 0.31,
@@ -248,26 +248,29 @@ class _HomeScreenState extends State<HomeScreen> {
                       vertical : 10
                     ),
                     decoration: BoxDecoration(
-                      color: Color(0xffedf7fa),
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(15)
                     ),
-                    child: Column(children: const [ 
+                    child: Column(children: [ 
                         CircleAvatar(
                           radius: 20,
-                          backgroundColor: Color(0xffeb3446),
-                          child: Text("B")
+                          backgroundColor: Color(0xff6d5ced),
+                          child: Icon(Icons.qr_code_scanner, color: Colors.white,)
                         ),
-                        Text(
-                          "Vérification", textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        Container(
+                          margin: EdgeInsets.only(top: 8),
+                          child: Text(
+                            "Vérification", textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                          ),
                         ),
                       ]
                     ),
                 ),
               ),
               Card(
-                color: Color(0xffedf7fa),
-                elevation: 0,
+                color: Colors.white,
+                elevation: 2,
                 margin: EdgeInsets.symmetric(horizontal: Get.width * 0.001, vertical: 6.0),
                 child: Container(
                   width: Get.width * 0.31,
@@ -276,18 +279,21 @@ class _HomeScreenState extends State<HomeScreen> {
                     vertical : 10
                   ),
                   decoration: BoxDecoration(
-                    color: Color(0xffedf7fa),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(15)
                   ),
-                  child: Column(children: const [ 
+                  child: Column(children: [ 
                       CircleAvatar(
                         radius: 20,
-                        backgroundColor: Color(0xffeb3446),
-                        child: Text("B")
+                        backgroundColor: Color(0xff15d48e),
+                        child: Icon(Icons.text_fields, color: Colors.white,)
                       ),
-                      Text(
-                        "Modèles", textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          "Modèles", textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        ),
                       ),
                     ]
                   ),
@@ -303,7 +309,75 @@ class _HomeScreenState extends State<HomeScreen> {
               child:
               Text("Modèles de lettre", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
-            
+            Row(children:[
+              Card(
+                  color: Colors.white,
+                  elevation: 2,
+                  margin: EdgeInsets.only(left: Get.width * 0.020,),
+                  child: Container(
+                    width: Get.width * 0.47,
+                    padding:  EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical : 10
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Column(children: [ 
+                        Image.asset('assets/images/docx.png', width: Get.width * 0.13),
+                        Container(
+                          margin: EdgeInsets.only(top: 8),
+                          child: Text(
+                            "Modèle pour le fokontany", textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                          IconButton(onPressed: () {}, icon: Icon(Icons.download, size: 20, color: Colors.black87)),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.edit, size: 20, color: Colors.black87)),
+                        ],)
+                      ]
+                    ),
+                ),
+              ),
+              Card(
+                    color: Colors.white,
+                    elevation: 2,
+                    margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02 ,vertical: 6.0),
+                    child: Container(
+                      width: Get.width * 0.47,
+                      padding:  EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical : 10
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15)
+                      ),
+                      child: Column(children: [ 
+                          Image.asset('assets/images/docx.png', width: Get.width * 0.13),
+                          Container(
+                            margin: EdgeInsets.only(top: 8),
+                            child: Text(
+                              "Modèle pour la commune", textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black87, fontSize: 14),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                            IconButton(onPressed: () {}, icon: Icon(Icons.download, size: 20, color: Colors.black87)),
+                            IconButton(onPressed: () {}, icon: Icon(Icons.edit, size: 20, color: Colors.black87)),
+                          ],)
+                        ]
+                      ),
+                  ),
+                ),
+              ]
+            ),
           ],
         ),
       ),
