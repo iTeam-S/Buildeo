@@ -1,3 +1,5 @@
+import 'package:buildeo/view/AdminPage.dart';
+import 'package:buildeo/view/validationAdmin.dart';
 import 'package:buildeo/view/validationMaire.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
         '/validMaire': (context) => const ValidationMaire(),
+        '/validAmin': (context) => const ValidationAdmin(),
+        '/pageAmin': (context) => const AdminPage(),
       },
     );
   }
