@@ -1,16 +1,16 @@
-import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'dart:io';
-
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
-import 'package:buildeo/view/validationMaire.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:file_picker/file_picker.dart';
+
+//import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,7 +20,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
   final AppController appController = Get.put(AppController());
 
   // Utiliser sur QR Code
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   AppDrawer drawer = AppDrawer();
 
- @override
+  @override
   void reassemble() {
     super.reassemble();
     if (Platform.isAndroid) {
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: drawer,
       body: Container(
         alignment: Alignment.center,
-        color: Color(0xfffefefe),
+        color: const Color(0xfffefefe),
         child: ListView(
           children: [
             Stack(
@@ -91,40 +92,39 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Container(
-                        alignment: Alignment.topCenter,
-                        margin: EdgeInsets.only(
-                          right: MediaQuery.of(context).size.width * 0.02,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                //
-                               Get.to(ValidationMaire());
-                              }, icon: Icon(Icons.sort, color: Colors.white),
-                            ),
-                            Text(
-                              "Buildeo",
-                                style: TextStyle(
-                                  fontSize: 25,
-                                  color: Colors.white,
-                              )
-                            ),
-                          ],
-                        )
-                      ),
+                          alignment: Alignment.topCenter,
+                          margin: EdgeInsets.only(
+                            right: MediaQuery.of(context).size.width * 0.02,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  //
+                                  Get.to(AppDrawer());
+                                },
+                                icon: Icon(Icons.sort, color: Colors.white),
+                              ),
+                              const Text("Buildeo",
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    color: Colors.white,
+                                  )),
+                            ],
+                          )),
                       Container(
-                        alignment: Alignment.center,
-                        width: Get.width * 0.8,
-                        margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.04,
-                        ),
-                        child: Text(translate("DEMANDER_ET_RECEVER", appController.lang), textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 14.5, color: Colors.white)
-                        )
-                      ),
-                      
+                          alignment: Alignment.center,
+                          width: Get.width * 0.8,
+                          margin: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.04,
+                          ),
+                          child: Text(
+                              translate(
+                                  "DEMANDER_ET_RECEVER", appController.lang),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontSize: 14.5, color: Colors.white))),
                       Container(
                         alignment: Alignment.centerLeft,
                         width: Get.width * 0.6,
@@ -134,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         child: RoundedLoadingButton(
                           controller: _btnController,
-                          color: Color(0xffeb3446),
+                          color: const Color(0xffeb3446),
                           successColor: Colors.blue,
                           onPressed: () {
                             Get.to('/confirm_pass');
@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           valueColor: Colors.white,
                           borderRadius: 90,
                           child: Text(translate("DEMANDER", appController.lang),
-                              style: TextStyle(color: Colors.white)),
+                              style: const TextStyle(color: Colors.white)),
                         ),
                       ),
                     ],
@@ -154,15 +154,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(child: const Icon(Icons.qr_code_scanner_outlined),elevation: 10, backgroundColor: Color(0xffeb3446), onPressed: (){
-       var qRfocus;
        showDialog(
         context: context,
         builder: (BuildContext context) => SimpleDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
               title: Text(
-                translate("VERIFICATON_PERMIS", appController.lang), textAlign: TextAlign.center, style: TextStyle(fontSize: 18),
+                translate("VERIFICATON_PERMIS", appController.lang), textAlign: TextAlign.center, style: const TextStyle(fontSize: 18),
               ),
-              contentPadding: EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+              contentPadding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
               children: [
                 SizedBox(
                   height: 40,
@@ -170,14 +169,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: (){showQrCode();}, icon: Icon(Icons.qr_code_scanner_outlined), label: Text(translate("SCANNER", appController.lang)), style: ButtonStyle( backgroundColor: MaterialStateProperty.all(Color(0xffeb3446), ),),
                     )
                 ),
-                Divider(color: Colors.white,),
-                    Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
-                    Divider(color: Colors.white,),
+                const Divider(color: Colors.white,),
+                Text('--- ${translate("ou", appController.lang)} ---',textAlign: TextAlign.center, style: TextStyle(color: Colors.black38, fontSize: 14),),
+                const Divider(color: Colors.white,),
                 TextField(
                     controller: appController.numPermisController,
-                  style: TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
+                  style: const TextStyle(fontSize: 13, color:  Color(0xffeb3446)),
                   decoration: InputDecoration(
-                    fillColor:  Color(0xffeb3446),
+                    fillColor:  const Color(0xffeb3446),
                     hintText: translate("NUMERO_DE_PERMIS", appController.lang),
                     prefixIcon: const Icon(Icons.edit_outlined, color:  Color(0xffeb3446)),
                     suffixIcon: IconButton(onPressed: (){
@@ -228,7 +227,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       key: qrKey,
                       onQRViewCreated: _onQRViewCreated,
                       overlay: QrScannerOverlayShape(
-                        borderColor: Color(0xFFBE0019),
+                        borderColor: const Color(0xFFBE0019),
                         borderRadius: 10,
                         borderLength: 30,
                         borderWidth: 10,
@@ -247,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             onPressed: () {
                               overlayEntry.remove();
                             },
-                            child: Icon(Icons.close, color: Color(0xFFBE0019)),
+                            child: const Icon(Icons.close, color: Color(0xFFBE0019)),
                           ),
                         ],
                       ),

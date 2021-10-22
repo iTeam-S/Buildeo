@@ -90,3 +90,23 @@ def getpermis_view(request):
     return Http404()
 
 
+@csrf_exempt
+@verif_token
+def get_userpermis_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        user_id = data.get('user_id')
+        if not user_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING user_id', 'data': None})
+        try:
+            permis = Permis.objects.filter(req_user_id = user_id)
+            list_permi = []
+            for permi in permis:
+                permi = dict(permi.__dict__)
+                permi.pop('_state')
+                list_permi.append(permi)
+            return JsonResponse({'status_code': 200, 'status': 'OK', 'data': list_permi})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'PERMIS INNEXISTANT', 'data': None})
+    return Http404()
