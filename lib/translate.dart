@@ -96,9 +96,9 @@ var langages =  {
     "mg": "fakantsary",
   }, 
   "DEMANDER_ET_RECEVER" : {
-    "fr": "Demandez et recevez votre permis de construction via Buildeo",
-    "en": "Request and receive your building license by Buildeo",
-    "mg" : "Angataho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
+    "fr": "Demandez, suivez et recevez votre permis de construction via Buildeo",
+    "en": "Requestn follow receive your building license by Buildeo",
+    "mg" : "Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
   },
   "DEMANDER" : {
     "fr": "Demander",

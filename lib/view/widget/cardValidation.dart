@@ -46,7 +46,6 @@ class CardValidated extends StatelessWidget {
                   TextStyle(color: Colors.black54, fontWeight: FontWeight.bold),
             ),
             // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
-
             subtitle: Row(
               children: <Widget>[
                 Icon(Icons.watch_later_outlined, color: Colors.black45),

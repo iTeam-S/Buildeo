@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: drawer,
       body: Container(
         alignment: Alignment.center,
-        color: const Color(0xfffefefe),
+        color: Colors.white,
         child: ListView(
           children: [
             Stack(
@@ -150,6 +150,160 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            Container(
+              margin: EdgeInsets.only(
+                top: 10,
+                left : 12
+              ),
+              child:
+              Text("Centre d'information", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
+            Card(
+              color: Color(0xffedf7fa),
+              elevation: 0,
+              margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xffedf7fa),
+                  borderRadius: BorderRadius.circular(15)
+                ),
+                child: ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    title: Text(
+                      "Sur Buildeo, vous trouverez toutes les informations nécessaires pour mèner à bien la création de votre permis de construction.",
+                      style:
+                        TextStyle(color: Colors.black87, fontSize: 14),
+                      ),
+                    subtitle:                   Container(
+                    margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.01,
+                    ),
+                    child: RoundedLoadingButton(
+                      elevation : 0,
+                      height: 37,
+                      width: 130,
+                      controller: _btnController,
+                      color: const Color(0xfffad9dd),
+                      successColor: Colors.blue,
+                      onPressed: () {
+                        Get.to('/confirm_pass');
+                      },
+                      valueColor: Colors.white,
+                      borderRadius: 90,
+                      child: Text("Tout voir",
+                          style: TextStyle(color: Color(0xffeb3446))),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                top: 10,
+                left : 12
+              ),
+              child:
+              Text("Services", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
+            Row(children:[
+              Card(
+                  color: Colors.white,
+                  elevation: 2,
+                  margin: EdgeInsets.only(left: Get.width * 0.015,),
+                  child: Container(
+                    width: Get.width * 0.31,
+                    padding:  EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical : 10
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Column(children: [ 
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.white,
+                          child: Text("B")
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 8),
+                          child: Text(
+                            "Demande", textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                          ),
+                        ),
+                      ]
+                    ),
+                ),
+              ),
+              Card(
+                  color: Color(0xffedf7fa),
+                  elevation: 0,
+                  margin: EdgeInsets.symmetric(horizontal: Get.width * 0.02 ,vertical: 6.0),
+                  child: Container(
+                    width: Get.width * 0.31,
+                    padding:  EdgeInsets.symmetric(
+                      horizontal: 10,
+                      vertical : 10
+                    ),
+                    decoration: BoxDecoration(
+                      color: Color(0xffedf7fa),
+                      borderRadius: BorderRadius.circular(15)
+                    ),
+                    child: Column(children: const [ 
+                        CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Color(0xffeb3446),
+                          child: Text("B")
+                        ),
+                        Text(
+                          "Vérification", textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        ),
+                      ]
+                    ),
+                ),
+              ),
+              Card(
+                color: Color(0xffedf7fa),
+                elevation: 0,
+                margin: EdgeInsets.symmetric(horizontal: Get.width * 0.001, vertical: 6.0),
+                child: Container(
+                  width: Get.width * 0.31,
+                  padding:  EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical : 10
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xffedf7fa),
+                    borderRadius: BorderRadius.circular(15)
+                  ),
+                  child: Column(children: const [ 
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Color(0xffeb3446),
+                        child: Text("B")
+                      ),
+                      Text(
+                        "Modèles", textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      ),
+                    ]
+                  ),
+                ),
+              )
+              ]
+            ),
+            Container(
+              margin: EdgeInsets.only(
+                top: 10,
+                left : 12
+              ),
+              child:
+              Text("Modèles de lettre", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            ),
+            
           ],
         ),
       ),
