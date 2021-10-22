@@ -53,9 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
         appController.qrfilepath = file.path.toString();
         appController.qRfiletitre.text = file.name;
       } else {
+        // ignore: avoid_print
         print("Annuler");
       }
     } on PlatformException catch (e) {
+      // ignore: avoid_print
       print("Unsupported operation" + e.toString());
     }
   }
@@ -66,14 +68,14 @@ class _HomeScreenState extends State<HomeScreen> {
   void reassemble() {
     super.reassemble();
     try {
-    if (Platform.isAndroid) {
-      controller!.pauseCamera();
-    }
-    controller!.resumeCamera();
-    } catch (e){
+      if (Platform.isAndroid) {
+        controller!.pauseCamera();
+      }
+      controller!.resumeCamera();
+    } catch (e) {
+      // ignore: avoid_print
       print(e);
     }
-   
   }
 
   @override

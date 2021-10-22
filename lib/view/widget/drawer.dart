@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:ui';
@@ -85,12 +83,12 @@ class AppDrawer extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
-                                 Text("Buildeo",
+                                Text("Buildeo",
                                     style: TextStyle(
                                       fontSize: 23,
                                       color: Colors.black87,
                                     )),
-                                 Text("Non connecté",
+                                Text("Non connecté",
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.black87,
@@ -118,11 +116,12 @@ class AppDrawer extends StatelessWidget {
                         },
                         valueColor: Colors.white,
                         borderRadius: 90,
-                        child: Text(translate("se_connecter", appController.lang),
+                        child: Text(
+                            translate("se_connecter", appController.lang),
                             style: const TextStyle(color: Color(0xffeb3446))),
                       ),
                     ),
-                   const Divider(),
+                    const Divider(),
                   ]),
                 )
               ],
@@ -176,7 +175,7 @@ class AppDrawer extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey,
-                        )),
+                            )),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
@@ -188,8 +187,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Liste des permis"),
-                          onTap: () {
-                          },
+                          onTap: () {},
                           hoverColor: const Color(0xfffcdfca),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -204,8 +202,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Faire une demande de permis"),
-                          onTap: () {
-                          },
+                          onTap: () {},
                           hoverColor: const Color(0xffceeaf2),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -220,8 +217,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Centre d'information"),
-                          onTap: () {
-                          },
+                          onTap: () {},
                           hoverColor: const Color(0xffe5c2fc),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -308,181 +304,143 @@ class AppDrawer extends StatelessWidget {
     showDialog(
         context: context,
         builder: (BuildContext context) => BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-          child: SimpleDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                title: Text(translate("se_connecter", appController.lang), textAlign: TextAlign.center,),
-                contentPadding: const EdgeInsets.only(right: 20, left: 20, top: 50),
+              filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+              child: SimpleDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                title: Text(
+                  translate("se_connecter", appController.lang),
+                  textAlign: TextAlign.center,
+                ),
+                contentPadding:
+                    const EdgeInsets.only(right: 20, left: 20, top: 50),
                 children: [
-                    SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.40,
-                                child: Card(
-                                    elevation: 0.0,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(13)),
-                                    child: Form(
-                                        // autovalidateMode:
-                                        //     AutovalidateMode.onUserInteraction,
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.08,
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.06,
-                                                  vertical: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.0113),
-                                              child: TextFormField(
-                                               
-                                                onSaved: (value) {
-                                               
-                                                },
-                                                validator: (value) {
-                                                
-                                                },
-                                                style: TextStyle(
-                                                    fontSize: 13,
-                                                    color: Colors.grey[800]),
-                                                decoration:  InputDecoration(
-                                                  filled: true,
-                                                  fillColor: Colors.red[50],
-                                                  floatingLabelBehavior:
-                                                      FloatingLabelBehavior.auto,
-                                                  border: const OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  90.0)),
-                                                      borderSide:
-                                                          BorderSide.none),
-                                                  focusedBorder:
-                                                      const OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius.circular(
-                                                                      90.0)),
-                                                          borderSide:
-                                                              BorderSide.none),
-                                                  hintText:  translate('email_ou_numero_telephone', appController.lang),
-                                                  prefixIcon: const Icon(Icons.person,
-                                                      color:
-                                                          Color(0xffeb3446)),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.06),
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height *
-                                                  0.08,
-                                              child: TextFormField(
-                                                
-                                                onSaved: (value) {
-                                                
-                                                },
-                                                validator: (value) {
-                                                 
-                                                },
-                                                style: const TextStyle(
-                                                    fontSize: 13,
-                                                    color: Color(0xffeb3446)),
-                                                obscureText: true,
-                                                decoration: InputDecoration(
-                                                  filled: true,
-                                                  fillColor: Colors.red[50],
-                                                  border: const OutlineInputBorder(
-                                                      borderRadius:
-                                                          BorderRadius.all(
-                                                              Radius.circular(
-                                                                  90.0)),
-                                                      borderSide:
-                                                          BorderSide.none),
-                                                  focusedBorder:
-                                                      const OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                                  Radius.circular(
-                                                                      90.0)),
-                                                          borderSide:
-                                                              BorderSide.none),
-                                                  hintText: translate('mot_de_passe', appController.lang),
-                                                  prefixIcon: const Icon(Icons.lock,
-                                                      color:
-                                                          Color(0xffeb3446)),
-                                                ),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  0.5,
-                                              margin: EdgeInsets.only(
-                                                top: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    0.02,
-                                              ),
-                                              child: TextButton(
-                                                  onPressed: () {
-                                                    Get.toNamed('/forgot');
-                                                  },
-                                                  child: Text(
-                                                    translate('mot_de_passe_oublie_?', appController.lang),
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        color: Colors.grey[400],
-                                                        fontFamily: "ProductSans",
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal),
-                                                  )),
-                                            ),
-                                            Container(
-                                              margin: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .width *
-                                                          0.06,
-                                                  vertical: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      0.03),
-                                              child: RoundedLoadingButton(
-                                                color: const Color(0xffeb3446),
-                                                successColor: Colors.blue,
-                                                controller: _btnController,
-                                                onPressed: () {
-                                                 
-                                                },
-                                                valueColor: Colors.white,
-                                                borderRadius: 90,
-                                                child: Text(translate("Se connecter", appController.lang).toUpperCase(),
-                                                    style: const TextStyle(
-                                                        color: Colors.white)),
-                                              ),
-                                            ),
-                                          ],
-                                        )))),
-                        
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.40,
+                      child: Card(
+                          elevation: 0.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(13)),
+                          child: Form(
+                              // autovalidateMode:
+                              //     AutovalidateMode.onUserInteraction,
+                              child: Column(
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.08,
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.06,
+                                    vertical:
+                                        MediaQuery.of(context).size.height *
+                                            0.0113),
+                                child: TextFormField(
+                                  onSaved: (value) {},
+                                  validator: (value) {},
+                                  style: TextStyle(
+                                      fontSize: 13, color: Colors.grey[800]),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.red[50],
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.auto,
+                                    border: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(90.0)),
+                                        borderSide: BorderSide.none),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(90.0)),
+                                        borderSide: BorderSide.none),
+                                    hintText: translate(
+                                        'email_ou_numero_telephone',
+                                        appController.lang),
+                                    prefixIcon: const Icon(Icons.person,
+                                        color: Color(0xffeb3446)),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.06),
+                                height:
+                                    MediaQuery.of(context).size.height * 0.08,
+                                child: TextFormField(
+                                  onSaved: (value) {},
+                                  validator: (value) {},
+                                  style: const TextStyle(
+                                      fontSize: 13, color: Color(0xffeb3446)),
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: Colors.red[50],
+                                    border: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(90.0)),
+                                        borderSide: BorderSide.none),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(90.0)),
+                                        borderSide: BorderSide.none),
+                                    hintText: translate(
+                                        'mot_de_passe', appController.lang),
+                                    prefixIcon: const Icon(Icons.lock,
+                                        color: Color(0xffeb3446)),
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.5,
+                                margin: EdgeInsets.only(
+                                  top:
+                                      MediaQuery.of(context).size.height * 0.02,
+                                ),
+                                child: TextButton(
+                                    onPressed: () {
+                                      Get.toNamed('/forgot');
+                                    },
+                                    child: Text(
+                                      translate('mot_de_passe_oublie_?',
+                                          appController.lang),
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.grey[400],
+                                          fontFamily: "ProductSans",
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.normal),
+                                    )),
+                              ),
+                              Container(
+                                margin: EdgeInsets.symmetric(
+                                    horizontal:
+                                        MediaQuery.of(context).size.width *
+                                            0.06,
+                                    vertical:
+                                        MediaQuery.of(context).size.height *
+                                            0.03),
+                                child: RoundedLoadingButton(
+                                  color: const Color(0xffeb3446),
+                                  successColor: Colors.blue,
+                                  controller: _btnController,
+                                  onPressed: () {},
+                                  valueColor: Colors.white,
+                                  borderRadius: 90,
+                                  child: Text(
+                                      translate("Se connecter",
+                                              appController.lang)
+                                          .toUpperCase(),
+                                      style:
+                                          const TextStyle(color: Colors.white)),
+                                ),
+                              ),
+                            ],
+                          )))),
                 ],
               ),
-        ));
-}
-
+            ));
+  }
 }
