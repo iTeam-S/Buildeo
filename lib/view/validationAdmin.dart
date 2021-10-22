@@ -111,6 +111,7 @@ class ValidationAdmin extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 "Document",
@@ -118,9 +119,6 @@ class ValidationAdmin extends StatelessWidget {
                                     fontSize: 21,
                                     color: Color(0xff8891a4),
                                     fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 150,
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
@@ -200,6 +198,7 @@ class ValidationAdmin extends StatelessWidget {
                             height: 15,
                           ),
                           Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 "Fichiers",
@@ -207,9 +206,6 @@ class ValidationAdmin extends StatelessWidget {
                                     fontSize: 21,
                                     color: Color(0xff8891a4),
                                     fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 200,
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(

@@ -9,7 +9,7 @@ import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
-import 'package:buildeo/view/validationMaire.dart';
+
 import 'package:buildeo/view/widget/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
