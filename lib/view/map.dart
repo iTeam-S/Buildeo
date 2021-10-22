@@ -16,7 +16,7 @@ class _CarteView extends State<CarteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Region selctionnée : ${selectedCity?.title ?? '(?)'}'),
+        title: Text('Region selctionnée : ${selectedCity?.title ?? 'Pas de région'}'),
         actions: [
           IconButton(
               icon: Icon(Icons.delete, color: Colors.red),

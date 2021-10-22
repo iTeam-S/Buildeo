@@ -214,6 +214,7 @@ class AppDrawer extends StatelessWidget {
                           ),
                           title: const Text("Centre d'information"),
                           onTap: () {
+                            Get.toNamed('/info');
                           },
                           hoverColor: const Color(0xffe5c2fc),
                           trailing: const Icon(Icons.chevron_right),
