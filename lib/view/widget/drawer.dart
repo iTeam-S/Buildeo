@@ -1,5 +1,3 @@
-
-
 // ignore_for_file: prefer_const_constructors
 
 import 'dart:ui';
@@ -85,12 +83,12 @@ class AppDrawer extends StatelessWidget {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: const [
-                                 Text("Buildeo",
+                                Text("Buildeo",
                                     style: TextStyle(
                                       fontSize: 23,
                                       color: Colors.black87,
                                     )),
-                                 Text("Non connecté",
+                                Text("Non connecté",
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.black87,
@@ -118,11 +116,12 @@ class AppDrawer extends StatelessWidget {
                         },
                         valueColor: Colors.white,
                         borderRadius: 90,
-                        child: Text(translate("se_connecter", appController.lang),
+                        child: Text(
+                            translate("se_connecter", appController.lang),
                             style: const TextStyle(color: Color(0xffeb3446))),
                       ),
                     ),
-                   const Divider(),
+                    const Divider(),
                   ]),
                 )
               ],
@@ -176,7 +175,7 @@ class AppDrawer extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey,
-                        )),
+                            )),
                         ListTile(
                           leading: CircleAvatar(
                             radius: 15,
@@ -188,8 +187,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Liste des permis"),
-                          onTap: () {
-                          },
+                          onTap: () {},
                           hoverColor: const Color(0xfffcdfca),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -204,8 +202,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Faire une demande de permis"),
-                          onTap: () {
-                          },
+                          onTap: () {},
                           hoverColor: const Color(0xffceeaf2),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -220,8 +217,7 @@ class AppDrawer extends StatelessWidget {
                             ),
                           ),
                           title: const Text("Centre d'information"),
-                          onTap: () {
-                          },
+                          onTap: () {},
                           hoverColor: const Color(0xffe5c2fc),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -308,11 +304,16 @@ class AppDrawer extends StatelessWidget {
     showDialog(
         context: context,
         builder: (BuildContext context) => BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-          child: SimpleDialog(
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                title: Text(translate("se_connecter", appController.lang), textAlign: TextAlign.center,),
-                contentPadding: const EdgeInsets.only(right: 20, left: 20, top: 50),
+              filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+              child: SimpleDialog(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                title: Text(
+                  translate("se_connecter", appController.lang),
+                  textAlign: TextAlign.center,
+                ),
+                contentPadding:
+                    const EdgeInsets.only(right: 20, left: 20, top: 50),
                 children: [
                     SizedBox(
                                 height: MediaQuery.of(context).size.height * 0.40,
@@ -454,7 +455,7 @@ class AppDrawer extends StatelessWidget {
                                               child: RoundedLoadingButton(
                                                 color: const Color(0xffeb3446),
                                                 successColor: Colors.blue,
-                                                controller: _btnController,
+                                                controller: _bstnController,
                                                 onPressed: () {
                                                  
                                                 },
@@ -470,7 +471,6 @@ class AppDrawer extends StatelessWidget {
                         
                 ],
               ),
-        ));
-}
-
+            ));
+  }
 }

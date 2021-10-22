@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:buildeo/responsive.dart';
-import 'package:buildeo/view/widget/cardValidation.dart';
+import 'package:buildeo/view/widget/card_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,6 +49,7 @@ class ValidationMaire extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
+                  // ignore: prefer_const_literals_to_create_immutables
                   boxShadow: [
                     BoxShadow(blurRadius: 20.0, color: Colors.black26),
                   ],
@@ -61,6 +62,7 @@ class ValidationMaire extends StatelessWidget {
                               builder: (context, orientation) {
                             return GridView.count(
                               crossAxisCount: 4,
+                              // ignore: prefer_const_literals_to_create_immutables
                               children: [
                                 /**mettre en boucle pour le fetching */
                                 CardValidated(),
