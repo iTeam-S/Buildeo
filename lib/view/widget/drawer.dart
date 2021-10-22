@@ -341,13 +341,7 @@ class AppDrawer extends StatelessWidget {
                                                           .height *
                                                       0.0113),
                                               child: TextFormField(
-                                               
-                                                onSaved: (value) {
-                                               
-                                                },
-                                                validator: (value) {
-                                                
-                                                },
+                                                controller: appController.usrController,
                                                 style: TextStyle(
                                                     fontSize: 13,
                                                     color: Colors.grey[800]),
@@ -390,13 +384,7 @@ class AppDrawer extends StatelessWidget {
                                                       .height *
                                                   0.08,
                                               child: TextFormField(
-                                                
-                                                onSaved: (value) {
-                                                
-                                                },
-                                                validator: (value) {
-                                                 
-                                                },
+                                                controller: appController.passwdController,
                                                 style: const TextStyle(
                                                     fontSize: 13,
                                                     color: Color(0xffeb3446)),
