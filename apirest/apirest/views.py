@@ -3,7 +3,6 @@ import jwt
 import json
 from os import environ
 from datetime import datetime, timedelta
-from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from django.http import JsonResponse, Http404
@@ -78,16 +77,16 @@ def getpermis_view(request):
                 'status_code': 200,
                 'status': 'OK',
                 'data': {
-                    'numero_permis': f"Permis de Construire n°{permis.id}/{permis.delivery_date}/{commune.nom}",
+                    'numero_permis': f"Permis de Construire n°{permis.id}/{permis.delivery_date.strftime('%y')}/{commune.nom}",
                     'id': permis.id,
                     'demande': permis.build_type,
-                    'delivery_date': permis.delivery_date,
+                    'delivery_date': permis.delivery_date.strftime('%Y-%m-%d'),
                     'adress': permis.build_adress
                 }
             }, safe=False, json_dumps_params={'ensure_ascii': False})
         except Exception as err:
             print(err)
-            return JsonResponse({'status_code': 404, 'status': 'PERMIS INNEXISTANT', 'data': None})
+            return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
     return Http404()
 
 
