@@ -10,14 +10,14 @@ class CardValidated extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Colors.transparent,
-      elevation: 10.0,
+      elevation: 0.0,
       margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
         height: isMobile(context)
             ? Get.height * 0.15
             : 500 /*la taille ne s'applique pas à isDesktop */,
         decoration: BoxDecoration(
-            color: Colors.blue, borderRadius: BorderRadius.circular(20)),
+            color: Colors.white, borderRadius: BorderRadius.circular(15)),
         child: ListTile(
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -36,7 +36,7 @@ class CardValidated extends StatelessWidget {
                           });
                     },
                     icon: Icon(
-                      Icons.delete,
+                      Icons.close,
                       color: Colors.red.shade400,
                       size: 30,
                     ))),
@@ -53,8 +53,7 @@ class CardValidated extends StatelessWidget {
                     style: TextStyle(color: Colors.black45))
               ],
             ),
-            trailing: Icon(Icons.check_box_outline_blank_rounded,
-                color: Colors.black45, size: 30.0)),
+            trailing: Icon(Icons.check, color: Colors.green, size: 30.0)),
       ),
     );
   }
