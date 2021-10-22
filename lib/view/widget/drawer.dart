@@ -164,6 +164,44 @@ class AppDrawer extends StatelessWidget {
                           },
                           hoverColor: const Color(0xffe5c2fc),
                         ),
+                        Text("PLUS",
+                          style: TextStyle(
+                            fontSize: 13,
+                            color: Colors.grey,
+                          )
+                        ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xff0d94bd),
+                            child: const Icon(
+                              Icons.info,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Liste des permis"),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          hoverColor: const Color(0xffceeaf2),
+                        ),
+                        ListTile(
+                          leading: CircleAvatar(
+                            radius: 15,
+                            backgroundColor: const Color(0xffeb3446),
+                            child: const Icon(
+                              Icons.logout_outlined,
+                              color: Colors.white,
+                              size: 16,
+                            ),
+                          ),
+                          title: const Text("Faire une demande permis"),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          hoverColor: const Color(0xfffad9dd),
+                        ),
                         Text("PREFERENCES",
                           style: TextStyle(
                             fontSize: 13,

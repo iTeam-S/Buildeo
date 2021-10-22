@@ -35,7 +35,6 @@ dependencies:
 
   bottom_bar_with_sheet: ^2.0.0
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -48,6 +47,8 @@ dependencies:
   shimmer_animation: ^2.1.0+1
   pull_to_refresh: ^2.0.0
   qr_code_scanner:
+  floating_action_bubble: ^1.1.2
+  flutter_arc_speed_dial: ^2.0.0
 
 
 dev_dependencies:
