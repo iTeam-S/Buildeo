@@ -137,7 +137,7 @@ class AppDrawer extends StatelessWidget {
                                 style: const TextStyle(color: Color(0xffeb3446))),
                           ),
                         ),
-                        const Divider(),
+                        const Divider(color: Colors.white),
                       ]),
                     )
                   ],
@@ -150,15 +150,7 @@ class AppDrawer extends StatelessWidget {
                         appController.user != null ? 
                         [
                           Column(children: [
-                          if (appController.user!.compte == "ADMIN" && appController.user!.compte == "MAIRE")
-                            Text(
-                                translate("LISTE_VALIDATIONS", appController.lang)
-                                    .toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                )),
-                          if (appController.user!.compte == "ADMIN" && appController.user!.compte == "MAIRE")
+                          if (appController.user!.compte == "ADMIN" || appController.user!.compte == "MAIRE")
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
@@ -177,7 +169,7 @@ class AppDrawer extends StatelessWidget {
                               hoverColor: const Color(0xfffcdfca),
                               trailing: const Icon(Icons.chevron_right),
                             ),
-                          if (appController.user!.compte == "ADMIN")
+                          if (appController.user!.compte == "MAIRE")
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
@@ -196,13 +188,8 @@ class AppDrawer extends StatelessWidget {
                               hoverColor: const Color(0xffe5c2fc),
                               trailing: const Icon(Icons.chevron_right),
                             ),
-                            if (appController.user!.compte == "ADMIN" && appController.user!.compte == "MAIRE")
-                            Text(
-                                translate("PLUS", appController.lang).toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                )),
+                            if (appController.user!.compte == "ADMIN" || appController.user!.compte == "MAIRE")
+                              Divider(),
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
@@ -255,7 +242,7 @@ class AppDrawer extends StatelessWidget {
                               hoverColor: const Color(0xffe5c2fc),
                               trailing: const Icon(Icons.chevron_right),
                             ),
-                            if (appController.user!.compte == "ADMIN" && appController.user!.compte == "MAIRE")
+                            if (appController.user!.compte == "ADMIN" || appController.user!.compte == "MAIRE")
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
@@ -274,13 +261,7 @@ class AppDrawer extends StatelessWidget {
                               hoverColor: const Color(0xffddffdd),
                               trailing: const Icon(Icons.chevron_right),
                             ),
-                            Text(
-                                translate("PREFERENCES", appController.lang)
-                                    .toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey,
-                                )),
+                           Divider(),
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
@@ -337,22 +318,6 @@ class AppDrawer extends StatelessWidget {
                         ] : 
                          [
                           Column(children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                radius: 15,
-                                backgroundColor: const Color(0xFFFF4800),
-                                child: const Icon(
-                                  Icons.sort,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              ),
-                              title: Text(
-                                  translate("LISTE_PERMIS", appController.lang)),
-                              onTap: () {},
-                              hoverColor: const Color(0xfffcdfca),
-                              trailing: const Icon(Icons.chevron_right),
-                            ),
                             ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
