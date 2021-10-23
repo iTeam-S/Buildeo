@@ -49,6 +49,10 @@ dependencies:
   qr_code_scanner:
   city_picker_from_map: ^0.0.1
   fl_chart: ^0.40.2
+  dropdown_search:
+  dropdownfield: ^1.0.3
+  autocomplete_textfield: ^1.7.3
+  substring_highlight: ^1.0.33
 
 
 dev_dependencies:

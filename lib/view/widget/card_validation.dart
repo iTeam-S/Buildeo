@@ -14,7 +14,14 @@ class CardValidated extends StatelessWidget {
       child: Container(
         height: 90,
         decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(10)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.shade300,
+            blurRadius: 9.0,
+            offset: Offset(0, 3),
+          ),
+        ],
+        color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: ListTile(
             contentPadding:
                 EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
@@ -33,8 +40,14 @@ class CardValidated extends StatelessWidget {
                     style: TextStyle(color: Colors.black45))
               ],
             ),
-            trailing: Icon(Icons.check, color: Colors.green, size: 30.0)),
+            trailing: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Color(0xff2ebc4f),
+                        child: IconButton(
+                          icon: Icon(Icons.check, color: Colors.white, size: 13,),
+                          onPressed: () {},
+            ))
       ),
-    );
+    ));
   }
 }

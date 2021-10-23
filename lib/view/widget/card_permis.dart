@@ -18,25 +18,25 @@ class MyContainer extends StatelessWidget {
         Get.toNamed("/validAmin");
       },
       child: Container(
-        height: Get.height * .38,
+        height: Get.height * .27,
         width: 50,
         margin: EdgeInsets.only(bottom: 5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Stack(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(25),
-              margin: EdgeInsets.only(bottom: 25, top: 25, left: 15, right: 15),
+              padding: EdgeInsets.all(15),
+              margin: EdgeInsets.only(bottom: 0, top: 25, left: 15, right: 15),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(20),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 13.0,
-                    offset: Offset(0, 13),
+                    color: Colors.grey.shade300,
+                    blurRadius: 9.0,
+                    offset: Offset(0, 3),
                   ),
                 ],
               ),
@@ -46,32 +46,20 @@ class MyContainer extends StatelessWidget {
                 children: <Widget>[
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Flexible(
-                        child: Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Color(0xffeb3446),
-                            borderRadius: BorderRadius.circular(9),
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child:
+                        Flexible(
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                            decoration: BoxDecoration(
+                              color: Color(0xff229af0),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text("Payé", style: TextStyle(color: Colors.white),),
                           ),
-                          child: Icon(
-                            Icons.price_check,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                      Flexible(
-                        child: Container(
-                          padding: EdgeInsets.all(15),
-                          decoration: BoxDecoration(
-                            color: Color(0xffeb3446),
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                          child: Icon(
-                            Icons.create_new_folder,
-                            color: Colors.white54,
-                          ),
-                        ),
+                        ) 
                       ),
                       Flexible(
                         child: Container(
@@ -90,7 +78,7 @@ class MyContainer extends StatelessWidget {
                     "Getan Jonathan Bakary",
                     style: TextStyle(
                       color: Colors.black45,
-                      fontSize: 23,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),

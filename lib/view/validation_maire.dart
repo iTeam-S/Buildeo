@@ -30,7 +30,16 @@ class ValidationMaire extends StatelessWidget {
             children: <Widget>[
               Container(
                   height: Get.height * .25,
-                  color: Color(0xffeb3446),
+                  decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xffff365e),
+                        Color(0xffeb3446),
+                      ],
+                    )
+                  ),
                   padding: EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,7 +49,8 @@ class ValidationMaire extends StatelessWidget {
                         children: [
                           IconButton(
                             onPressed: () {
-                              Get.back();
+                            //Get.to(AppDrawer());
+                            _key.currentState!.openDrawer();
                             },
                             icon: Icon(
                               Icons.sort,
@@ -69,7 +79,7 @@ class ValidationMaire extends StatelessWidget {
               Container(
                 height: Get.height * .75,
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
+                  color: Color(0xfff0f7ff),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
@@ -87,7 +97,7 @@ class ValidationMaire extends StatelessWidget {
                               builder: (context, orientation) {
                             return GridView.count(
                               childAspectRatio: (itemWidth / itemHeight),
-                              controller: new ScrollController(keepScrollOffset: false),
+                              controller: ScrollController(keepScrollOffset: false),
                               crossAxisCount: 4,
                               // ignore: prefer_const_literals_to_create_immutables
                               children: [

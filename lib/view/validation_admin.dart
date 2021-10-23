@@ -4,6 +4,8 @@ import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:buildeo/view/widget/drawer.dart';
+
 
 List<String> filesList = [
   'Photocopie du CIN cértifié',
@@ -14,7 +16,12 @@ List<String> filesList = [
 ];
 
 class ValidationAdmin extends StatelessWidget {
-  const ValidationAdmin({Key? key}) : super(key: key);
+
+  ValidationAdmin({Key? key}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  AppDrawer drawer = AppDrawer();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -28,31 +35,29 @@ class ValidationAdmin extends StatelessWidget {
               padding: EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
+                children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
+                    children: [
                       IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                          )),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.green.shade400,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
-                        onPressed: () {},
-                        child: Icon(
-                          Icons.send,
+                        onPressed: () {
+                        //Get.to(AppDrawer());
+                        _key.currentState!.openDrawer();
+                        },
+                        icon: Icon(
+                          Icons.sort,
                           color: Colors.white,
-                        ),
-                      )
+                        )
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Icon(
+                          Icons.home_filled,
+                          color: Colors.white,
+                        )
+                      ),
                     ],
                   ),
                   Expanded(
@@ -77,7 +82,7 @@ class ValidationAdmin extends StatelessWidget {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                  // fontWeight: FontWeight.bold,
                                 ),
                               ),
                               SizedBox(
@@ -89,17 +94,33 @@ class ValidationAdmin extends StatelessWidget {
                         )
                       ],
                     ),
-                  )
+                  ),
+                  Center(
+                    child : InkWell(
+                      onTap: () {},
+                      child:
+                      Flexible(
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: Color(0xff2ebc4f),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text("Tout valider", style: TextStyle(color: Colors.white),),
+                        ),
+                      ) 
+                    ),
+                  ),
                 ],
               ),
             ),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade300,
+                  color: Color(0xfff0f7ff),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(35),
-                    topRight: Radius.circular(35),
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
                   ),
                   boxShadow: [
                     BoxShadow(blurRadius: 13.0, color: Colors.black26),
@@ -116,7 +137,7 @@ class ValidationAdmin extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "Document",
+                                "Dossier",
                                 style: TextStyle(
                                     fontSize: 21,
                                     color: Color(0xff8891a4),
@@ -124,13 +145,13 @@ class ValidationAdmin extends StatelessWidget {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.red,
+                                  primary: Color(0xffeb3446),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: Text("non validé"),
+                                child: Text("M'affecter"),
                               )
                             ],
                           ),
@@ -143,14 +164,14 @@ class ValidationAdmin extends StatelessWidget {
                               child: Container(
                                 width: isMobile(context) ? 251 : 420,
                                 margin: EdgeInsets.symmetric(
-                                    horizontal: 15.0, vertical: 5.0),
+                                horizontal: 15.0, vertical: 5.0),
                                 padding: EdgeInsets.all(15.0),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.grey.shade400,
+                                      color: Colors.grey.shade300,
                                       blurRadius: 9.0,
                                       offset: Offset(0, 3),
                                     ),
@@ -168,7 +189,8 @@ class ValidationAdmin extends StatelessWidget {
                                         ),
                                         Spacer(),
                                         CircleAvatar(
-                                          child: Icon(Icons.download),
+                                          backgroundColor: Color(0xff2ebc4f),
+                                          child: Icon(Icons.download, color: Colors.white),
                                         ),
                                       ],
                                     ),
@@ -178,7 +200,7 @@ class ValidationAdmin extends StatelessWidget {
                                       style: TextStyle(
                                         color: Color(0xff333333),
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 21,
+                                        fontSize: 18,
                                       ),
                                     ),
                                     Text(
@@ -205,13 +227,13 @@ class ValidationAdmin extends StatelessWidget {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.blue,
+                                  primary: Color(0xff45b1ff),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: Text("validé"),
+                                child: Text("Tout cocher"),
                               )
                             ],
                           ),
@@ -245,9 +267,10 @@ class ValidationAdmin extends StatelessWidget {
                                             TextSpan(
                                               text: filesList[id],
                                               style: TextStyle(
-                                                  color: Color(0xff333333),
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 21),
+                                                  color: Colors.blueGrey[700],
+                                                  fontFamily: "ProductSans",
+                                                  // fontWeight: FontWeight.bold,
+                                                  fontSize: 17),
                                             ),
                                           ],
                                         ),
@@ -257,7 +280,7 @@ class ValidationAdmin extends StatelessWidget {
                                 ),
                                 Icon(
                                   Icons.check_box,
-                                  color: Colors.blue,
+                                  color: Color(0xff45b1ff),
                                 ),
                               ],
                             ),
