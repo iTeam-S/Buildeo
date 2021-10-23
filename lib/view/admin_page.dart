@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 
-late final height, widht;
+late final height, width;
 
 // ignore: must_be_immutable
 class AdminPage extends StatelessWidget {
@@ -30,7 +30,7 @@ class AdminPage extends StatelessWidget {
           return Column(
             children: <Widget>[
               Container(
-                  height: Get.height * .25,
+                  height: Get.height * .16,
                   decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -72,18 +72,13 @@ class AdminPage extends StatelessWidget {
                       Center(
                         child: Text("Demandes en attente (${appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList().length})",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 25, color: Colors.white)
+                            style: TextStyle(fontSize: 22, color: Colors.white)
                         ),
                       ),
-                      SizedBox(),
                     ],
                   )),
-              SizedBox(
-                height: Get.height * 0.03,
-              ),
               Container(
-                
-                height: Get.height * .72,
+                height: Get.height * .84,
                 decoration: BoxDecoration(
                   color: Color(0xfff0f7ff),
                   borderRadius: BorderRadius.only(
