@@ -89,7 +89,7 @@ Widget cardListePermis(Permis perm, List<Permis> permis) {
                   SizedBox(
                     height: Get.height * .02,
                   ),
-                  MyProgressBar(),
+                  myProgressBar(),
                 ],
               ),
             ),
@@ -172,7 +172,7 @@ Widget myContainer() {
                   SizedBox(
                     height: Get.height * .02,
                   ),
-                  MyProgressBar(),
+                  myProgressBar(),
                 ],
               ),
             ),

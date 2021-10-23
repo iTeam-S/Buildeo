@@ -70,7 +70,7 @@ class AdminPage extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: Text("Demandes en attente (${appController.permis.length})",
+                        child: Text("Demandes en attente (${appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList().length})",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 25, color: Colors.white)
                         ),
@@ -97,8 +97,8 @@ class AdminPage extends StatelessWidget {
                 child: appController.permis.isEmpty ? SizedBox(
                   width: Get.width,
                   child: Shimmer.fromColors(
-                      baseColor:  Color(0xfff0f7ff),
-                      highlightColor: Colors.white24,
+                      baseColor:  Colors.white,
+                      highlightColor: Color(0xfff0f7ff),
                       period: Duration(seconds: 2),
                       child: ListView(
                         children: [myContainer(),myContainer(),myContainer() ]
@@ -114,8 +114,8 @@ class AdminPage extends StatelessWidget {
                             crossAxisCount: 4,
                             children: [
                               for (Permis perm in appController.permis)
-                                cardListePermis(perm, appController.permis)
-                           
+                                if (perm.status != 'VALIDE' && perm.trtUserID == null)
+                                  cardListePermis(perm, appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList())
                             ],
                           );
                         }),
@@ -125,7 +125,8 @@ class AdminPage extends StatelessWidget {
                     
                       children: [
                         for (Permis perm in appController.permis)
-                          cardListePermis(perm, appController.permis)
+                          if (perm.status != 'VALIDE' && perm.trtUserID == null)
+                            cardListePermis(perm, appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList())
                       ],
                     ),)
                     //for (Permis perm in  appController.permis)

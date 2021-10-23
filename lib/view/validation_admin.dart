@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+import 'package:buildeo/controller/api.dart';
+import 'package:buildeo/controller/api.dart';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 List<String> filesList = [
   'Photocopie du CIN cértifié',
@@ -14,13 +17,28 @@ List<String> filesList = [
   'Lettre de demande',
   'PV de nomination'
 ];
+List<bool> checkboxList = [false, false, false, false, false];
 
-class ValidationAdmin extends StatelessWidget {
-  ValidationAdmin({Key? key}) : super(key: key);
+class ValidationAdmin extends StatefulWidget {
+  const ValidationAdmin({Key? key}) : super(key: key);
+
+  @override
+  _ValidationAdmin createState() => _ValidationAdmin();
+}
+
+class _ValidationAdmin extends State<ValidationAdmin>  {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
   final AppController appController = Get.put(AppController());
+
+  _launchURL(url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +71,7 @@ class ValidationAdmin extends StatelessWidget {
                             Get.back();
                           },
                           icon: Icon(
-                            Icons.home_filled,
+                            Icons.arrow_back,
                             color: Colors.white,
                           )),
                     ],
@@ -87,31 +105,15 @@ class ValidationAdmin extends StatelessWidget {
                               SizedBox(
                                 height: 15,
                               ),
-                              MyProgressBar(),
+                              myProgressBar(pourcentage: checkboxList.where((c) => c == true).toList().length / checkboxList.length),
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                  Center(
-                      child: InkWell(
-                    onTap: () {},
-                    child: Flexible(
-                      child: Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: Color(0xff2ebc4f),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(
-                          "Tout valider",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  )),
+                 
+                  
                 ],
               ),
             ),
@@ -146,13 +148,14 @@ class ValidationAdmin extends StatelessWidget {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffeb3446),
+                                  primary:  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? Color(0xffeb3446) : Colors.green,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: Text("M'affecter"),
+                                child: Text(  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? 
+                                  "Réfuser": "Valider"),
                               )
                             ],
                           ),
@@ -191,14 +194,17 @@ class ValidationAdmin extends StatelessWidget {
                                         Spacer(),
                                         CircleAvatar(
                                           backgroundColor: Color(0xff2ebc4f),
-                                          child: Icon(Icons.download,
+                                          child: IconButton(icon: Icon(Icons.download),
+                                          onPressed: (){
+                                            _launchURL("${baseUrlprotocol}/download/attachement/${appController.currentPermis!.attachements}?token=${appController.user!.token}");
+                                          },
                                               color: Colors.white),
                                         ),
                                       ],
                                     ),
                                     Spacer(),
                                     Text(
-                                      "Villa bas",
+                                        appController.currentPermis!.buildType,
                                       style: TextStyle(
                                         color: Color(0xff333333),
                                         fontWeight: FontWeight.bold,
@@ -206,7 +212,7 @@ class ValidationAdmin extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "Envoyer le : 17/07/2021",
+                                      "Envoyer le : ${appController.currentPermis!.reqDate}",
                                       style: TextStyle(color: Colors.grey[500]),
                                     ),
                                   ],
@@ -234,8 +240,21 @@ class ValidationAdmin extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                onPressed: () {},
-                                child: Text("Tout cocher"),
+                                onPressed: () {
+                                  setState(() {
+                                    if (checkboxList.where((c) => c == true).toList().isEmpty) {
+                                      for (int i=0; i<checkboxList.length;i++){
+                                          checkboxList[i] = true;
+                                      }
+                                    }
+                                    else {
+                                      for (int i=0; i<checkboxList.length;i++){
+                                          checkboxList[i] = false;
+                                      }
+                                    }
+                                  });
+                                },
+                                child: Text( checkboxList.where((c) => c == true).toList().isEmpty ? "Tout cocher" : "Tout Décocher"),
                               )
                             ],
                           ),
@@ -280,10 +299,14 @@ class ValidationAdmin extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                Icon(
-                                  Icons.check_box,
-                                  color: Color(0xff45b1ff),
-                                ),
+                               Checkbox(
+                                  checkColor: Colors.white,
+                                  value: checkboxList[id],
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      checkboxList[id] = value!;
+                                    });               
+                                  })
                               ],
                             ),
                           );
