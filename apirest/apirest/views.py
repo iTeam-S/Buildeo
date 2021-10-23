@@ -218,6 +218,7 @@ def affectation_view(request):
 
 
 @csrf_exempt
+@verif_token
 def download_attachement(request, filename):
     fl = open('media/attachement/'+filename, 'rb')
     token = request.GET.get("token")
@@ -246,3 +247,23 @@ def download_model(request, filename):
     except Exception as err:
         print(err)
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+
+@csrf_exempt
+@verif_token
+def update_status(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        permis_id = data.get("permis_id")
+        status = data.get("status") 
+        motif_status = data.get("motif_status")
+        if not permis_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_NUM_PERMIS', 'data': None})
+        try:
+            Permis.objects.filter(id=permis_id).update(status=status,motif_status=motif_status)
+            permi = Permis.objects.get(id=permis_id).__dict__
+            permi.pop("_state")
+            return JsonResponse({'status_code': 200, 'status': 'STATUS_UPDATED', 'data': permi})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+    return Http404
