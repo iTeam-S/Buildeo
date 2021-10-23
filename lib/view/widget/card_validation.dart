@@ -1,9 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:buildeo/responsive.dart';
-import 'package:buildeo/view/widget/pop_up.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CardValidated extends StatelessWidget {
   const CardValidated({Key? key}) : super(key: key);
@@ -30,7 +27,9 @@ class CardValidated extends StatelessWidget {
             subtitle: Row(
               children: <Widget>[
                 Icon(Icons.watch_later_outlined, color: Colors.black45),
-                Text(" Il y a deux jours",  softWrap: true, overflow: TextOverflow.ellipsis,
+                Text(" Il y a deux jours",
+                    softWrap: true,
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(color: Colors.black45))
               ],
             ),

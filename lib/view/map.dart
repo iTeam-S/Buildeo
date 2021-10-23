@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buildeo/view/widget/pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:city_picker_from_map/city_picker_from_map.dart';
 import 'package:get/get.dart';
@@ -24,30 +25,33 @@ class _CarteView extends State<CarteView> {
       key: _key,
       drawer: drawer,
       appBar: AppBar(
-        leading: IconButton( onPressed: () {
-          //Get.to(AppDrawer());
-          _key.currentState!.openDrawer();
+        leading: IconButton(
+          onPressed: () {
+            //Get.to(AppDrawer());
+            _key.currentState!.openDrawer();
           },
           icon: const Icon(Icons.sort, color: Colors.white),
         ),
-        title: Text('Region selctionnée : ${selectedCity?.title ?? 'Pas de région'}', style: TextStyle(fontSize: 15),),
+        title: Text(
+          'Region selctionnée : ${selectedCity?.title ?? 'Pas de région'}',
+          style: TextStyle(fontSize: 15),
+        ),
         backgroundColor: Color(0xffeb3446),
         elevation: 5,
         actions: [
           IconButton(
-            icon: Icon(Icons.close, color: Colors.white),
-            onPressed: () {
-              _mapKey.currentState?.clearSelect();
-              setState(() {
-                selectedCity = null;
-              });
-            }
-          ),
+              icon: Icon(Icons.close, color: Colors.white),
+              onPressed: () {
+                _mapKey.currentState?.clearSelect();
+                setState(() {
+                  selectedCity = null;
+                });
+              }),
           IconButton(
-          icon: Icon(Icons.home_filled, color: Colors.white),
-          onPressed: () {
-            Get.toNamed('/home');
-          })
+              icon: Icon(Icons.home_filled, color: Colors.white),
+              onPressed: () {
+                Get.toNamed('/home');
+              })
         ],
       ),
       body: Center(
@@ -64,11 +68,12 @@ class _CarteView extends State<CarteView> {
                   height: double.infinity,
                   map: Maps.MADAGASCAR,
                   onChanged: (city) {
-                    setState(() {
-                      selectedCity = city;
-                    });
-                    Get.snackbar('Redirection',
-                        'Recherche pour la région de ${selectedCity?.title.toString()}');
+                    showDialog(
+                        context: context,
+                        barrierColor: Colors.transparent,
+                        builder: (BuildContext context) {
+                          return PopUpStat();
+                        });
                   },
                   actAsToggle: true,
                   dotColor: Colors.white,
