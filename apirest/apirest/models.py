@@ -50,6 +50,7 @@ class Permis(models.Model):
         ('ATTENTE_TRTM', 'Attente Traitement'),
         ('EN_TRTM', 'En traitement'),
         ('ATTENTE_VALIDATION', 'Attente Validation'),
+        ('REFUS', 'Refus'),
         ('VALIDE', 'Validée')], default='ATTENTE_TRTM')
     attachements = models.CharField(max_length=300)
     motif_status = models.TextField(null=True, blank=True)
