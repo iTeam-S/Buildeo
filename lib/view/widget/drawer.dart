@@ -348,7 +348,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'mg';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .malagasy;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -372,7 +382,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'fr';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .frantsay;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -396,7 +416,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'en';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .english;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
