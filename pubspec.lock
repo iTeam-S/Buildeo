@@ -7,7 +7,6 @@ packages:
       name: async
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
     version: "2.6.1"
   autocomplete_textfield:
     dependency: "direct main"
@@ -16,9 +15,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.3"
-=======
-    version: "2.8.1"
->>>>>>> 11c3d8138a4d663381fb7ea499b081b14852a9ff
   boolean_selector:
     dependency: transitive
     description:
