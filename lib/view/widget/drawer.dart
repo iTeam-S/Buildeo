@@ -11,6 +11,9 @@ import 'package:get_storage/get_storage.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 // import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+enum Language { malagasy, frantsay, english }
+
+// ignore: must_be_immutable
 class AppDrawer extends StatelessWidget {
   final bool isLoadingPath = false;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -34,6 +37,9 @@ class AppDrawer extends StatelessWidget {
   //     controller.success();
   //   });
   // }
+
+  // ignore: unused_field
+  Language _site = Language.frantsay;
 
   @override
   Widget build(BuildContext context) {
