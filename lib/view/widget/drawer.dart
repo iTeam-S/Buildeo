@@ -242,22 +242,6 @@ class AppDrawer extends StatelessWidget {
                           hoverColor: const Color(0xffddffdd),
                           trailing: const Icon(Icons.chevron_right),
                         ),
-                        ListTile(
-                          leading: CircleAvatar(
-                            radius: 15,
-                            backgroundColor: const Color(0xFF00455A),
-                            child: const Icon(
-                              Icons.description,
-                              color: Colors.white,
-                              size: 16,
-                            ),
-                          ),
-                          title: const Text("Formulaire"),
-                          onTap: () {
-                            Get.toNamed("/form");
-                          },
-                          hoverColor: const Color(0xffceeaf2),
-                        ),
                         Text("PREFERENCES",
                             style: TextStyle(
                               fontSize: 13,

@@ -63,9 +63,8 @@ class ValidationAdmin extends StatelessWidget {
                           width: Get.width * 0.25,
                           padding: EdgeInsets.all(9.0),
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/43904633?v=4"),
-                          ),
+                              backgroundImage:
+                                  ExactAssetImage("assets/images/user.png")),
                         ),
                         SizedBox(width: 13),
                         Expanded(
@@ -162,8 +161,8 @@ class ValidationAdmin extends StatelessWidget {
                                   children: <Widget>[
                                     Row(
                                       children: <Widget>[
-                                        Image.network(
-                                          "http://download.seaicons.com/icons/dtafalonso/yosemite-flat/512/Folder-icon.png",
+                                        Image.asset(
+                                          "assets/images/folder.png",
                                           height: 51,
                                           width: 51,
                                         ),

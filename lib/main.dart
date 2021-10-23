@@ -1,3 +1,4 @@
+import 'package:buildeo/view/formulaire.dart';
 import 'package:buildeo/view/info.dart';
 import 'package:buildeo/view/admin_page.dart';
 import 'package:buildeo/view/map.dart';
@@ -40,7 +41,8 @@ class MyApp extends StatelessWidget {
         '/validAmin': (context) => const ValidationAdmin(),
         '/pageAmin': (context) => const AdminPage(),
         '/map': (context) => const CarteView(),
-        '/info': (context) => const InfoScreen()
+        '/info': (context) => const InfoScreen(),
+        '/form': (context) => const FormPage()
       },
     );
   }
