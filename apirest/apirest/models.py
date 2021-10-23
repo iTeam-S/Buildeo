@@ -33,7 +33,7 @@ class Commune(models.Model):
         return self.nom
 
 class User(AbstractUser, models.Model):
-    cin = models.IntegerField(null=True)
+    cin = models.CharField(max_length=50, null=True)
     date_naissance = models.DateTimeField(default=None, blank=True, null=True)
     adress = models.CharField(max_length=400, default=None, blank=True, null=True)
     tel = models.CharField(max_length=13, default=None, blank=True, null=True)
