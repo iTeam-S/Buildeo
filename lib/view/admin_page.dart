@@ -114,7 +114,7 @@ class AdminPage extends StatelessWidget {
                             crossAxisCount: 4,
                             children: [
                               for (Permis perm in appController.permis)
-                                if (perm.status != 'VALIDE' && perm.trtUserID == null)
+                                if (perm.status == 'ATTENTE_TRTM' && perm.trtUserID == null)
                                   cardListePermis(perm, appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList())
                             ],
                           );
@@ -125,7 +125,7 @@ class AdminPage extends StatelessWidget {
                     
                       children: [
                         for (Permis perm in appController.permis)
-                          if (perm.status != 'VALIDE' && perm.trtUserID == null)
+                          if (perm.status != 'ATTENTE_TRTM' && perm.trtUserID == null)
                             cardListePermis(perm, appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList())
                       ],
                     ),)
