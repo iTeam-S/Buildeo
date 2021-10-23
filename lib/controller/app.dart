@@ -289,11 +289,50 @@ class AppController extends GetxController {
     try {
       var res = await apiController.listCommune();
       if (res[0]) {
-        if (res[1]['status_code'] != 200) {
+        if (res[1]['status_code'] == 200) {
           for (Map<String, dynamic> res in res[1]['data']) {
             communes.add(Commune.fromJson(res));
           }
         }
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
+      Get.snackbar(
+      translate("erreur", lang),
+      translate("erreur_produite", lang),
+      colorText: Colors.white,
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM,
+      borderColor: Colors.red,
+      borderRadius: 10,
+      borderWidth: 2,
+      barBlur: 0,
+      duration: const Duration(seconds: 2),
+      );
+    }
+  }
+
+  void updateStatus(status, motif, permis) async {
+    try {
+      var res = await apiController.updateStatus(status, motif, permis, user);
+      if (res[0]) {
+         Get.snackbar(
+          "Succès",
+          translate(res[1], lang),
+          colorText: Colors.teal[700],
+          backgroundColor: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+        Timer(Duration(seconds: 2), (){
+            getAllPermis(user!.commune);
+            Get.toNamed("/pageAmin");
+        });
       }
     } catch (e) {
       // ignore: avoid_print

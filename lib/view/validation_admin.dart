@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+
 import 'package:buildeo/controller/api.dart';
 import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
@@ -112,8 +114,6 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                       ],
                     ),
                   ),
-                 
-                  
                 ],
               ),
             ),
@@ -153,7 +153,14 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (checkboxList.where((c) => c == true).toList().length != checkboxList.length) {
+                                    refusMotif(context);
+                                  }
+                                  else {
+                                    appController.updateStatus("ATTENTE_VALIDATION", "", appController.currentPermis!.id);
+                                  }
+                                },
                                 child: Text(  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? 
                                   "Réfuser": "Valider"),
                               )
@@ -378,7 +385,7 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: Text("  Ouvrir  "),
+                        child: Text("  Envoyer  "),
                       )
                     ],
                   )

@@ -15,7 +15,7 @@ import 'package:flutter/material.dart';
               ),
             ),
             Text(
-              "$pourcentage %",
+              "${pourcentage*100} %",
               style: TextStyle(
                 color: Colors.black,
               ),
