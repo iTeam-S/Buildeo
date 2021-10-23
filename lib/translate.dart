@@ -212,6 +212,11 @@ var langages = {
     "en": "Maps and stats",
     "mg": "Sarintany sy antontan'isa",
   },
+  "CONNECTE" : {
+    "fr" : "Connecté",
+    "en" : "",
+    "mg" : ""
+  }
 };
 
 String translate(String cle, String lang) {

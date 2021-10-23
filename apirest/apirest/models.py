@@ -2,14 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-class User(AbstractUser, models.Model):
-    cin = models.IntegerField(null=True)
-    date_naissance = models.DateTimeField(default=None, blank=True, null=True)
-    adress = models.CharField(max_length=400, default=None, blank=True, null=True)
-    tel = models.CharField(max_length=13, default=None, blank=True, null=True)
-    type = models.CharField(max_length=10, default=None, blank=True, null=True)
-    commune = models.CharField(max_length=50, default=None, blank=True, null=True)
-
 
 class Province(models.Model):
     nom = models.CharField(max_length=50)
@@ -33,13 +25,20 @@ class Disctrict(models.Model):
     def __str__(self):
         return self.nom
 
-
 class Commune(models.Model):
     nom = models.CharField(max_length=50)
     id_district = models.ForeignKey(Disctrict, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nom
+
+class User(AbstractUser, models.Model):
+    cin = models.CharField(max_length=50, null=True)
+    date_naissance = models.DateTimeField(default=None, blank=True, null=True)
+    adress = models.CharField(max_length=400, default=None, blank=True, null=True)
+    tel = models.CharField(max_length=13, default=None, blank=True, null=True)
+    type = models.CharField(max_length=10, default=None, blank=True, null=True)
+    commune_id = models.ForeignKey(Commune, default=None, blank=True, null=True, on_delete=models.CASCADE)
 
 
 class Permis(models.Model):

@@ -60,7 +60,9 @@ def login_view(request):
                 'data' : {
                     'token' : encode_auth_token(user.id),
                     'user_id': user.id,
-                    'compte': user.type
+                    'compte': user.type,
+                    'nom': f'{user.first_name} {user.last_name}',
+                    'email': usr
                 }
             }
         )
