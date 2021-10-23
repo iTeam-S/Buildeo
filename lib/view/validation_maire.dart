@@ -80,7 +80,6 @@ class ValidationMaire extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
-                  // ignore: prefer_const_literals_to_create_immutables
                   boxShadow: [
                     BoxShadow(blurRadius: 20.0, color: Colors.black26),
                   ],
@@ -96,7 +95,6 @@ class ValidationMaire extends StatelessWidget {
                               controller:
                                   ScrollController(keepScrollOffset: false),
                               crossAxisCount: 4,
-                              // ignore: prefer_const_literals_to_create_immutables
                               children: [
                                 /**mettre en boucle pour le fetching */
                                 CardValidated(),

@@ -15,7 +15,6 @@ List<String> filesList = [
   'PV de nomination'
 ];
 
-// ignore: must_be_immutable
 class ValidationAdmin extends StatelessWidget {
   ValidationAdmin({Key? key}) : super(key: key);
 
@@ -67,7 +66,7 @@ class ValidationAdmin extends StatelessWidget {
                           width: Get.width * 0.25,
                           padding: EdgeInsets.all(9.0),
                           child: CircleAvatar(
-                            backgroundColor: Colors.transparent,
+                              backgroundColor: Colors.transparent,
                               backgroundImage:
                                   ExactAssetImage("assets/images/logo_b.png")),
                         ),
@@ -96,26 +95,23 @@ class ValidationAdmin extends StatelessWidget {
                     ),
                   ),
                   Center(
-                    child: InkWell(
-                        onTap: () {},
-                        child: Flexible(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 8),
-                            decoration: BoxDecoration(
-                              color: Color(0xff2ebc4f),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Text(
-                              "Tout valider",
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                         
+                      child: InkWell(
+                    onTap: () {},
+                    child: Flexible(
+                      child: Container(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: Color(0xff2ebc4f),
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      ) 
+                        child: Text(
+                          "Tout valider",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
                     ),
-             
+                  )),
                 ],
               ),
             ),
