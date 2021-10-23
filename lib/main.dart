@@ -5,6 +5,7 @@ import 'package:buildeo/model/user.dart';
 import 'package:buildeo/view/formulaire.dart';
 import 'package:buildeo/view/info.dart';
 import 'package:buildeo/view/admin_page.dart';
+import 'package:buildeo/view/liste_permis.dart';
 import 'package:buildeo/view/map.dart';
 import 'package:buildeo/view/remplissage_template.dart';
 //import 'package:buildeo/view/remplissage_template.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         '/info': (context) => const InfoScreen(),
         '/form': (context) => const FormPage(),
         '/remplir': (context) => const Remplissage(),
+        '/liste': (context) => ListePermis()
       },
     );
   }

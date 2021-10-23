@@ -223,7 +223,9 @@ class AppDrawer extends StatelessWidget {
                                         ),
                                         title: Text(translate("LISTE_PERMIS",
                                             appController.lang)),
-                                        onTap: () {},
+                                        onTap: () {
+                                          Get.toNamed("/liste");
+                                        },
                                         hoverColor: const Color(0xfffcdfca),
                                         trailing:
                                             const Icon(Icons.chevron_right),
