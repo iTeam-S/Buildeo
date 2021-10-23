@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ List<String> filesList = [
   'Photocopie du CIN cértifié',
   'Plan de construction',
   "Autorisation d'alignement",
-  'Statut de la société',
+  'Lettre de demande',
   'PV de nomination'
 ];
 
@@ -20,6 +21,7 @@ class ValidationAdmin extends StatelessWidget {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
+  final AppController appController = Get.put(AppController());
 
   @override
   Widget build(BuildContext context) {
@@ -65,8 +67,9 @@ class ValidationAdmin extends StatelessWidget {
                           width: Get.width * 0.25,
                           padding: EdgeInsets.all(9.0),
                           child: CircleAvatar(
+                            backgroundColor: Colors.transparent,
                               backgroundImage:
-                                  ExactAssetImage("assets/images/user.png")),
+                                  ExactAssetImage("assets/images/logo_b.png")),
                         ),
                         SizedBox(width: 13),
                         Expanded(
@@ -75,7 +78,7 @@ class ValidationAdmin extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Demande de permis n°04",
+                                "Demande de permis n°${appController.currentPermis!.id}",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -108,8 +111,11 @@ class ValidationAdmin extends StatelessWidget {
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
-                        )),
-                  ),
+                         
+                        ),
+                      ) 
+                    ),
+             
                 ],
               ),
             ),

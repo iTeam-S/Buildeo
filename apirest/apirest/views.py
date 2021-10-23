@@ -62,7 +62,8 @@ def login_view(request):
                     'user_id': user.id,
                     'compte': user.type,
                     'nom': f'{user.first_name} {user.last_name}',
-                    'email': usr
+                    'email': usr,
+                    'commune_id' : user.commune_id.id
                 }
             }
         )
@@ -159,28 +160,54 @@ def requestpermis(request):
 def get_listcommune_view(request):
     try:
         communes = Commune.objects.all()
-        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': {commune.id:commune.nom for commune in communes}})
+        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': [{"id":commune.id,"nom":commune.nom} for commune in communes]})
     except Exception as err:
         print(err)
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
 
 
 @csrf_exempt
+@verif_token
 def get_listpermit_view(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
         commune_id = data.get("commune_id")
         if not commune_id:
-            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_COMMUNE_ID', 'data': None})
         try:
             permis = Permis.objects.filter(commune_id=commune_id).order_by("-id")[:20]
             list_permi = []
             for permi in permis:
                 permi = dict(permi.__dict__)
+                permi['req_date'] = permi['req_date'].strftime('%Y-%m-%d %H:%M:%S')
+                if permi['trtm_date']: permi['trtm_date'] = permi['trtm_date'].strftime('%Y-%m-%d %H:%M:%S')
+                if permi['delivery_date']: permi['delivery_date'] = permi['delivery_date'].strftime('%Y-%m-%d %H:%M:%S')
                 permi.pop('_state')
                 list_permi.append(permi)
                 print(list_permi)
             return JsonResponse({'status_code': 200, 'status': 'OK', 'data': list_permi})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+    return Http404()
+
+
+@csrf_exempt
+@verif_token
+def affectation_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        trtm_user_id = data.get("trtm_user_id")
+        permis_id = data.get("permis_id")
+        if not trtm_user_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+        if not permis_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_PERMISID', 'data': None})
+        try:
+            Permis.objects.filter(id=permis_id).update(trtm_user_id=trtm_user_id,status='EN_TRTM',trtm_date=datetime.today())
+            permi = Permis.objects.get(id=permis_id).__dict__
+            permi.pop("_state")
+            return JsonResponse({'status_code': 200, 'status': 'OK', 'data': permi})
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})

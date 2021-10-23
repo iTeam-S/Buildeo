@@ -222,7 +222,8 @@ var langages = {
     "fr": "Liste des users",
     "en": "List of users",
     "mg": "Lisitry ny mpampiasa"
-  }
+  },
+  "DEMANDE_DE_CONSTRUCTION": {"fr": "Construction de", "en": "", "mg": ""}
 };
 
 String translate(String cle, String lang) {
