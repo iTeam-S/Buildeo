@@ -93,122 +93,116 @@ class _FormPageState extends State<FormPage> {
                   SizedBox(
                     height: 15,
                   ),
-                  Center(
-                    child: SingleChildScrollView(
-                      child: Form(
-                        key: _formkey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.08,
-                                margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                  // vertical: MediaQuery.of(context).size.height*0.0110
-                                ),
-                                child: TextField(
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.grey[800]),
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.teal[60],
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(90.0)),
-                                        borderSide: BorderSide.none),
-                                    focusedBorder: UnderlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(90.0)),
-                                        borderSide: BorderSide.none),
-                                    hintText: ('Adresse de construction'),
-                                    prefixIcon: Icon(Icons.maps_home_work,
-                                        color: Color(0xffeb3446)),
-                                  ),
-                                )),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.08,
-                                margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                  // vertical: MediaQuery.of(context).size.height*0.0110
-                                ),
-                                child: TextField(
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.grey[800]),
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.teal[60],
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(90.0)),
-                                        borderSide: BorderSide.none),
-                                    focusedBorder: UnderlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(90.0)),
-                                        borderSide: BorderSide.none),
-                                    hintText: ('Commune'),
-                                    prefixIcon: Icon(Icons.location_city,
-                                        color: Color(0xffeb3446)),
-                                  ),
-                                )),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            Container(
-                                height:
-                                    MediaQuery.of(context).size.height * 0.08,
-                                margin: EdgeInsets.symmetric(
-                                  horizontal:
-                                      MediaQuery.of(context).size.width * 0.06,
-                                  // vertical: MediaQuery.of(context).size.height*0.0110
-                                ),
-                                child: TextField(
-                                  style: TextStyle(
-                                      fontSize: 13, color: Colors.grey[800]),
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.teal[60],
-                                    border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(90.0)),
-                                        borderSide: BorderSide.none),
-                                    focusedBorder: UnderlineInputBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(90.0)),
-                                        borderSide: BorderSide.none),
-                                    hintText: ('Type de construction'),
-                                    prefixIcon: Icon(Icons.roofing,
-                                        color: Color(0xffeb3446)),
-                                  ),
-                                )),
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              width: Get.width * 0.6,
-                              margin: EdgeInsets.only(
-                                // left: MediaQuery.of(context).size.width * 0.15,
-                                top: MediaQuery.of(context).size.height * 0.03,
+                  SingleChildScrollView(
+                    child: Form(
+                      key: _formkey,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              margin: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.06,
+                                // vertical: MediaQuery.of(context).size.height*0.0110
                               ),
-                              child: RoundedLoadingButton(
-                                controller: _btnController,
-                                color: const Color(0xffeb3446),
-                                successColor: Colors.blue,
-                                onPressed: () {},
-                                valueColor: Colors.white,
-                                borderRadius: 90,
-                                child: Text("DEMANDER",
-                                    style:
-                                        const TextStyle(color: Colors.white)),
+                              child: TextField(
+                                style: TextStyle(
+                                    fontSize: 13, color: Colors.grey[800]),
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.teal[60],
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(90.0)),
+                                      borderSide: BorderSide.none),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(90.0)),
+                                      borderSide: BorderSide.none),
+                                  hintText: ('Adresse de construction'),
+                                  prefixIcon: Icon(Icons.maps_home_work,
+                                      color: Color(0xffeb3446)),
+                                ),
+                              )),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              margin: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.06,
+                                // vertical: MediaQuery.of(context).size.height*0.0110
                               ),
-                            ),
-                          ],
-                        ),
+                              child: TextField(
+                                style: TextStyle(
+                                    fontSize: 13, color: Colors.grey[800]),
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.teal[60],
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(90.0)),
+                                      borderSide: BorderSide.none),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(90.0)),
+                                      borderSide: BorderSide.none),
+                                  hintText: ('Commune'),
+                                  prefixIcon: Icon(Icons.location_city,
+                                      color: Color(0xffeb3446)),
+                                ),
+                              )),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              margin: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.06,
+                                // vertical: MediaQuery.of(context).size.height*0.0110
+                              ),
+                              child: TextField(
+                                style: TextStyle(
+                                    fontSize: 13, color: Colors.grey[800]),
+                                decoration: InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.teal[60],
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(90.0)),
+                                      borderSide: BorderSide.none),
+                                  focusedBorder: UnderlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(90.0)),
+                                      borderSide: BorderSide.none),
+                                  hintText: ('Type de construction'),
+                                  prefixIcon: Icon(Icons.roofing,
+                                      color: Color(0xffeb3446)),
+                                ),
+                              )),
+                        ],
                       ),
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    width: Get.width * 0.6,
+                    margin: EdgeInsets.only(
+                      // left: MediaQuery.of(context).size.width * 0.15,
+                      top: MediaQuery.of(context).size.height * 0.03,
+                    ),
+                    child: RoundedLoadingButton(
+                      controller: _btnController,
+                      color: const Color(0xffeb3446),
+                      successColor: Colors.blue,
+                      onPressed: () {},
+                      valueColor: Colors.white,
+                      borderRadius: 90,
+                      child: Text("DEMANDER",
+                          style: const TextStyle(color: Colors.white)),
                     ),
                   ),
                 ],

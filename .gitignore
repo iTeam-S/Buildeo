@@ -52,4 +52,5 @@ venv
 *.http
 linux/
 web/
-*pubspec.lock
+pubspec.lock
+migrations/

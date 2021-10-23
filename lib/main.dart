@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:buildeo/controller/app.dart';
+import 'package:buildeo/model/user.dart';
 import 'package:buildeo/view/formulaire.dart';
 import 'package:buildeo/view/info.dart';
 import 'package:buildeo/view/admin_page.dart';
@@ -19,10 +23,12 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   final box = GetStorage();
+  final AppController appController = Get.put(AppController());
 
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 3000), () {
+      if (box.hasData('user')) appController.user = User.fromJson(jsonDecode(box.read('user')));
       Get.offNamed('/home');
     });
 
