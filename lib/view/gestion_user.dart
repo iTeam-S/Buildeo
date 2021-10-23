@@ -87,39 +87,25 @@ class GestionUser extends StatelessWidget {
                   ],
                 ),
                 child: Center(
-                  child: (!isMobile(context))
-                      ? SizedBox(
-                          width: Get.width,
-                          child: OrientationBuilder(
-                              builder: (context, orientation) {
-                            return GridView.count(
-                              childAspectRatio: (itemWidth / itemHeight),
-                              controller:
-                                  ScrollController(keepScrollOffset: false),
-                              crossAxisCount: 4,
-                              // ignore: prefer_const_literals_to_create_immutables
-                              children: [
-                                /**mettre en boucle pour le fetching */
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                                UserID(),
-                              ],
-                            );
-                          }),
-                        )
-                      : ListView.builder(
-                          itemCount: 7,
-                          itemBuilder: (context, id) {
-                            return UserID();
-                          },
-                        ),
-                ),
+                    child: (!isMobile(context))
+                        ? SizedBox(
+                            width: Get.width,
+                            child: OrientationBuilder(
+                                builder: (context, orientation) {
+                              return GridView.count(
+                                childAspectRatio: (itemWidth / itemHeight),
+                                controller:
+                                    ScrollController(keepScrollOffset: false),
+                                crossAxisCount: 4,
+                                // ignore: prefer_const_literals_to_create_immutables
+                                children: [
+                                  /**mettre en boucle pour le fetching */
+                                  UserID(),
+                                ],
+                              );
+                            }),
+                          )
+                        : UserID()),
                 /*ListView.builder(
                   itemCount: 7,
                   itemBuilder: (context, id) {
@@ -134,3 +120,6 @@ class GestionUser extends StatelessWidget {
     );
   }
 }
+
+List nom = <String>["domiinick", "grégoire", "greoir"];
+List adresse = <String>["cekah", "dom", "greoir"];
