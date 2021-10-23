@@ -160,13 +160,14 @@ def requestpermis(request):
 def get_listcommune_view(request):
     try:
         communes = Commune.objects.all()
-        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': {commune.id:commune.nom for commune in communes}})
+        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': [{"id":commune.id,"nom":commune.nom} for commune in communes]})
     except Exception as err:
         print(err)
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
 
 
 @csrf_exempt
+@verif_token
 def get_listpermit_view(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
@@ -185,6 +186,28 @@ def get_listpermit_view(request):
                 list_permi.append(permi)
                 print(list_permi)
             return JsonResponse({'status_code': 200, 'status': 'OK', 'data': list_permi})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+    return Http404()
+
+
+@csrf_exempt
+@verif_token
+def affectation_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        trtm_user_id = data.get("trtm_user_id")
+        permis_id = data.get("permis_id")
+        if not trtm_user_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+        if not permis_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_PERMISID', 'data': None})
+        try:
+            Permis.objects.filter(id=permis_id).update(trtm_user_id=trtm_user_id,status='EN_TRTM',trtm_date=datetime.today())
+            permi = Permis.objects.get(id=permis_id).__dict__
+            permi.pop("_state")
+            return JsonResponse({'status_code': 200, 'status': 'OK', 'data': permi})
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})

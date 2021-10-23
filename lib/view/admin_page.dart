@@ -10,6 +10,7 @@ import 'package:buildeo/view/widget/drawer.dart';
 
 late final height, widht;
 
+// ignore: must_be_immutable
 class AdminPage extends StatelessWidget {
   AdminPage({Key? key}) : super(key: key);
 

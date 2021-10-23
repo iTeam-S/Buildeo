@@ -71,4 +71,22 @@ class ApiController extends GetxController {
     }
   }
 
+  Future<List> listCommune() async {
+    try {
+      var response = await client.get(
+        "/api/listcommune/",
+      );
+      return [true, response.data];
+    } on dio.DioError catch (err) {
+      if (err.response!.statusCode == 403) {
+        return [false, err.response!.data['status']];
+      } else {
+        return [false, err.message];
+      }
+    } catch (e) {
+      print(e);
+      return [false, "Une erreur s'est produite"];
+    }
+  }
+
 }

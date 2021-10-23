@@ -157,15 +157,15 @@ var langages = {
     "en": "Validations list",
     "mg": "Lisitrin'ny fankatoavana",
   },
-  "PERMI_A_TRAITER": {
-    "fr": "Permis à traiter",
-    "en": "License to process",
-    "mg": "Fahazoan-dàlana amboarina",
+  "VALIDATION_ADMIN": {
+    "fr": "Dossier à traiter",
+    "en": "Folder to process",
+    "mg": "Antontan-taratasy karakaraina",
   },
   "VALIDATION_MAIRE": {
-    "fr": "Validation de maire",
-    "en": "Fanamarinan'ny Ben'ny tanàna",
-    "mg": "Lisitrin'ny fankatoavana",
+    "fr": "Permis à valider ",
+    "en": "License to validate",
+    "mg": "Fahazoan-dalana ho hamarinina",
   },
   "PLUS": {
     "fr": "Plus",

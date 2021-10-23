@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 
-
 List<String> filesList = [
   'Photocopie du CIN cértifié',
   'Plan de construction',
@@ -16,8 +15,8 @@ List<String> filesList = [
   'PV de nomination'
 ];
 
+// ignore: must_be_immutable
 class ValidationAdmin extends StatelessWidget {
-
   ValidationAdmin({Key? key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -42,24 +41,22 @@ class ValidationAdmin extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        onPressed: () {
-                        //Get.to(AppDrawer());
-                        _key.currentState!.openDrawer();
-                        },
-                        icon: Icon(
-                          Icons.sort,
-                          color: Colors.white,
-                        )
-                      ),
+                          onPressed: () {
+                            //Get.to(AppDrawer());
+                            _key.currentState!.openDrawer();
+                          },
+                          icon: Icon(
+                            Icons.sort,
+                            color: Colors.white,
+                          )),
                       IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(
-                          Icons.home_filled,
-                          color: Colors.white,
-                        )
-                      ),
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.home_filled,
+                            color: Colors.white,
+                          )),
                     ],
                   ),
                   Expanded(
@@ -99,21 +96,26 @@ class ValidationAdmin extends StatelessWidget {
                     ),
                   ),
                   Center(
-                    child : InkWell(
-                      onTap: () {},
-                      child:
-                      Flexible(
-                        child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-                          decoration: BoxDecoration(
-                            color: Color(0xff2ebc4f),
-                            borderRadius: BorderRadius.circular(20),
+                    child: InkWell(
+                        onTap: () {},
+                        child: Flexible(
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 15, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Color(0xff2ebc4f),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              "Tout valider",
+                              style: TextStyle(color: Colors.white),
+                            ),
                           ),
-                          child: Text("Soumettre ", style: TextStyle(color: Colors.white),),
+                         
                         ),
                       ) 
                     ),
-                  ),
+             
                 ],
               ),
             ),
@@ -167,7 +169,7 @@ class ValidationAdmin extends StatelessWidget {
                               child: Container(
                                 width: isMobile(context) ? 251 : 420,
                                 margin: EdgeInsets.symmetric(
-                                horizontal: 15.0, vertical: 5.0),
+                                    horizontal: 15.0, vertical: 5.0),
                                 padding: EdgeInsets.all(15.0),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(15),
@@ -193,7 +195,8 @@ class ValidationAdmin extends StatelessWidget {
                                         Spacer(),
                                         CircleAvatar(
                                           backgroundColor: Color(0xff2ebc4f),
-                                          child: Icon(Icons.download, color: Colors.white),
+                                          child: Icon(Icons.download,
+                                              color: Colors.white),
                                         ),
                                       ],
                                     ),
