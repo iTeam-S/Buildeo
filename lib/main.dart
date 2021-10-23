@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
-        '/validMaire': (context) => const ValidationMaire(),
+        '/validMaire': (context) => ValidationMaire(),
         '/validAmin': (context) => const ValidationAdmin(),
         '/pageAmin': (context) => const AdminPage(),
         '/map': (context) => const CarteView(),
