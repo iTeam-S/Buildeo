@@ -218,6 +218,7 @@ def affectation_view(request):
 
 
 @csrf_exempt
+@verif_token
 def download_attachement(request, filename):
     fl = open('media/attachement/'+filename, 'rb')
     token = request.GET.get("token")
@@ -248,6 +249,7 @@ def download_model(request, filename):
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
 
 @csrf_exempt
+@verif_token
 def update_status(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
