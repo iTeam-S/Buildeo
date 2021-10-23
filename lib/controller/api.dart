@@ -53,6 +53,7 @@ class ApiController extends GetxController {
 
   Future<List> getallpermis(int? commune, User user) async {
     try {
+      print(commune);
       var response = await client.post(
         "/api/listpermit/",
         data: {"commune_id": commune, "user_id": user.id, "token": user.token},

@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-class MyProgressBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
+  Widget myProgressBar({pourcentage=0.01}) {
     return Column(
       children: <Widget>[
         Row(
@@ -17,7 +15,7 @@ class MyProgressBar extends StatelessWidget {
               ),
             ),
             Text(
-              "0.01 %",
+              "$pourcentage %",
               style: TextStyle(
                 color: Colors.black,
               ),
@@ -28,7 +26,7 @@ class MyProgressBar extends StatelessWidget {
           height: 5,
         ),
         LinearProgressIndicator(
-          value: 0.01,
+          value: pourcentage,
           backgroundColor: Colors.black45,
           valueColor: AlwaysStoppedAnimation<Color>(
             Colors.green,
@@ -37,4 +35,3 @@ class MyProgressBar extends StatelessWidget {
       ],
     );
   }
-}

@@ -96,11 +96,9 @@ var langages = {
     "mg": "fakantsary",
   },
   "DEMANDER_ET_RECEVER": {
-    "fr":
-        "Demandez, suivez et recevez votre permis de construction via Buildeo",
-    "en": "Requestn follow receive your building license by Buildeo",
-    "mg":
-        "Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
+    "fr":"Demandez, suivez et recevez votre permis de construction via Buildeo",
+    "en": "Request, follow, and receive your building license by Buildeo",
+    "mg":"Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
   },
   "DEMANDER": {
     "fr": "Demander",
@@ -217,6 +215,106 @@ var langages = {
     "fr": "Création de modèle",
     "en": "Model creation",
     "mg": "Famoronana modely"
+  },
+  "INFO_COURTE": {
+    "fr": "Sur Buildeo, vous trouverez toutes les informations nécessaires pour méner à bien la création de votre permis de construction. Celle-ci vous donnera les aides qu'il vous sont nécessaires et surtout essentielles pour vos tâches et étapes.",
+    "en": "On Buildeo, you will find all the information you need to complete the creation of your building permit. This will give you the help you need and above all essential for your tasks and steps.",
+    "mg": "Ao amin'ny Buildeo dia ho hitanao ny fampahalalana rehetra ilainao amin'ny famitana ny famoronana fahazoan-dàlana hanorina anao. Izany dia hanome anao ny fanampiana ilainao ary ambonin'izany rehetra ilaina amin'ny asanao sy ny dingana ataonao."
+  },
+  "VOIR": {
+    "fr": "Voir",
+    "en": "Take a look",
+    "mg": "Ijery"
+  },
+  "SERVICES": {
+    "fr": "Services",
+    "en": "Services",
+    "mg": "Tolotra"
+  },
+  "DEMANDE_PERM_CONST": {
+    "fr": "Demande de permis de construction",
+    "en": "Building permit application",
+    "mg": "Fangatahana fahazoan-dàlana hanorina"
+  },
+  "VERIFICATION_PERM_CONST": {
+    "fr": "Vérification de permis de construction",
+    "en": "Building permit verification",
+    "mg": "Fanamarinana fahazoan-dàlana hanorina"
+  },
+  "DOWN_MOD_LETTRES": {
+    "fr": "Téléchargements des modèles de lettre",
+    "en": "Letter Templates Downloads",
+    "mg": "Fampidirana modely ho an'ny taratasy"
+  },
+  "MOD_LETTRES": {
+    "fr": "Modèle de lettre",
+    "en": "Letter model",
+    "mg": "Modely taratasy"
+  },
+  "MOD_FOK": {
+    "fr": "Modèle pour le fokontany",
+    "en": "Letter template for fokontany",
+    "mg": "Modely ho an'ny fokontany"
+  },
+  "MOD_COM": {
+    "fr": "Modèle pour la commune",
+    "en": "Model for the municipality",
+    "mg": "Modely ho an'ny kaominina"
+  },
+  "INFO_PIECES": {
+    "fr": "Informations et pièces à fournir",
+    "en": "Information and documents to provide",
+    "mg": "Vaovao sy antontan-taratasy omena"
+  },
+  "DELAI": {
+    "fr": "Délai de traitement : 35 jours",
+    "en": "Processing time: 35 days",
+    "mg": "Fotoana fikarakarana: 35 andro"
+  },
+  "DROIT_CONST": {
+    "fr": "Droit de construction",
+    "en": "Construction fee",
+    "mg": "Saram-panorenana"
+  },
+  "DROIT_DEPOT": {
+    "fr": "Droit de dépôt : 50000ar",
+    "en": "Filing fee : 50000ar",
+    "mg": "Saram-pametrahana taratasy : 50000ar"
+  },
+  "USAGE_HAB": {
+    "fr": "Usage d'habitation (maison)",
+    "en": "Residential use (house)",
+    "mg": "Toeram-ponenana (trano)"
+  },
+  "USAGE_COM": {
+    "fr": "Usage commercial et industriel",
+    "en": "Commercial and industrial use",
+    "mg": "Fampiasana ara-barotra sy indostrialy"
+  },
+  "MUR_CLO": {
+    "fr": "Mur de clôture",
+    "en": "Closing wall",
+    "mg": "Rindrina fanidiana"
+  },
+  "MUR_SOUT": {
+    "fr": "Mur de soutiènement",
+    "en": "Retaining wall",
+    "mg": "Rindrina fitazonana"
+  },
+  "LINEAIRE": {
+    "fr": "2000ar/m linéaire",
+    "en": "2000ar/m linear",
+    "mg": "2000ar/m tsipika"
+  },
+  "APROPOS_TEXT": {
+    "fr": "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet",
+    "en": "Management of building permits, from the public to the administrative manager, all in a single platform and in a single project.",
+    "mg": "Ny fitantanana fahazoan-dàlana hanorina, manomboka amin'ny besinimaro ka hatramin'ny mpitantana fitantanan-draharaha, amin'ny sehatra tokana sy amin'ny tetikasa tokana."
+  },
+  "DEVELOP": {
+    "fr": "Developpé par iTeam-\$",
+    "en": "Developed by iTeam-\$",
+    "mg": "Novolavolan'ny iTeam-\$"
   },
   "LISTE_USER": {
     "fr": "Liste des users",

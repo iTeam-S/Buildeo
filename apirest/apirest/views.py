@@ -2,12 +2,13 @@ from .models import Commune, Permis, User
 import jwt
 import json
 import time
+import mimetypes
 from os import environ
 from datetime import datetime
 from datetime import datetime, timedelta
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponse
 from werkzeug.utils import secure_filename
 from django.core.files.storage import FileSystemStorage
 
@@ -67,7 +68,7 @@ def login_view(request):
                 }
             }
         )
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -94,7 +95,7 @@ def getpermis_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -116,14 +117,17 @@ def get_userpermis_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS INNEXISTANT', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
-@verif_token
 def requestpermis(request):
     if request.method == "POST":
-        #data = json.loads(request.body.decode("utf-8"))
+        token = request.POST.get('token')
+        try:
+            jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+        except Exception as err:
+            return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
         
         req_date = datetime.today()
         attachement = request.FILES.get('file')
@@ -134,11 +138,11 @@ def requestpermis(request):
         build_type = request.POST.get('build_type')
         build_adress = request.POST.get('build_adress')
 
-        if attachement :
+        if not attachement :
             return JsonResponse({'status_code': 404, 'status': 'MISSING_ATTACHEMENT', 'data': None})
         try:
             filename = str(time.time()) + '_' + secure_filename(attachement.name)
-            fss = FileSystemStorage(location='media/'+datetime.now().date().strftime('%d-%m-%Y'))
+            fss = FileSystemStorage(location='media/attachement/')
             file = fss.save(filename, attachement)
 
             Permis.objects.create(
@@ -146,14 +150,14 @@ def requestpermis(request):
                 build_type=build_type,
                 commune_id=commune_id,
                 req_user_id=req_user_id,
-                attachements=attachement,
+                attachements=filename,
                 build_adress=build_adress,
             )
             return JsonResponse({'status_code': 200, 'status': 'DEMANDE_ENVOYE', 'data': None})
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -167,7 +171,6 @@ def get_listcommune_view(request):
 
 
 @csrf_exempt
-@verif_token
 def get_listpermit_view(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
@@ -189,7 +192,7 @@ def get_listpermit_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -211,4 +214,35 @@ def affectation_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
-    return Http404()
+    return Http404
+
+
+@csrf_exempt
+def download_attachement(request, filename):
+    fl = open('media/attachement/'+filename, 'rb')
+    token = request.GET.get("token")
+    try:
+        jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+    except Exception as err:
+        return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
+
+    try:
+        mime_type, _ = mimetypes.guess_type('media/'+filename)
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+
+@csrf_exempt
+def download_model(request, filename):
+    try:
+        fl = open('media/model/'+filename, 'rb')
+        mime_type, _ = mimetypes.guess_type('media/'+filename)
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
