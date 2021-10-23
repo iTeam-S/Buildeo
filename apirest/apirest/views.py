@@ -152,7 +152,7 @@ def requestpermis(request):
                 build_type=build_type,
                 commune_id=commune_id,
                 req_user_id=req_user_id,
-                attachements=attachement,
+                attachements=filename,
                 build_adress=build_adress,
             )
             return JsonResponse({'status_code': 200, 'status': 'DEMANDE_ENVOYE', 'data': None})
