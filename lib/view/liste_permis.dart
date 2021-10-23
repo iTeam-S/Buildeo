@@ -2,6 +2,7 @@
 
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/card_validation.dart';
+import 'package:buildeo/view/widget/pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
@@ -99,12 +100,12 @@ class ListePermis extends StatelessWidget {
                               // ignore: prefer_const_literals_to_create_immutables
                               children: [
                                 /**mettre en boucle pour le fetching */
+                                PermisListe(),
+                                PermisListe(),
                                 CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
+                                PermisListe(),
+                                PermisListe(),
+                                PermisListe(),
                               ],
                             );
                           }),
@@ -112,7 +113,7 @@ class ListePermis extends StatelessWidget {
                       : ListView.builder(
                           itemCount: 7,
                           itemBuilder: (context, id) {
-                            return CardValidated();
+                            return PermisListe();
                           },
                         ),
                 ),
@@ -127,6 +128,63 @@ class ListePermis extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class PermisListe extends StatelessWidget {
+  const PermisListe({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        showDialog(
+            context: context, builder: (BuildContext context) => PopDownload());
+      },
+      child: Card(
+          color: Colors.transparent,
+          elevation: 0.0,
+          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          child: Container(
+            height: 90,
+            decoration: BoxDecoration(boxShadow: [
+              BoxShadow(
+                color: Colors.grey.shade300,
+                blurRadius: 9.0,
+                offset: Offset(0, 3),
+              ),
+            ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+            child: ListTile(
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                title: Text(
+                  "Demande n°011/21/CR-Fdt",
+                  style: TextStyle(
+                      color: Colors.black54, fontWeight: FontWeight.bold),
+                ),
+                // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+                subtitle: Row(
+                  children: <Widget>[
+                    Icon(Icons.watch_later_outlined, color: Colors.black45),
+                    Text(" Il y a deux jours",
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.black45))
+                  ],
+                ),
+                trailing: CircleAvatar(
+                    radius: 14,
+                    backgroundColor: Color(0xff2ebc4f),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.check,
+                        color: Colors.white,
+                        size: 13,
+                      ),
+                      onPressed: () {},
+                    ))),
+          )),
     );
   }
 }
