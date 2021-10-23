@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:buildeo/controller/api.dart';
+import 'package:buildeo/model/permis.dart';
 import 'package:buildeo/model/user.dart';
 import 'package:buildeo/translate.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,10 @@ class AppController extends GetxController {
   // configuration user 
   String lang = 'fr';
   User? user;
+  // resaka permis le rà
+  List<Permis> permis = <Permis>[];
+  Permis? currentPermis;
+  
   // VERIFICATION OPTIONS
   bool isscanning = false;
   TextEditingController numPermisController = TextEditingController();
@@ -96,6 +101,7 @@ class AppController extends GetxController {
     }
  
   }
+  
   void getPermis(String permisID) async {
     try {
       var res = await apiController.getPermis(permisID);
@@ -206,4 +212,67 @@ class AppController extends GetxController {
     update();
   }
   
+  void getAllPermis(int? commune) async {
+      permis.clear();
+      var res = await apiController.getallpermis(commune, user!);
+      if (res[0]) {
+        if (res[1]['status_code'] != 200){
+          Get.snackbar(
+          "Erreur",
+          translate(res[1]['status'], lang),
+          colorText: Colors.white,
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+          } 
+      else {
+        Timer(Duration(seconds: 2), (){
+        });
+        for (Map<String, dynamic> res in res[1]['data']) {
+          print(res);
+          permis.add(Permis.fromJson(res));
+        }
+        print("Tsy akeo oo?");
+        update();
+       
+      }
+    }
+    else {
+        Get.snackbar(
+          "Erreur",
+          translate(res[1], lang),
+          colorText: Colors.white,
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+    }
+        
+ 
+  
+      Get.snackbar(
+        translate("erreur", lang),
+        translate("erreur_produite", lang),
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+        borderColor: Colors.red,
+        borderRadius: 10,
+        borderWidth: 2,
+        barBlur: 0,
+        duration: const Duration(seconds: 2),
+      );
+    }
+
+  
+
 }

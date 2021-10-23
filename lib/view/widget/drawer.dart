@@ -164,6 +164,7 @@ class AppDrawer extends StatelessWidget {
                               title: Text(translate(
                                   "VALIDATION_ADMIN", appController.lang)),
                               onTap: () {
+                                appController.getAllPermis(appController.user!.commune);
                                 Get.toNamed("/pageAmin");
                               },
                               hoverColor: const Color(0xfffcdfca),

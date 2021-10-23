@@ -62,7 +62,8 @@ def login_view(request):
                     'user_id': user.id,
                     'compte': user.type,
                     'nom': f'{user.first_name} {user.last_name}',
-                    'email': usr
+                    'email': usr,
+                    'commune_id' : user.commune_id.id
                 }
             }
         )
@@ -171,12 +172,15 @@ def get_listpermit_view(request):
         data = json.loads(request.body.decode("utf-8"))
         commune_id = data.get("commune_id")
         if not commune_id:
-            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_COMMUNE_ID', 'data': None})
         try:
             permis = Permis.objects.filter(commune_id=commune_id).order_by("-id")[:20]
             list_permi = []
             for permi in permis:
                 permi = dict(permi.__dict__)
+                permi['req_date'] = permi['req_date'].strftime('%Y-%m-%d %H:%M:%S')
+                if permi['trtm_date']: permi['trtm_date'] = permi['trtm_date'].strftime('%Y-%m-%d %H:%M:%S')
+                if permi['delivery_date']: permi['delivery_date'] = permi['delivery_date'].strftime('%Y-%m-%d %H:%M:%S')
                 permi.pop('_state')
                 list_permi.append(permi)
                 print(list_permi)

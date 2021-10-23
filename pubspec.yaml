@@ -54,7 +54,6 @@ dependencies:
   autocomplete_textfield: ^1.7.3
   substring_highlight: ^1.0.33
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

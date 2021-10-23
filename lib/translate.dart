@@ -216,6 +216,11 @@ var langages = {
     "fr" : "Connecté",
     "en" : "",
     "mg" : ""
+  },
+  "DEMANDE_DE_CONSTRUCTION": {
+    "fr": "Construction de",
+    "en" : "",
+    "mg" : ""
   }
 };
 
