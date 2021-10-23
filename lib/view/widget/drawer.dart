@@ -349,7 +349,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'mg';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .malagasy;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -373,7 +383,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'fr';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .frantsay;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -397,7 +417,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'en';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .english;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -476,8 +506,7 @@ class AppDrawer extends StatelessWidget {
                                                           ),
                                                           Divider(),
                                                           Center(
-                                                            child: Text(
-                                                                "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet.",
+                                                            child: Text(translate("APROPOS_TEXT", appController.lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -492,8 +521,7 @@ class AppDrawer extends StatelessWidget {
                                                             color: Colors.white,
                                                           ),
                                                           Center(
-                                                            child: Text(
-                                                                "Developpé par iTeam-\$",
+                                                            child: Text(translate("DEVELOP", appController.lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -757,8 +785,7 @@ class AppDrawer extends StatelessWidget {
                                                           ),
                                                           Divider(),
                                                           Center(
-                                                            child: Text(
-                                                                "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet.",
+                                                            child: Text(translate("APROPOS_TEXT", appController.lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -773,8 +800,7 @@ class AppDrawer extends StatelessWidget {
                                                             color: Colors.white,
                                                           ),
                                                           Center(
-                                                            child: Text(
-                                                                "Developpé par iTeam-\$",
+                                                            child: Text(translate("DEVELOP", appController.lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,

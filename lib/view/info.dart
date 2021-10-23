@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:buildeo/controller/app.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
+import 'package:buildeo/translate.dart';
+
 
 class InfoScreen extends StatefulWidget {
   @override
@@ -12,6 +15,8 @@ class _InfoScreen extends State<InfoScreen> {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
+
+  final AppController appController = Get.put(AppController());
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,7 @@ class _InfoScreen extends State<InfoScreen> {
           },
           icon: const Icon(Icons.sort, color: Colors.white),
         ),
-        title: Text("Centre d'information", style: TextStyle(fontSize: 15),),
+        title: Text(translate("CENTRE_INFO", appController.lang), style: TextStyle(fontSize: 15),),
         backgroundColor: Color(0xffeb3446),
         elevation: 5,
         actions: [
@@ -43,7 +48,7 @@ class _InfoScreen extends State<InfoScreen> {
           children: [
             Container(
               margin: EdgeInsets.only(top: 20, left: 12),
-              child: Text("Informations et pièces à fournir",
+              child: Text(translate("INFO_PIECES", appController.lang),
                 style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.blueGrey)
               )
             ),
@@ -58,8 +63,7 @@ class _InfoScreen extends State<InfoScreen> {
                 child: ListTile(
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  title: Text(
-                    "Délai de traitement : 35 jours",
+                  title: Text(translate("DELAI", appController.lang),
                     style: TextStyle(color:  Color(0xffeb3446), fontSize: 14),
                   ),
                 ),
@@ -77,7 +81,7 @@ class _InfoScreen extends State<InfoScreen> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   title: Text(
-                    " En règle général, ci-dessous la liste des pièces en détails à fournir en vu de l’obtention du permis de construire: \n\n a) Alignement \n b) ( 5 ) plans topographiques avec les coordonnées Laborde \n c) ( 3 ) plans de la maison à construire \n d) ( 3 ) plans d’implantation \n e) ( 1 ) certificat Juridique de moins de 3 mois \n\n Tout cela dans une chemise accompagnée d’une demande manuscrite adressée au Maire et au chef du fokontany.\n\n Les pièces à fournir pourraient être différents suivant chaque mairie. Pour Antananarivo ville, il faut se déplacer au CUA (Commune Urbaine d’Antananarivo) à Tsimbazaza pour avoir la liste des pièces. Pour Antananarivo ville,  il existe un formulaire pré imprimé qui est à remplir par le professionnel qui a fait votre plan.",
+                    "En règle général, ci-dessous la liste des pièces en détails à fournir en vu de l’obtention du permis de construire: \n\n a) Alignement \n b) ( 5 ) plans topographiques avec les coordonnées Laborde \n c) ( 3 ) plans de la maison à construire \n d) ( 3 ) plans d’implantation \n e) ( 1 ) certificat Juridique de moins de 3 mois \n\n Tout cela dans une chemise accompagnée d’une demande manuscrite adressée au Maire et au chef du fokontany.\n\n Les pièces à fournir pourraient être différents suivant chaque mairie. Pour Antananarivo ville, il faut se déplacer au CUA (Commune Urbaine d’Antananarivo) à Tsimbazaza pour avoir la liste des pièces. Pour Antananarivo ville,  il existe un formulaire pré imprimé qui est à remplir par le professionnel qui a fait votre plan.",
                     style: TextStyle(color: Colors.black87, fontSize: 14),
                   ),
                 ),
@@ -85,7 +89,7 @@ class _InfoScreen extends State<InfoScreen> {
             ),
             Container(
               margin: EdgeInsets.only(top: 25, left: 12),
-              child: Text("Droit de construction",
+              child: Text(translate("DROIT_CONST", appController.lang),
                 style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Colors.blueGrey)
               )
             ),
@@ -101,7 +105,7 @@ class _InfoScreen extends State<InfoScreen> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   title: Text(
-                    "Droit de dépôt : 50000ar",
+                    translate("DROIT_DEPOT", appController.lang),
                     style: TextStyle(color:  Color(0xffeb3446), fontSize: 14),
                   ),
                 ),
@@ -124,7 +128,7 @@ class _InfoScreen extends State<InfoScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8, bottom: 5),
                       child: Text(
-                        "Usage d'habitation (maison)",
+                        translate("USAGE_HAB", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
@@ -152,7 +156,7 @@ class _InfoScreen extends State<InfoScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8, bottom: 5),
                       child: Text(
-                        "Usage commercial et industriel",
+                        translate("USAGE_COM", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
@@ -183,13 +187,13 @@ class _InfoScreen extends State<InfoScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8, bottom: 5),
                       child: Text(
-                        "Mur de clôture",
+                        translate("MUR_CLO", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
                     ),
                     Text(
-                        "2000ar/m linéaire",
+                        translate("LINEAIRE", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Color(0xff0cab56), fontSize: 15, fontWeight: FontWeight.bold),
                       ),
@@ -211,7 +215,7 @@ class _InfoScreen extends State<InfoScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8, bottom: 5),
                       child: Text(
-                        "Mur de soutiènement",
+                        translate("MUR_SOUT", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
