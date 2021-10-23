@@ -2,6 +2,7 @@ import 'package:buildeo/view/formulaire.dart';
 import 'package:buildeo/view/info.dart';
 import 'package:buildeo/view/admin_page.dart';
 import 'package:buildeo/view/map.dart';
+//import 'package:buildeo/view/remplissage_template.dart';
 import 'package:buildeo/view/validation_admin.dart';
 import 'package:buildeo/view/validation_maire.dart';
 import 'package:flutter/material.dart';
