@@ -7,11 +7,13 @@ import 'package:buildeo/view/gestion_user.dart';
 import 'package:buildeo/view/info.dart';
 import 'package:buildeo/view/admin_page.dart';
 import 'package:buildeo/view/liste_permis.dart';
+
 import 'package:buildeo/view/map.dart';
 import 'package:buildeo/view/remplissage_template.dart';
 //import 'package:buildeo/view/remplissage_template.dart';
 import 'package:buildeo/view/validation_admin.dart';
 import 'package:buildeo/view/validation_maire.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/splash.dart';
