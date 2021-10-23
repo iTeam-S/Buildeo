@@ -212,10 +212,11 @@ var langages = {
     "en": "Maps and stats",
     "mg": "Sarintany sy antontan'isa",
   },
-  "CONNECTE" : {
-    "fr" : "Connecté",
-    "en" : "",
-    "mg" : ""
+  "CONNECTE": {"fr": "Connecté", "en": "Connected", "mg": "Mifandray"},
+  "CREATION_MODEL": {
+    "fr": "Création de modèle",
+    "en": "Model creation",
+    "mg": "Famoronana modely"
   }
 };
 
