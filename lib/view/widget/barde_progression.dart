@@ -13,13 +13,13 @@ class MyProgressBar extends StatelessWidget {
             Text(
               "Validation :",
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             Text(
               "52 %",
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
               ),
             )
           ],
@@ -29,7 +29,7 @@ class MyProgressBar extends StatelessWidget {
         ),
         LinearProgressIndicator(
           value: 0.46,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black45,
           valueColor: AlwaysStoppedAnimation<Color>(
             Colors.green,
           ),
