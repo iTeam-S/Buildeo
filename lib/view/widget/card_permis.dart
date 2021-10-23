@@ -48,18 +48,15 @@ class MyContainer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Flexible(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Container(
-                            padding: EdgeInsets.all(15),
-                            decoration: BoxDecoration(
-                              color: Color(0xffeb3446),
-                              borderRadius: BorderRadius.circular(9),
-                            ),
-                            child: Icon(
-                              Icons.price_check,
-                              color: Colors.white,
-                            ),
+                        child: Container(
+                          padding: EdgeInsets.all(15),
+                          decoration: BoxDecoration(
+                            color: Color(0xffeb3446),
+                            borderRadius: BorderRadius.circular(9),
+                          ),
+                          child: Icon(
+                            Icons.price_check,
+                            color: Colors.white,
                           ),
                         ),
                       ),
