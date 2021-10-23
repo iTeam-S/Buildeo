@@ -30,7 +30,16 @@ class ValidationMaire extends StatelessWidget {
             children: <Widget>[
               Container(
                   height: Get.height * .25,
-                  color: Color(0xffeb3446),
+                  decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xffff365e),
+                        Color(0xffeb3446),
+                      ],
+                    )
+                  ),
                   padding: EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

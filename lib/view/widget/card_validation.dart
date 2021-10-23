@@ -34,8 +34,14 @@ class CardValidated extends StatelessWidget {
                     style: TextStyle(color: Colors.black45))
               ],
             ),
-            trailing: Icon(Icons.check, color: Colors.green, size: 30.0)),
+            trailing: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: Color(0xff2ebc4f),
+                        child: IconButton(
+                          icon: Icon(Icons.check, color: Colors.white, size: 13,),
+                          onPressed: () {},
+            ))
       ),
-    );
+    ));
   }
 }
