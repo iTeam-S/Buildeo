@@ -35,13 +35,19 @@ class _CarteView extends State<CarteView> {
         elevation: 5,
         actions: [
           IconButton(
-              icon: Icon(Icons.close, color: Colors.white),
-              onPressed: () {
-                _mapKey.currentState?.clearSelect();
-                setState(() {
-                  selectedCity = null;
-                });
-              })
+            icon: Icon(Icons.close, color: Colors.white),
+            onPressed: () {
+              _mapKey.currentState?.clearSelect();
+              setState(() {
+                selectedCity = null;
+              });
+            }
+          ),
+          IconButton(
+          icon: Icon(Icons.home_filled, color: Colors.white),
+          onPressed: () {
+            Get.toNamed('/home');
+          })
         ],
       ),
       body: Center(

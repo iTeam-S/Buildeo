@@ -28,6 +28,13 @@ class _InfoScreen extends State<InfoScreen> {
         title: Text("Centre d'information", style: TextStyle(fontSize: 15),),
         backgroundColor: Color(0xffeb3446),
         elevation: 5,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.home_filled, color: Colors.white),
+              onPressed: () {
+                Get.toNamed('/home');
+              })
+        ],
       ),
       body:Container(
         alignment: Alignment.center,
