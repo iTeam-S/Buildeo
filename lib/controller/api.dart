@@ -5,7 +5,7 @@ import 'package:buildeo/model/user.dart';
 import 'package:dio/dio.dart' as dio;
 import 'package:get/get.dart';
 
-const String baseUrl = "192.168.179.73:8000";
+const String baseUrl = "iteam-s.mg:8000";
 const String baseUrlprotocol = 'http://' + baseUrl;
 
 class ApiController extends GetxController {
