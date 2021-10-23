@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:buildeo/controller/api.dart';
-import 'package:buildeo/controller/api.dart';
+import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
@@ -196,7 +196,7 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                                           backgroundColor: Color(0xff2ebc4f),
                                           child: IconButton(icon: Icon(Icons.download),
                                           onPressed: (){
-                                            _launchURL("${baseUrlprotocol}/download/attachement/${appController.currentPermis!.attachements}?token=${appController.user!.token}");
+                                            _launchURL("$baseUrlprotocol/download/attachement/${appController.currentPermis!.attachements}?token=${appController.user!.token}");
                                           },
                                               color: Colors.white),
                                         ),
@@ -322,4 +322,70 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
       ),
     );
   }
+
+    void refusMotif(context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) => BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+              child: SimpleDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          insetPadding: EdgeInsets.all(10),
+          backgroundColor: Colors.white,
+          title: Text("Le motif de votre refus"),
+          children: [
+  
+         Column(
+                children: [
+                  TextField(
+                    maxLines: 5,
+                    maxLength: 500,
+                    textCapitalization: TextCapitalization.sentences,
+                    decoration: InputDecoration(
+                      labelText: '    Motif pas plus 500 caractères',
+                      hintText: '   Votre texte ici...',
+                    ),
+                    onChanged: (text) => setState(() {}),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.red,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text("Annuler"),
+                      ),
+                      SizedBox(
+                        width: 50,
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30.0),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text("  Ouvrir  "),
+                      )
+                    ],
+                  )
+                ],
+              ),
+          ],
+        )   ));
+  }
+
 }
