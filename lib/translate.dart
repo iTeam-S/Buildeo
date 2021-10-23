@@ -318,6 +318,12 @@ var langages = {
     "en": "Developed by iTeam-\$",
     "mg": "Novolavolan'ny iTeam-\$"
   },
+  "LISTE_USER": {
+    "fr": "Liste des users",
+    "en": "List of users",
+    "mg": "Lisitry ny mpampiasa"
+  },
+  "DEMANDE_DE_CONSTRUCTION": {"fr": "Construction de", "en": "", "mg": ""}
 };
 
 String translate(String cle, String lang) {

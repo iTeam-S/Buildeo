@@ -380,3 +380,63 @@ class _LineChartSample2State extends State<LineChartSample2> {
     );
   }
 }
+
+class PopDownload extends StatelessWidget {
+  PopDownload({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+        child: SimpleDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          insetPadding: EdgeInsets.all(10),
+          backgroundColor: Colors.white,
+          title: Text("Sous quel format voulez vous votre permis ?"),
+          children: [
+            Container(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: MaterialButton(
+                      onPressed: () {},
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            child: Icon(Icons.qr_code),
+                          ),
+                          Text("QR code")
+                        ],
+                      )),
+                ),
+                Text("-OU-"),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: MaterialButton(
+                      onPressed: () {},
+                      child: Column(children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.red,
+                          child: Icon(Icons.picture_as_pdf),
+                        ),
+                        Text("PDF")
+                      ])),
+                ),
+              ],
+            ))
+          ],
+        ));
+  }
+
+  setState(Null Function() param0) {}
+}

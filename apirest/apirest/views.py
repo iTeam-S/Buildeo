@@ -2,12 +2,13 @@ from .models import Commune, Permis, User
 import jwt
 import json
 import time
+import mimetypes
 from os import environ
 from datetime import datetime
 from datetime import datetime, timedelta
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
-from django.http import JsonResponse, Http404
+from django.http import JsonResponse, Http404, HttpResponse
 from werkzeug.utils import secure_filename
 from django.core.files.storage import FileSystemStorage
 
@@ -62,11 +63,12 @@ def login_view(request):
                     'user_id': user.id,
                     'compte': user.type,
                     'nom': f'{user.first_name} {user.last_name}',
-                    'email': usr
+                    'email': usr,
+                    'commune_id' : user.commune_id.id
                 }
             }
         )
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -93,7 +95,7 @@ def getpermis_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -115,7 +117,7 @@ def get_userpermis_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS INNEXISTANT', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
@@ -137,7 +139,7 @@ def requestpermis(request):
             return JsonResponse({'status_code': 404, 'status': 'MISSING_ATTACHEMENT', 'data': None})
         try:
             filename = str(time.time()) + '_' + secure_filename(attachement.name)
-            fss = FileSystemStorage(location='media/'+datetime.now().date().strftime('%d-%m-%Y'))
+            fss = FileSystemStorage(location='media/attachement/')
             file = fss.save(filename, attachement)
 
             Permis.objects.create(
@@ -152,31 +154,35 @@ def requestpermis(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'PERMIS_INNEXISTANT', 'data': None})
-    return Http404()
+    return Http404
 
 
 @csrf_exempt
 def get_listcommune_view(request):
     try:
         communes = Commune.objects.all()
-        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': {commune.id:commune.nom for commune in communes}})
+        return JsonResponse({'status_code': 200, 'status': 'OK', 'data': [{"id":commune.id,"nom":commune.nom} for commune in communes]})
     except Exception as err:
         print(err)
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
 
 
 @csrf_exempt
+@verif_token
 def get_listpermit_view(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
         commune_id = data.get("commune_id")
         if not commune_id:
-            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_COMMUNE_ID', 'data': None})
         try:
             permis = Permis.objects.filter(commune_id=commune_id).order_by("-id")[:20]
             list_permi = []
             for permi in permis:
                 permi = dict(permi.__dict__)
+                permi['req_date'] = permi['req_date'].strftime('%Y-%m-%d %H:%M:%S')
+                if permi['trtm_date']: permi['trtm_date'] = permi['trtm_date'].strftime('%Y-%m-%d %H:%M:%S')
+                if permi['delivery_date']: permi['delivery_date'] = permi['delivery_date'].strftime('%Y-%m-%d %H:%M:%S')
                 permi.pop('_state')
                 list_permi.append(permi)
                 print(list_permi)
@@ -184,4 +190,57 @@ def get_listpermit_view(request):
         except Exception as err:
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
-    return Http404()
+    return Http404
+
+
+@csrf_exempt
+@verif_token
+def affectation_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        trtm_user_id = data.get("trtm_user_id")
+        permis_id = data.get("permis_id")
+        if not trtm_user_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+        if not permis_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_PERMISID', 'data': None})
+        try:
+            Permis.objects.filter(id=permis_id).update(trtm_user_id=trtm_user_id,status='EN_TRTM',trtm_date=datetime.today())
+            permi = Permis.objects.get(id=permis_id).__dict__
+            permi.pop("_state")
+            return JsonResponse({'status_code': 200, 'status': 'OK', 'data': permi})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+    return Http404
+
+
+@csrf_exempt
+def download_attachement(request, filename):
+    fl = open('media/attachement/'+filename, 'rb')
+    token = request.GET.get("token")
+    try:
+        jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+    except Exception as err:
+        return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
+
+    try:
+        mime_type, _ = mimetypes.guess_type('media/'+filename)
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+
+@csrf_exempt
+def download_model(request, filename):
+    try:
+        fl = open('media/model/'+filename, 'rb')
+        mime_type, _ = mimetypes.guess_type('media/'+filename)
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})

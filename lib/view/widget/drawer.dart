@@ -177,7 +177,8 @@ class AppDrawer extends StatelessWidget {
                                               "VALIDATION_ADMIN",
                                               appController.lang)),
                                           onTap: () {
-                                            Get.toNamed("/pageAmin");
+                                              appController.getAllPermis(appController.user!.commune);
+                                              Get.toNamed("/pageAmin");
                                           },
                                           hoverColor: const Color(0xfffcdfca),
                                           trailing:
@@ -348,7 +349,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'mg';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .malagasy;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -372,7 +383,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'fr';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .frantsay;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -396,7 +417,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'en';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .english;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -527,6 +558,26 @@ class AppDrawer extends StatelessWidget {
                                             appController.lang)),
                                         onTap: () {
                                           Get.toNamed('/form');
+                                        },
+                                        hoverColor: const Color(0xffceeaf2),
+                                        trailing:
+                                            const Icon(Icons.chevron_right),
+                                      ),
+                                      ListTile(
+                                        leading: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor:
+                                              const Color(0xff0d94bd),
+                                          child: const Icon(
+                                            Icons.recent_actors,
+                                            color: Colors.white,
+                                            size: 16,
+                                          ),
+                                        ),
+                                        title: Text(translate(
+                                            "LISTE_USER", appController.lang)),
+                                        onTap: () {
+                                          Get.toNamed('/identite');
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
