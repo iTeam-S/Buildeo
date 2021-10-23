@@ -142,15 +142,75 @@ var langages = {
     "en": "OR",
     "mg": "NA",
   },
-  "Se connecter": {
+  "SE_CONNECTER": {
     "fr": "Se connecter",
-    "en": "connect",
+    "en": "Connect",
     "mg": "Hiditra",
   },
   "NON_CONNECTE": {
     "fr": "Non connecté",
     "en": "Not connected",
     "mg": "Tsy tafiditra",
+  },
+  "LISTE_VALIDATIONS": {
+    "fr": "Liste des validations",
+    "en": "Validations list",
+    "mg": "Lisitrin'ny fankatoavana",
+  },
+  "VALIDATION_ADMIN": {
+    "fr": "Validation administrateurs",
+    "en": "Administrator Validation",
+    "mg": "Fanamafisana ny mpitantana",
+  },
+  "VALIDATION_MAIRE": {
+    "fr": "Validation de maire",
+    "en": "Fanamarinan'ny Ben'ny tanàna",
+    "mg": "Lisitrin'ny fankatoavana",
+  },
+  "PLUS": {
+    "fr": "Plus",
+    "en": "More",
+    "mg": "Bebe kokoa",
+  },
+  "LISTE_PERMIS": {
+    "fr": "Liste des permis",
+    "en": "License list",
+    "mg": "Lisitrin'ny fahazoan-dàlana",
+  },
+  "DEMANDE_PERMIS": {
+    "fr": "Faire une demande de permis",
+    "en": "Request a license",
+    "mg": "Mangataka fahazoan-dàlana",
+  },
+  "CENTRE_INFO": {
+    "fr": "Centre d'information",
+    "en": "Information center",
+    "mg": "Ivotoeram-baovao",
+  },
+  "PREFERENCES": {
+    "fr": "Préférences",
+    "en": "Preferences",
+    "mg": "Safidinao",
+  },
+  "CHANGE_LANG": {
+    "fr": "Changer language",
+    "en": "Change langage",
+    "mg": "Hanova fiteny",
+  },
+  "A_PROPOS": {
+    "fr": "A propos",
+    "en": "About",
+    "mg": "Mombamomba",
+  },
+  "SE_DECONNECTER": {
+    "fr": "Se deconnecter",
+    "en": "Logout",
+    "mg": "Hivoaka",
+  },
+  "CARTE_STAT": {
+    "fr": "Cartes et statistiques",
+    "en": "Maps and stats",
+    "mg": "Sarintany sy antontan'isa",
   },
 };
 
