@@ -1,11 +1,23 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:buildeo/controller/api.dart';
+import 'package:buildeo/model/user.dart';
 import 'package:buildeo/translate.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 
 class AppController extends GetxController {
+
+  final box = GetStorage();
+  // configuration user 
   String lang = 'fr';
+  late User user;
   // VERIFICATION OPTIONS
   bool isscanning = false;
   TextEditingController numPermisController = TextEditingController();
@@ -19,11 +31,52 @@ class AppController extends GetxController {
 
   final ApiController apiController = Get.put(ApiController());
 
-  void login(usr, passwd){
+  void login(RoundedLoadingButtonController btnController, usr, passwd) async{
     try {
-
+      var res = await apiController.login(usr, passwd);
+      if (res[0]) {
+        if (res[1]['status_code'] != 200){
+          Get.snackbar(
+          "Erreur",
+          translate(res[1]['status'], lang),
+          colorText: Colors.white,
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+          } 
+      else {
+        Timer(Duration(seconds: 2), (){
+          btnController.reset();
+        });
+        user = User.fromJson(res[1]['data']);
+        box.write('user', jsonEncode(user));
+        box.save();
+        btnController.success();
+      }
+    }
+    else {
+        Get.snackbar(
+          "Erreur",
+          translate(res[1], lang),
+          colorText: Colors.white,
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+    }
         
-    } catch (e) {
+  } 
+  catch (e) {
+    print(e);
       Get.snackbar(
         translate("erreur", lang),
         translate("erreur_produite", lang),
@@ -36,7 +89,9 @@ class AppController extends GetxController {
         barBlur: 0,
         duration: const Duration(seconds: 2),
       );
+      btnController.reset();
     }
+ 
   }
   void getPermis(String permisID) async {
     try {
