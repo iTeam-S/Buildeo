@@ -82,13 +82,15 @@ class AppDrawer extends StatelessWidget {
                           ),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text("Buildeo",
                                     style: TextStyle(
                                       fontSize: 23,
                                       color: Colors.black87,
                                     )),
-                                Text("Non connecté",
+                                Text(
+                                    translate(
+                                        "NON_CONNECTE", appController.lang),
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Colors.black87,
@@ -132,7 +134,9 @@ class AppDrawer extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(children: [
-                        Text("LISTE DES VALIDATIONS",
+                        Text(
+                            translate("LISTE_VALIDATIONS", appController.lang)
+                                .toUpperCase(),
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey,
@@ -147,7 +151,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Validation administrateurs"),
+                          title: Text(translate(
+                              "VALIDATION_ADMIN", appController.lang)),
                           onTap: () {
                             Get.toNamed("/pageAmin");
                           },
@@ -164,14 +169,16 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Validation de maire"),
+                          title: Text(translate(
+                              "VALIDATION_MAIRE", appController.lang)),
                           onTap: () {
                             Get.toNamed("/validMaire");
                           },
                           hoverColor: const Color(0xffe5c2fc),
                           trailing: const Icon(Icons.chevron_right),
                         ),
-                        Text("PLUS",
+                        Text(
+                            translate("PLUS", appController.lang).toUpperCase(),
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey,
@@ -186,7 +193,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Liste des permis"),
+                          title: Text(
+                              translate("LISTE_PERMIS", appController.lang)),
                           onTap: () {},
                           hoverColor: const Color(0xfffcdfca),
                           trailing: const Icon(Icons.chevron_right),
@@ -201,7 +209,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Faire une demande de permis"),
+                          title: Text(
+                              translate("DEMANDE_PERMIS", appController.lang)),
                           onTap: () {
                             Get.toNamed('/form');
                           },
@@ -218,7 +227,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Centre d'information"),
+                          title: Text(
+                              translate("CENTRE_INFO", appController.lang)),
                           onTap: () {
                             Get.toNamed('/info');
                           },
@@ -235,14 +245,17 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Carte et statistique"),
+                          title:
+                              Text(translate("CARTE_STAT", appController.lang)),
                           onTap: () {
                             Get.toNamed("/map");
                           },
                           hoverColor: const Color(0xffddffdd),
                           trailing: const Icon(Icons.chevron_right),
                         ),
-                        Text("PREFERENCES",
+                        Text(
+                            translate("PREFERENCES", appController.lang)
+                                .toUpperCase(),
                             style: TextStyle(
                               fontSize: 13,
                               color: Colors.grey,
@@ -257,7 +270,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Changer language"),
+                          title: Text(
+                              translate("CHANGE_LANG", appController.lang)),
                           onTap: () {
                             Navigator.pop(context);
                           },
@@ -274,7 +288,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("A propos"),
+                          title:
+                              Text(translate("A_PROPOS", appController.lang)),
                           onTap: () {
                             Navigator.pop(context);
                           },
@@ -290,7 +305,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: const Text("Se deconnecter"),
+                          title: Text(
+                              translate("SE_DECONNECTER", appController.lang)),
                           onTap: () {
                             Navigator.pop(context);
                           },
@@ -316,8 +332,8 @@ class AppDrawer extends StatelessWidget {
                   translate("se_connecter", appController.lang),
                   textAlign: TextAlign.center,
                 ),
-                contentPadding:
-                     EdgeInsets.only(right: 20, left: 20, top: Get.width*.05, bottom: 10),
+                contentPadding: EdgeInsets.only(
+                    right: 20, left: 20, top: Get.width * .05, bottom: 10),
                 children: [
                     SizedBox(
                                 height: MediaQuery.of(context).size.height * 0.4,
@@ -458,10 +474,14 @@ class AppDrawer extends StatelessWidget {
                                                       0.03),
                                               child: RoundedLoadingButton(
                                                 color: const Color(0xffeb3446),
-                                                successColor: Colors.blue,
+                                                successColor: Colors.greenAccent,
                                                 controller: _btnController,
                                                 onPressed: () {
-                                                 
+                                                  appController.login(
+                                                    _btnController, 
+                                                    appController.usrController.text,
+                                                    appController.passwdController.text
+                                                  );
                                                 },
                                                 valueColor: Colors.white,
                                                 borderRadius: 90,
