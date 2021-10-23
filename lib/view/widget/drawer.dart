@@ -105,41 +105,35 @@ class AppDrawer extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            const Divider(),
-                            Container(
-                              margin: EdgeInsets.only(
-                                top: MediaQuery.of(context).size.height * 0.03,
-                                bottom:
-                                    MediaQuery.of(context).size.height * 0.03,
+                            if (appController.user!.compte == "ADMIN" || appController.user!.compte == "MAIRE")
+                            ListTile(
+                              leading: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: const Color(0xff0cab56),
+                                child: const Icon(
+                                  Icons.location_on,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
                               ),
-                              child: RoundedLoadingButton(
-                                elevation: 0,
-                                height: 37,
-                                width: 130,
-                                controller: _btnController,
-                                color: const Color(0xfffad9dd),
-                                successColor: Colors.blue,
-                                onPressed: () {
-                                  if (appController.user == null) {
-                                    Navigator.of(context).pop();
-                                    loginModal(context);
-                                  } else {
-                                    Navigator.of(context).pop();
-                                    appController.user = null;
-                                    box.remove('user');
-                                    appController.update();
-                                  }
-                                },
-                                valueColor: Colors.white,
-                                borderRadius: 90,
-                                child: Text(
-                                    translate(
-                                        appController.user == null
-                                            ? "se_connecter"
-                                            : "deconnexion",
-                                        appController.lang),
-                                    style: const TextStyle(
-                                        color: Color(0xffeb3446))),
+                              title:
+                                  Text(translate("CARTE_STAT", appController.lang)),
+                              onTap: () {
+                                Get.toNamed("/map");
+                              },
+                              hoverColor: const Color(0xffddffdd),
+                              trailing: const Icon(Icons.chevron_right),
+                            ),
+                           Divider(),
+                            ListTile(
+                              leading: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: const Color(0xff0cab56),
+                                child: const Icon(
+                                  Icons.translate,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
                               ),
                             ),
                             const Divider(),
@@ -366,107 +360,82 @@ class AppDrawer extends StatelessWidget {
                               },
                               hoverColor: const Color(0xfffad9dd),
                             ),*/
-                                    ]),
-                                  ]
-                                : [
-                                    Column(children: [
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xFFFF4800),
-                                          child: const Icon(
-                                            Icons.sort,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate("LISTE_PERMIS",
-                                            appController.lang)),
-                                        onTap: () {},
-                                        hoverColor: const Color(0xfffcdfca),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xff0d94bd),
-                                          child: const Icon(
-                                            Icons.edit,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate("DEMANDE_PERMIS",
-                                            appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed('/form');
-                                        },
-                                        hoverColor: const Color(0xffceeaf2),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xFFDC06F0),
-                                          child: const Icon(
-                                            Icons.info,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate(
-                                            "CENTRE_INFO", appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed('/info');
-                                        },
-                                        hoverColor: const Color(0xffe5c2fc),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xff0cab56),
-                                          child: const Icon(
-                                            Icons.translate,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate(
-                                            "CHANGE_LANG", appController.lang)),
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                        hoverColor: const Color(0xffddffdd),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xff0d94bd),
-                                          child: const Icon(
-                                            Icons.info,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate(
-                                            "A_PROPOS", appController.lang)),
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        hoverColor: const Color(0xffceeaf2),
-                                      ),
-                                      /*ListTile(
+                          ]),
+                        ] : 
+                         [
+                          Column(children: [
+                            ListTile(
+                              leading: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: const Color(0xff0d94bd),
+                                child: const Icon(
+                                  Icons.edit,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ),
+                              title: Text(
+                                  translate("DEMANDE_PERMIS", appController.lang)),
+                              onTap: () {
+                                Get.toNamed('/form');
+                              },
+                              hoverColor: const Color(0xffceeaf2),
+                              trailing: const Icon(Icons.chevron_right),
+                            ),
+                            ListTile(
+                              leading: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: const Color(0xFFDC06F0),
+                                child: const Icon(
+                                  Icons.info,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ),
+                              title: Text(
+                                  translate("CENTRE_INFO", appController.lang)),
+                              onTap: () {
+                                Get.toNamed('/info');
+                              },
+                              hoverColor: const Color(0xffe5c2fc),
+                              trailing: const Icon(Icons.chevron_right),
+                            ),
+                            ListTile(
+                              leading: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: const Color(0xff0cab56),
+                                child: const Icon(
+                                  Icons.translate,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ),
+                              title: Text(
+                                  translate("CHANGE_LANG", appController.lang)),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              trailing: const Icon(Icons.chevron_right),
+                              hoverColor: const Color(0xffddffdd),
+                            ),
+                            ListTile(
+                              leading: CircleAvatar(
+                                radius: 15,
+                                backgroundColor: const Color(0xff0d94bd),
+                                child: const Icon(
+                                  Icons.info,
+                                  color: Colors.white,
+                                  size: 16,
+                                ),
+                              ),
+                              title:
+                                  Text(translate("A_PROPOS", appController.lang)),
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              hoverColor: const Color(0xffceeaf2),
+                            ),
+                            /*ListTile(
                               leading: CircleAvatar(
                                 radius: 15,
                                 backgroundColor: const Color(0xffeb3446),

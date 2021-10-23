@@ -1,6 +1,6 @@
 var langages = {
   "bienvenue": {"fr": "Bienvenue", "en": "Welcome", "mg": "Tongasoa"},
-  "incorrect_pass": {
+  "AUTH_FAILED": {
     "fr": "Mot de passe ou Nom d\"utilisateur incorrecte",
     "en": "Password or Username invalid",
     "mg": "Misy diso ny anarana na soratra miafina nampidirinao",

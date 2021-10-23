@@ -48,6 +48,7 @@ class AppController extends GetxController {
           barBlur: 0,
           duration: const Duration(seconds: 2),
         );
+        btnController.reset();
           } 
       else {
         Timer(Duration(seconds: 2), (){
@@ -74,6 +75,7 @@ class AppController extends GetxController {
           barBlur: 0,
           duration: const Duration(seconds: 2),
         );
+        btnController.reset();
     }
         
   } 
