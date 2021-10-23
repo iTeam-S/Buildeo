@@ -38,7 +38,6 @@ class AppDrawer extends StatelessWidget {
   //   });
   // }
 
-  // ignore: unused_field
   Language _site = Language.frantsay;
 
   @override
@@ -223,9 +222,7 @@ class AppDrawer extends StatelessWidget {
                                         ),
                                         title: Text(translate("LISTE_PERMIS",
                                             appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed("/liste");
-                                        },
+                                        onTap: () {},
                                         hoverColor: const Color(0xfffcdfca),
                                         trailing:
                                             const Icon(Icons.chevron_right),
@@ -245,26 +242,6 @@ class AppDrawer extends StatelessWidget {
                                             appController.lang)),
                                         onTap: () {
                                           Get.toNamed('/form');
-                                        },
-                                        hoverColor: const Color(0xffceeaf2),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xFFDB119F),
-                                          child: const Icon(
-                                            Icons.text_fields,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate("CREATION_MODEL",
-                                            appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed('/remplir');
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
@@ -328,7 +305,111 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "CHANGE_LANG", appController.lang)),
                                         onTap: () {
-                                          Navigator.pop(context);
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                          sigmaX: 1.5,
+                                                          sigmaY: 1.5),
+                                                      child: SimpleDialog(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)),
+                                                        title: Text(
+                                                          translate(
+                                                              "CHANGE_LANG",
+                                                              appController
+                                                                  .lang),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 18),
+                                                        ),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 25,
+                                                                horizontal: 25),
+                                                        children: [
+                                                          Divider(),
+                                                          ListTile(
+                                                              title: const Text(
+                                                                  'Malagasy'),
+                                                              leading: Radio(
+                                                                value: Language
+                                                                    .malagasy,
+                                                                groupValue:
+                                                                    _site,
+                                                                onChanged:
+                                                                    (Language?
+                                                                        value) {},
+                                                              ),
+                                                              trailing:
+                                                                  CircleAvatar(
+                                                                radius: 15,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/malagasy.png',
+                                                                  width: 20,
+                                                                ),
+                                                              )),
+                                                          ListTile(
+                                                              title: const Text(
+                                                                  'Français'),
+                                                              leading: Radio(
+                                                                value: Language
+                                                                    .frantsay,
+                                                                groupValue:
+                                                                    _site,
+                                                                onChanged:
+                                                                    (Language?
+                                                                        value) {},
+                                                              ),
+                                                              trailing:
+                                                                  CircleAvatar(
+                                                                radius: 15,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/french.png',
+                                                                  width: 20,
+                                                                ),
+                                                              )),
+                                                          ListTile(
+                                                              title: const Text(
+                                                                  'English'),
+                                                              leading: Radio(
+                                                                value: Language
+                                                                    .english,
+                                                                groupValue:
+                                                                    _site,
+                                                                onChanged:
+                                                                    (Language?
+                                                                        value) {},
+                                                              ),
+                                                              trailing:
+                                                                  CircleAvatar(
+                                                                radius: 15,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/english.png',
+                                                                  width: 20,
+                                                                ),
+                                                              )),
+                                                        ],
+                                                      )));
                                         },
                                         trailing:
                                             const Icon(Icons.chevron_right),
@@ -348,7 +429,82 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "A_PROPOS", appController.lang)),
                                         onTap: () {
-                                          Navigator.pop(context);
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                          sigmaX: 1.5,
+                                                          sigmaY: 1.5),
+                                                      child: SimpleDialog(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 25,
+                                                                horizontal: 25),
+                                                        children: [
+                                                          Center(
+                                                            child: CircleAvatar(
+                                                              radius: 40,
+                                                              backgroundColor:
+                                                                  const Color(
+                                                                      0xffeb3446),
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/images/logo_sb.png',
+                                                                width: 45,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Center(
+                                                            child: Text(
+                                                                "Buildeo 0.0.1",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 20,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                )),
+                                                          ),
+                                                          Divider(),
+                                                          Center(
+                                                            child: Text(
+                                                                "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet.",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 15,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                )),
+                                                          ),
+                                                          Divider(
+                                                            color: Colors.white,
+                                                          ),
+                                                          Center(
+                                                            child: Text(
+                                                                "Developpé par iTeam-\$",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        17,
+                                                                    color: Colors
+                                                                        .teal,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold)),
+                                                          ),
+                                                        ],
+                                                      )));
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                       ),
@@ -371,26 +527,6 @@ class AppDrawer extends StatelessWidget {
                                             appController.lang)),
                                         onTap: () {
                                           Get.toNamed('/form');
-                                        },
-                                        hoverColor: const Color(0xffceeaf2),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xFFDB119F),
-                                          child: const Icon(
-                                            Icons.text_fields,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate("CREATION_MODEL",
-                                            appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed('/remplir');
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
@@ -430,7 +566,111 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "CHANGE_LANG", appController.lang)),
                                         onTap: () {
-                                          Navigator.pop(context);
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                          sigmaX: 1.5,
+                                                          sigmaY: 1.5),
+                                                      child: SimpleDialog(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)),
+                                                        title: Text(
+                                                          translate(
+                                                              "CHANGE_LANG",
+                                                              appController
+                                                                  .lang),
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontSize: 18),
+                                                        ),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 25,
+                                                                horizontal: 25),
+                                                        children: [
+                                                          Divider(),
+                                                          ListTile(
+                                                              title: const Text(
+                                                                  'Malagasy'),
+                                                              leading: Radio(
+                                                                value: Language
+                                                                    .malagasy,
+                                                                groupValue:
+                                                                    _site,
+                                                                onChanged:
+                                                                    (Language?
+                                                                        value) {},
+                                                              ),
+                                                              trailing:
+                                                                  CircleAvatar(
+                                                                radius: 15,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/malagasy.png',
+                                                                  width: 20,
+                                                                ),
+                                                              )),
+                                                          ListTile(
+                                                              title: const Text(
+                                                                  'Français'),
+                                                              leading: Radio(
+                                                                value: Language
+                                                                    .frantsay,
+                                                                groupValue:
+                                                                    _site,
+                                                                onChanged:
+                                                                    (Language?
+                                                                        value) {},
+                                                              ),
+                                                              trailing:
+                                                                  CircleAvatar(
+                                                                radius: 15,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/french.png',
+                                                                  width: 20,
+                                                                ),
+                                                              )),
+                                                          ListTile(
+                                                              title: const Text(
+                                                                  'English'),
+                                                              leading: Radio(
+                                                                value: Language
+                                                                    .english,
+                                                                groupValue:
+                                                                    _site,
+                                                                onChanged:
+                                                                    (Language?
+                                                                        value) {},
+                                                              ),
+                                                              trailing:
+                                                                  CircleAvatar(
+                                                                radius: 15,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .white,
+                                                                child:
+                                                                    Image.asset(
+                                                                  'assets/images/english.png',
+                                                                  width: 20,
+                                                                ),
+                                                              )),
+                                                        ],
+                                                      )));
                                         },
                                         trailing:
                                             const Icon(Icons.chevron_right),
@@ -450,7 +690,82 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "A_PROPOS", appController.lang)),
                                         onTap: () {
-                                          Navigator.pop(context);
+                                          showDialog(
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                          sigmaX: 1.5,
+                                                          sigmaY: 1.5),
+                                                      child: SimpleDialog(
+                                                        shape: RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        20)),
+                                                        contentPadding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                vertical: 25,
+                                                                horizontal: 25),
+                                                        children: [
+                                                          Center(
+                                                            child: CircleAvatar(
+                                                              radius: 40,
+                                                              backgroundColor:
+                                                                  const Color(
+                                                                      0xffeb3446),
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/images/logo_sb.png',
+                                                                width: 45,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Center(
+                                                            child: Text(
+                                                                "Buildeo 0.0.1",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 20,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                )),
+                                                          ),
+                                                          Divider(),
+                                                          Center(
+                                                            child: Text(
+                                                                "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet.",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 15,
+                                                                  color: Colors
+                                                                      .black87,
+                                                                )),
+                                                          ),
+                                                          Divider(
+                                                            color: Colors.white,
+                                                          ),
+                                                          Center(
+                                                            child: Text(
+                                                                "Developpé par iTeam-\$",
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        17,
+                                                                    color: Colors
+                                                                        .teal,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold)),
+                                                          ),
+                                                        ],
+                                                      )));
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                       ),
