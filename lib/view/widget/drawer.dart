@@ -369,9 +369,56 @@ class AppDrawer extends StatelessWidget {
                                 ),
                               ),
                               title:
-                                  Text(translate("A_PROPOS", appController.lang)),
-                              onTap: () {
-                                Navigator.pop(context);
+                                Text(translate("A_PROPOS", appController.lang)),
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => BackdropFilter(
+                                    filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                                    child: SimpleDialog(
+                                      shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                      contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 25, horizontal: 25),
+                                      children: [
+                                        Center(
+                                          child: CircleAvatar(
+                                            radius: 40,
+                                            backgroundColor: const Color(0xffeb3446),
+                                            child: Image.asset(
+                                              'assets/images/logo_sb.png',
+                                              width: 45,
+                                            ),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Text("Buildeo 0.0.1",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black87,
+                                          )),
+                                        ),
+                                        Divider(),
+                                        Center(
+                                          child: Text("Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet.", textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.black87,
+                                          )),
+                                        ),
+                                        Divider(color: Colors.white,),
+                                        Center(
+                                          child: Text("Developpé par iTeam-\$", textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                            color: Colors.teal,
+                                            fontWeight: FontWeight.bold
+                                          )),
+                                        ),
+                                      ],
+                                    )
+                                    )
+                                  );
                               },
                               hoverColor: const Color(0xffceeaf2),
                             ),
@@ -517,8 +564,55 @@ class AppDrawer extends StatelessWidget {
                               ),
                               title:
                                   Text(translate("A_PROPOS", appController.lang)),
-                              onTap: () {
-                                Navigator.pop(context);
+                                  onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) => BackdropFilter(
+                                    filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                                    child: SimpleDialog(
+                                      shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                      contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 25, horizontal: 25),
+                                      children: [
+                                        Center(
+                                          child: CircleAvatar(
+                                            radius: 40,
+                                            backgroundColor: const Color(0xffeb3446),
+                                            child: Image.asset(
+                                              'assets/images/logo_sb.png',
+                                              width: 45,
+                                            ),
+                                          ),
+                                        ),
+                                        Center(
+                                          child: Text("Buildeo 0.0.1",
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.black87,
+                                          )),
+                                        ),
+                                        Divider(),
+                                        Center(
+                                          child: Text("Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet.", textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: Colors.black87,
+                                          )),
+                                        ),
+                                        Divider(color: Colors.white,),
+                                        Center(
+                                          child: Text("Developpé par iTeam-\$", textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontSize: 17,
+                                            color: Colors.teal,
+                                            fontWeight: FontWeight.bold
+                                          )),
+                                        ),
+                                      ],
+                                    )
+                                    )
+                                  );
                               },
                               hoverColor: const Color(0xffceeaf2),
                             ),
