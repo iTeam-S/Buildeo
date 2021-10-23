@@ -4,42 +4,69 @@ import 'package:buildeo/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/card_permis.dart';
+import 'package:buildeo/view/widget/drawer.dart';
 
 late final height, widht;
 
 class AdminPage extends StatelessWidget {
-  const AdminPage({Key? key}) : super(key: key);
+  AdminPage({Key? key}) : super(key: key);
+
+  final GlobalKey<ScaffoldState> _key = GlobalKey();
+  AppDrawer drawer = AppDrawer();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _key,
+      drawer: drawer,
       backgroundColor: Color(0xffeb3446),
       body: Column(
         children: <Widget>[
           Container(
               height: Get.height * .25,
-              color: Color(0xffeb3446),
+              decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xffff365e),
+                    Color(0xffeb3446),
+                  ],
+                )
+              ),
               padding: EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
+                    children: [
                       IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                          )),
+                        onPressed: () {
+                          //Get.to(AppDrawer());
+                          _key.currentState!.openDrawer();
+                        },
+                        icon: Icon(
+                          Icons.sort,
+                          color: Colors.white,
+                        )
+                      ),
+                      IconButton(
+                        onPressed: () {
+
+                        },
+                        icon: Icon(
+                          Icons.home_filled,
+                          color: Colors.white,
+                        )
+                      ),
                     ],
                   ),
                   Center(
-                    child: Text("Vos demande de permis de construction",
+                    child: Text("Toutes les demandes de construction",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 30, color: Colors.white)),
+                        style: TextStyle(fontSize: 25, color: Colors.white)
+                    ),
                   ),
                   SizedBox(),
                 ],
@@ -50,10 +77,10 @@ class AdminPage extends StatelessWidget {
           Container(
             height: Get.height * .72,
             decoration: BoxDecoration(
-              color: Colors.grey.shade300,
+              color: Color(0xfff0f7ff),
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
               ),
               boxShadow: [
                 BoxShadow(blurRadius: 20.0, color: Colors.black26),

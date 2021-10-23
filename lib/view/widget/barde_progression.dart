@@ -11,7 +11,7 @@ class MyProgressBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              "Validation :",
+              "Traitement",
               style: TextStyle(
                 color: Colors.black,
               ),
@@ -28,7 +28,7 @@ class MyProgressBar extends StatelessWidget {
           height: 5,
         ),
         LinearProgressIndicator(
-          value: 0.46,
+          value: 0.52,
           backgroundColor: Colors.black45,
           valueColor: AlwaysStoppedAnimation<Color>(
             Colors.green,

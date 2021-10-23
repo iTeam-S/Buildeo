@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomeScreen(),
         '/validMaire': (context) => ValidationMaire(),
-        '/validAmin': (context) => const ValidationAdmin(),
-        '/pageAmin': (context) => const AdminPage(),
+        '/validAmin': (context) => ValidationAdmin(),
+        '/pageAmin': (context) => AdminPage(),
         '/map': (context) => const CarteView(),
         '/info': (context) => const InfoScreen(),
         '/form': (context) => const FormPage()
