@@ -124,7 +124,12 @@ def get_userpermis_view(request):
 @verif_token
 def requestpermis(request):
     if request.method == "POST":
-        #data = json.loads(request.body.decode("utf-8"))
+        token = request.POST.get('token')
+
+        try:
+            jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+        except Exception as err:
+            return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
         
         req_date = datetime.today()
         attachement = request.FILES.get('file')
@@ -168,7 +173,6 @@ def get_listcommune_view(request):
 
 
 @csrf_exempt
-@verif_token
 def get_listpermit_view(request):
     if request.method == "POST":
         data = json.loads(request.body.decode("utf-8"))
