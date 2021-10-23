@@ -11,6 +11,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 // import 'package:rounded_loading_button/rounded_loading_button.dart';
 
+
+enum Language { malagasy, frantsay, english }  
+
+
 class AppDrawer extends StatelessWidget {
   final bool isLoadingPath = false;
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -20,8 +24,7 @@ class AppDrawer extends StatelessWidget {
 
   final FocusNode focus = FocusNode();
 
-  final RoundedLoadingButtonController _btnController =
-      RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _btnController = RoundedLoadingButtonController();
 
   final AppController appController = Get.put(AppController());
   // stockena donnee ilaina apres fermeture application
@@ -34,6 +37,8 @@ class AppDrawer extends StatelessWidget {
   //     controller.success();
   //   });
   // }
+
+  Language _site = Language.frantsay;  
 
   @override
   Widget build(BuildContext context) {
@@ -275,7 +280,80 @@ class AppDrawer extends StatelessWidget {
                               title: Text(
                                   translate("CHANGE_LANG", appController.lang)),
                               onTap: () {
-                                Navigator.pop(context);
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) => BackdropFilter(
+                                  filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                                  child: SimpleDialog(
+                                    shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                    title: Text(
+                                      translate("CHANGE_LANG", appController.lang),
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(fontSize: 18),
+                                    ),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 25, horizontal: 25),
+                                    children: [
+                                      Divider(),
+                                      ListTile(  
+                                        title: const Text('Malagasy'),  
+                                        leading: Radio(  
+                                          value: Language.malagasy,  
+                                          groupValue: _site,  
+                                          onChanged: (Language ? value) {  
+
+                                          },  
+                                        ), 
+                                        trailing: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white,
+                                          child: Image.asset(
+                                            'assets/images/malagasy.png',
+                                            width: 20,
+                                          ),
+                                        )
+                                      ),  
+                                      ListTile(  
+                                        title: const Text('Français'),  
+                                        leading: Radio(  
+                                          value: Language.frantsay,  
+                                          groupValue: _site,  
+                                          onChanged: (Language? value) {  
+
+                                          },  
+                                        ),
+                                        trailing: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white,
+                                          child: Image.asset(
+                                            'assets/images/french.png',
+                                            width: 20,
+                                          ),
+                                        ) 
+                                      ),  
+                                      ListTile(  
+                                        title: const Text('English'),  
+                                        leading: Radio(  
+                                          value: Language.english,  
+                                          groupValue: _site,  
+                                          onChanged: (Language ? value) {  
+
+                                          },  
+                                        ),
+                                        trailing: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white,
+                                          child: Image.asset(
+                                            'assets/images/english.png',
+                                            width: 20,
+                                          ),
+                                        ) 
+                                      ),  
+                                    ],
+                                  )
+                                  )
+                                );
                               },
                               trailing: const Icon(Icons.chevron_right),
                               hoverColor: const Color(0xffddffdd),
@@ -297,23 +375,6 @@ class AppDrawer extends StatelessWidget {
                               },
                               hoverColor: const Color(0xffceeaf2),
                             ),
-                            /*ListTile(
-                              leading: CircleAvatar(
-                                radius: 15,
-                                backgroundColor: const Color(0xffeb3446),
-                                child: const Icon(
-                                  Icons.logout_outlined,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              ),
-                              title: Text(
-                                  translate("SE_DECONNECTER", appController.lang)),
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              hoverColor: const Color(0xfffad9dd),
-                            ),*/
                           ]),
                         ] : 
                          [
@@ -364,10 +425,82 @@ class AppDrawer extends StatelessWidget {
                                   size: 16,
                                 ),
                               ),
-                              title: Text(
-                                  translate("CHANGE_LANG", appController.lang)),
+                              title: Text(translate("CHANGE_LANG", appController.lang)),
                               onTap: () {
-                                Navigator.pop(context);
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) => BackdropFilter(
+                                  filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                                  child: SimpleDialog(
+                                    shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                    title: Text(
+                                      translate("CHANGE_LANG", appController.lang),
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(fontSize: 18),
+                                    ),
+                                    contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 25, horizontal: 25),
+                                    children: [
+                                      Divider(),
+                                      ListTile(  
+                                        title: const Text('Malagasy'),  
+                                        leading: Radio(  
+                                          value: Language.malagasy,  
+                                          groupValue: _site,  
+                                          onChanged: (Language ? value) {  
+
+                                          },  
+                                        ), 
+                                        trailing: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white,
+                                          child: Image.asset(
+                                            'assets/images/malagasy.png',
+                                            width: 20,
+                                          ),
+                                        )
+                                      ),  
+                                      ListTile(  
+                                        title: const Text('Français'),  
+                                        leading: Radio(  
+                                          value: Language.frantsay,  
+                                          groupValue: _site,  
+                                          onChanged: (Language? value) {  
+
+                                          },  
+                                        ),
+                                        trailing: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white,
+                                          child: Image.asset(
+                                            'assets/images/french.png',
+                                            width: 20,
+                                          ),
+                                        ) 
+                                      ),  
+                                      ListTile(  
+                                        title: const Text('English'),  
+                                        leading: Radio(  
+                                          value: Language.english,  
+                                          groupValue: _site,  
+                                          onChanged: (Language ? value) {  
+
+                                          },  
+                                        ),
+                                        trailing: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor: Colors.white,
+                                          child: Image.asset(
+                                            'assets/images/english.png',
+                                            width: 20,
+                                          ),
+                                        ) 
+                                      ),  
+                                    ],
+                                  )
+                                  )
+                                );
                               },
                               trailing: const Icon(Icons.chevron_right),
                               hoverColor: const Color(0xffddffdd),
@@ -389,23 +522,6 @@ class AppDrawer extends StatelessWidget {
                               },
                               hoverColor: const Color(0xffceeaf2),
                             ),
-                            /*ListTile(
-                              leading: CircleAvatar(
-                                radius: 15,
-                                backgroundColor: const Color(0xffeb3446),
-                                child: const Icon(
-                                  Icons.logout_outlined,
-                                  color: Colors.white,
-                                  size: 16,
-                                ),
-                              ),
-                              title: Text(
-                                  translate("SE_DECONNECTER", appController.lang)),
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              hoverColor: const Color(0xfffad9dd),
-                            ),*/
                           ]),
                         ] 
                     )
