@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: const Color(0xffeb3446),
                           successColor: Colors.blue,
                           onPressed: () {
-                            Get.to('/confirm_pass');
+                            Get.toNamed('/form');
                           },
                           valueColor: Colors.white,
                           borderRadius: 90,
@@ -233,9 +233,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         radius: 20,
                         backgroundColor: Color(0xffeb3446),
                         child: IconButton(
-                            onPressed: () {
-                              Get.toNamed('/form');
-                            },
+                            onPressed: () {},
                             icon: Icon(
                               Icons.edit,
                               color: Colors.white,
