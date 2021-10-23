@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
+import 'package:buildeo/responsive.dart';
 import 'package:buildeo/translate.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:file_picker/file_picker.dart';
@@ -91,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Stack(
               children: [
                 Image.asset(
-                  'assets/images/cover2.jpg',
+                  isMobile(context) ? 'assets/images/cover.jpg' : 'assets/images/cover2.jpg' ,
                   width: MediaQuery.of(context).size.width,
                 ),
                 Container(
