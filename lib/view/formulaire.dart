@@ -11,8 +11,7 @@ class FormPage extends StatefulWidget {
 
 class _FormPageState extends State<FormPage> {
   //TextController to read text entered in text field
-  TextEditingController password = TextEditingController();
-  TextEditingController confirmpassword = TextEditingController();
+
   final RoundedLoadingButtonController _btnController =
       RoundedLoadingButtonController();
   final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
@@ -228,6 +227,46 @@ class _FormPageState extends State<FormPage> {
                                         color: Color(0xffeb3446)),
                                   ),
                                 )),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  width: 20,
+                                ),
+                                Text(
+                                  "Paiement :",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color:
+                                          Colors.grey.shade400.withOpacity(.7),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                InkWell(
+                                    onTap: () {},
+                                    child: Flexible(
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 15, vertical: 8),
+                                        decoration: BoxDecoration(
+                                          color: Color(0xff2ebc4f),
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                        ),
+                                        child: Text(
+                                          "Payé",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ),
+                                    )),
+                              ],
+                            )
                           ],
                         ),
                       ),

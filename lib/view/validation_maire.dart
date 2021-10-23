@@ -8,7 +8,6 @@ import 'package:buildeo/view/widget/drawer.dart';
 
 // ignore: must_be_immutable
 class ValidationMaire extends StatelessWidget {
-
   ValidationMaire({Key? key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
@@ -29,17 +28,16 @@ class ValidationMaire extends StatelessWidget {
           Column(
             children: <Widget>[
               Container(
-                  height: Get.height * .25,
+                  height: Get.height * .23,
                   decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0xffff365e),
-                        Color(0xffeb3446),
-                      ],
-                    )
-                  ),
+                      gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xffff365e),
+                      Color(0xffeb3446),
+                    ],
+                  )),
                   padding: EdgeInsets.all(15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,36 +46,34 @@ class ValidationMaire extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                            onPressed: () {
-                            //Get.to(AppDrawer());
-                            _key.currentState!.openDrawer();
-                            },
-                            icon: Icon(
-                              Icons.sort,
-                              color: Colors.white,
-                            )
-                          ),
+                              onPressed: () {
+                                //Get.to(AppDrawer());
+                                _key.currentState!.openDrawer();
+                              },
+                              icon: Icon(
+                                Icons.sort,
+                                color: Colors.white,
+                              )),
                           IconButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            icon: Icon(
-                              Icons.home_filled,
-                              color: Colors.white,
-                            )
-                          ),
+                              onPressed: () {
+                                Get.back();
+                              },
+                              icon: Icon(
+                                Icons.home_filled,
+                                color: Colors.white,
+                              )),
                         ],
                       ),
                       Center(
                         child: Text("Dossier en attente de validation",
                             textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 25, color: Colors.white)
-                        ),
+                            style:
+                                TextStyle(fontSize: 30, color: Colors.white)),
                       ),
                     ],
                   )),
               Container(
-                height: Get.height * .75,
+                height: Get.height * .77,
                 decoration: BoxDecoration(
                   color: Color(0xfff0f7ff),
                   borderRadius: BorderRadius.only(
@@ -97,7 +93,8 @@ class ValidationMaire extends StatelessWidget {
                               builder: (context, orientation) {
                             return GridView.count(
                               childAspectRatio: (itemWidth / itemHeight),
-                              controller: ScrollController(keepScrollOffset: false),
+                              controller:
+                                  ScrollController(keepScrollOffset: false),
                               crossAxisCount: 4,
                               // ignore: prefer_const_literals_to_create_immutables
                               children: [
