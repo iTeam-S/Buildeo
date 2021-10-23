@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
+import 'package:buildeo/model/permis.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +16,8 @@ class AdminPage extends StatelessWidget {
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
+  final AppController appController = Get.put(AppController());
+  
 
   @override
   Widget build(BuildContext context) {
@@ -21,92 +25,116 @@ class AdminPage extends StatelessWidget {
       key: _key,
       drawer: drawer,
       backgroundColor: Color(0xffeb3446),
-      body: Column(
-        children: <Widget>[
-          Container(
-              height: Get.height * .25,
-              decoration: BoxDecoration(
+      body: GetBuilder<AppController>(
+        builder: (_) {
+          return Column(
+            children: <Widget>[
+              Container(
+                  height: Get.height * .25,
+                  decoration: BoxDecoration(
                   gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Color(0xffff365e),
-                  Color(0xffeb3446),
-                ],
-              )),
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xffff365e),
+                        Color(0xffeb3446),
+                      ],
+                    )
+                  ),
+                  padding: EdgeInsets.all(15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      IconButton(
-                          onPressed: () {
-                            //Get.to(AppDrawer());
-                            _key.currentState!.openDrawer();
-                          },
-                          icon: Icon(
-                            Icons.sort,
-                            color: Colors.white,
-                          )),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.home_filled,
-                            color: Colors.white,
-                          )),
-                    ],
-                  ),
-                  Center(
-                    child: Text("Toutes les demandes de construction",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25, color: Colors.white)),
-                  ),
-                  SizedBox(),
-                ],
-              )),
-          SizedBox(
-            height: Get.height * 0.03,
-          ),
-          Container(
-            height: Get.height * .72,
-            decoration: BoxDecoration(
-              color: Color(0xfff0f7ff),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
-              boxShadow: [
-                BoxShadow(blurRadius: 20.0, color: Colors.black26),
-              ],
-            ),
-            child: (!isMobile(context))
-                ? SizedBox(
-                    width: Get.width,
-                    child: OrientationBuilder(builder: (context, orientation) {
-                      return GridView.count(
-                        crossAxisCount: 4,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          /**mettre en boucle pour le fetching */
-                          MyContainer(),
-                          MyContainer(),
-                          MyContainer(),
-                          MyContainer(),
-                          MyContainer(),
-                          MyContainer(),
+                          IconButton(
+                            onPressed: () {
+                              //Get.to(AppDrawer());
+                              _key.currentState!.openDrawer();
+                            },
+                            icon: Icon(
+                              Icons.sort,
+                              color: Colors.white,
+                            )
+                          ),
+                          IconButton(
+                            onPressed: () {
+
+                            },
+                            icon: Icon(
+                              Icons.home_filled,
+                              color: Colors.white,
+                            )
+                          ),
                         ],
-                      );
-                    }),
-                  )
-                : ListView.builder(
-                    itemCount: 7,
-                    itemBuilder: (context, id) {
-                      return MyContainer();
-                    },
+                      ),
+                      Center(
+                        child: Text("Demandes en attente (${appController.permis.length})",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 25, color: Colors.white)
+                        ),
+                      ),
+                      SizedBox(),
+                    ],
+                  )),
+              SizedBox(
+                height: Get.height * 0.03,
+              ),
+              Container(
+                
+                height: Get.height * .72,
+                decoration: BoxDecoration(
+                  color: Color(0xfff0f7ff),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
                   ),
-          ),
-        ],
+                  boxShadow: [
+                    BoxShadow(blurRadius: 20.0, color: Colors.black26),
+                  ],
+                ),
+                child: appController.permis.isEmpty ? SizedBox(
+                  width: Get.width,
+                  child: Shimmer.fromColors(
+                      baseColor:  Color(0xfff0f7ff),
+                      highlightColor: Colors.white24,
+                      period: Duration(seconds: 2),
+                      child: ListView(
+                        children: [myContainer(),myContainer(),myContainer() ]
+                        ),
+                      ),
+                ) : 
+                
+                (!isMobile(context))
+                    ? SizedBox(
+                        width: Get.width,
+                        child: OrientationBuilder(builder: (context, orientation) {
+                          return GridView.count(
+                            crossAxisCount: 4,
+                            children: [
+                              for (Permis perm in appController.permis)
+                                cardListePermis(perm, appController.permis)
+                           
+                            ],
+                          );
+                        }),
+                      )
+                    :  SizedBox(width: Get.width,
+                    child: ListView(
+                    
+                      children: [
+                        for (Permis perm in appController.permis)
+                          cardListePermis(perm, appController.permis)
+                      ],
+                    ),)
+                    //for (Permis perm in  appController.permis)
+                    //myContainer(perm)
+                     
+              ),
+            ],
+          );
+        }
       ),
     );
   }

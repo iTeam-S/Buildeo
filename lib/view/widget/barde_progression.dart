@@ -17,7 +17,7 @@ class MyProgressBar extends StatelessWidget {
               ),
             ),
             Text(
-              "52 %",
+              "0.01 %",
               style: TextStyle(
                 color: Colors.black,
               ),
@@ -28,7 +28,7 @@ class MyProgressBar extends StatelessWidget {
           height: 5,
         ),
         LinearProgressIndicator(
-          value: 0.52,
+          value: 0.01,
           backgroundColor: Colors.black45,
           valueColor: AlwaysStoppedAnimation<Color>(
             Colors.green,

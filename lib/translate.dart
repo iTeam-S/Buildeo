@@ -217,7 +217,13 @@ var langages = {
     "fr": "Création de modèle",
     "en": "Model creation",
     "mg": "Famoronana modely"
-  }
+  },
+  "LISTE_USER": {
+    "fr": "Liste des users",
+    "en": "List of users",
+    "mg": "Lisitry ny mpampiasa"
+  },
+  "DEMANDE_DE_CONSTRUCTION": {"fr": "Construction de", "en": "", "mg": ""}
 };
 
 String translate(String cle, String lang) {
