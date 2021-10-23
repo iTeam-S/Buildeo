@@ -539,6 +539,26 @@ class AppDrawer extends StatelessWidget {
                                         leading: CircleAvatar(
                                           radius: 15,
                                           backgroundColor:
+                                              const Color(0xff0d94bd),
+                                          child: const Icon(
+                                            Icons.recent_actors,
+                                            color: Colors.white,
+                                            size: 16,
+                                          ),
+                                        ),
+                                        title: Text(translate(
+                                            "LISTE_USER", appController.lang)),
+                                        onTap: () {
+                                          Get.toNamed('/identite');
+                                        },
+                                        hoverColor: const Color(0xffceeaf2),
+                                        trailing:
+                                            const Icon(Icons.chevron_right),
+                                      ),
+                                      ListTile(
+                                        leading: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor:
                                               const Color(0xFFDC06F0),
                                           child: const Icon(
                                             Icons.info,

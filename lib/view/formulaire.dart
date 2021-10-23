@@ -223,13 +223,14 @@ class _FormPageState extends State<FormPage> {
                                       child: Icon(Icons.attach_file,
                                           color: Colors.black),
                                     ),
-                                    prefixIcon: Icon(Icons.picture_as_pdf_sharp,
+                                    prefixIcon: Icon(Icons.description,
                                         color: Color(0xffeb3446)),
                                   ),
                                 )),
                             SizedBox(
                               height: 15,
                             ),
+
                             Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [

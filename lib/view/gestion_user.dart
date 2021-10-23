@@ -1,14 +1,15 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:buildeo/responsive.dart';
-import 'package:buildeo/view/widget/card_validation.dart';
+import 'package:buildeo/view/widget/user_card.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 
 // ignore: must_be_immutable
-class ValidationMaire extends StatelessWidget {
-  ValidationMaire({Key? key}) : super(key: key);
+class GestionUser extends StatelessWidget {
+  GestionUser({Key? key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
@@ -65,7 +66,7 @@ class ValidationMaire extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: Text("Dossier en attente de validation",
+                        child: Text("Les liste des dammandeurs",
                             textAlign: TextAlign.center,
                             style:
                                 TextStyle(fontSize: 30, color: Colors.white)),
@@ -80,6 +81,7 @@ class ValidationMaire extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
+                  // ignore: prefer_const_literals_to_create_immutables
                   boxShadow: [
                     BoxShadow(blurRadius: 20.0, color: Colors.black26),
                   ],
@@ -95,14 +97,18 @@ class ValidationMaire extends StatelessWidget {
                               controller:
                                   ScrollController(keepScrollOffset: false),
                               crossAxisCount: 4,
+                              // ignore: prefer_const_literals_to_create_immutables
                               children: [
                                 /**mettre en boucle pour le fetching */
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
-                                CardValidated(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
+                                UserID(),
                               ],
                             );
                           }),
@@ -110,7 +116,7 @@ class ValidationMaire extends StatelessWidget {
                       : ListView.builder(
                           itemCount: 7,
                           itemBuilder: (context, id) {
-                            return CardValidated();
+                            return UserID();
                           },
                         ),
                 ),
