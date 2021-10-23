@@ -127,7 +127,7 @@ class AppDrawer extends StatelessWidget {
               ],
             ),
             SizedBox(
-                height: MediaQuery.of(context).size.height * 0.73,
+                height: MediaQuery.of(context).size.height * 0.75,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -296,7 +296,7 @@ class AppDrawer extends StatelessWidget {
                           },
                           hoverColor: const Color(0xffceeaf2),
                         ),
-                        ListTile(
+                        /*ListTile(
                           leading: CircleAvatar(
                             radius: 15,
                             backgroundColor: const Color(0xffeb3446),
@@ -311,7 +311,7 @@ class AppDrawer extends StatelessWidget {
                             Navigator.pop(context);
                           },
                           hoverColor: const Color(0xfffad9dd),
-                        ),
+                        ),*/
                       ]),
                     ]))
           ],
@@ -333,10 +333,10 @@ class AppDrawer extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 contentPadding:
-                    const EdgeInsets.only(right: 20, left: 20, top: 50),
+                     EdgeInsets.only(right: 20, left: 20, top: Get.width*.05, bottom: 10),
                 children: [
                     SizedBox(
-                                height: MediaQuery.of(context).size.height * 0.40,
+                                height: MediaQuery.of(context).size.height * 0.4,
                                 child: Card(
                                     elevation: 0.0,
                                     shape: RoundedRectangleBorder(
