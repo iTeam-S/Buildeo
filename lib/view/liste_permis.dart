@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 
 // ignore: must_be_immutable
-class ValidationMaire extends StatelessWidget {
-  ValidationMaire({Key? key}) : super(key: key);
+class ListePermis extends StatelessWidget {
+  ListePermis({Key? key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
@@ -65,7 +65,7 @@ class ValidationMaire extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: Text("Dossier en attente de validation",
+                        child: Text("Liste de vos permis",
                             textAlign: TextAlign.center,
                             style:
                                 TextStyle(fontSize: 30, color: Colors.white)),

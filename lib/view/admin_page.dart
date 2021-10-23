@@ -8,6 +8,7 @@ import 'package:buildeo/view/widget/drawer.dart';
 
 late final height, widht;
 
+// ignore: must_be_immutable
 class AdminPage extends StatelessWidget {
   AdminPage({Key? key}) : super(key: key);
 
@@ -25,15 +26,14 @@ class AdminPage extends StatelessWidget {
           Container(
               height: Get.height * .25,
               decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color(0xffff365e),
-                    Color(0xffeb3446),
-                  ],
-                )
-              ),
+                  gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color(0xffff365e),
+                  Color(0xffeb3446),
+                ],
+              )),
               padding: EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,31 +42,26 @@ class AdminPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                        onPressed: () {
-                          //Get.to(AppDrawer());
-                          _key.currentState!.openDrawer();
-                        },
-                        icon: Icon(
-                          Icons.sort,
-                          color: Colors.white,
-                        )
-                      ),
+                          onPressed: () {
+                            //Get.to(AppDrawer());
+                            _key.currentState!.openDrawer();
+                          },
+                          icon: Icon(
+                            Icons.sort,
+                            color: Colors.white,
+                          )),
                       IconButton(
-                        onPressed: () {
-
-                        },
-                        icon: Icon(
-                          Icons.home_filled,
-                          color: Colors.white,
-                        )
-                      ),
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.home_filled,
+                            color: Colors.white,
+                          )),
                     ],
                   ),
                   Center(
                     child: Text("Toutes les demandes de construction",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 25, color: Colors.white)
-                    ),
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
                   ),
                   SizedBox(),
                 ],
