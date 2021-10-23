@@ -177,8 +177,9 @@ class AppDrawer extends StatelessWidget {
                                               "VALIDATION_ADMIN",
                                               appController.lang)),
                                           onTap: () {
-                                              appController.getAllPermis(appController.user!.commune);
-                                              Get.toNamed("/pageAmin");
+                                            appController.getAllPermis(
+                                                appController.user!.commune);
+                                            Get.toNamed("/pageAmin");
                                           },
                                           hoverColor: const Color(0xfffcdfca),
                                           trailing:
@@ -245,6 +246,26 @@ class AppDrawer extends StatelessWidget {
                                             appController.lang)),
                                         onTap: () {
                                           Get.toNamed('/form');
+                                        },
+                                        hoverColor: const Color(0xffceeaf2),
+                                        trailing:
+                                            const Icon(Icons.chevron_right),
+                                      ),
+                                      ListTile(
+                                        leading: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor:
+                                              const Color(0xff0d94bd),
+                                          child: const Icon(
+                                            Icons.recent_actors,
+                                            color: Colors.white,
+                                            size: 16,
+                                          ),
+                                        ),
+                                        title: Text(translate(
+                                            "LISTE_USER", appController.lang)),
+                                        onTap: () {
+                                          Get.toNamed('/identite');
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
@@ -506,7 +527,11 @@ class AppDrawer extends StatelessWidget {
                                                           ),
                                                           Divider(),
                                                           Center(
-                                                            child: Text(translate("APROPOS_TEXT", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "APROPOS_TEXT",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -521,7 +546,11 @@ class AppDrawer extends StatelessWidget {
                                                             color: Colors.white,
                                                           ),
                                                           Center(
-                                                            child: Text(translate("DEVELOP", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "DEVELOP",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -558,26 +587,6 @@ class AppDrawer extends StatelessWidget {
                                             appController.lang)),
                                         onTap: () {
                                           Get.toNamed('/form');
-                                        },
-                                        hoverColor: const Color(0xffceeaf2),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xff0d94bd),
-                                          child: const Icon(
-                                            Icons.recent_actors,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate(
-                                            "LISTE_USER", appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed('/identite');
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
@@ -785,7 +794,11 @@ class AppDrawer extends StatelessWidget {
                                                           ),
                                                           Divider(),
                                                           Center(
-                                                            child: Text(translate("APROPOS_TEXT", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "APROPOS_TEXT",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -800,7 +813,11 @@ class AppDrawer extends StatelessWidget {
                                                             color: Colors.white,
                                                           ),
                                                           Center(
-                                                            child: Text(translate("DEVELOP", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "DEVELOP",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,

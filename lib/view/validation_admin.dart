@@ -26,19 +26,18 @@ class ValidationAdmin extends StatefulWidget {
   _ValidationAdmin createState() => _ValidationAdmin();
 }
 
-class _ValidationAdmin extends State<ValidationAdmin>  {
-
+class _ValidationAdmin extends State<ValidationAdmin> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   AppDrawer drawer = AppDrawer();
   final AppController appController = Get.put(AppController());
 
   _launchURL(url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -105,15 +104,18 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                               SizedBox(
                                 height: 15,
                               ),
-                              myProgressBar(pourcentage: checkboxList.where((c) => c == true).toList().length / checkboxList.length),
+                              myProgressBar(
+                                  pourcentage: checkboxList
+                                          .where((c) => c == true)
+                                          .toList()
+                                          .length /
+                                      checkboxList.length),
                             ],
                           ),
                         )
                       ],
                     ),
                   ),
-                 
-                  
                 ],
               ),
             ),
@@ -148,14 +150,25 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                               ),
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
-                                  primary:  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? Color(0xffeb3446) : Colors.green,
+                                  primary: checkboxList
+                                              .where((c) => c == true)
+                                              .toList()
+                                              .length !=
+                                          checkboxList.length
+                                      ? Color(0xffeb3446)
+                                      : Colors.green,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
                                 onPressed: () {},
-                                child: Text(  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? 
-                                  "Réfuser": "Valider"),
+                                child: Text(checkboxList
+                                            .where((c) => c == true)
+                                            .toList()
+                                            .length !=
+                                        checkboxList.length
+                                    ? "Réfuser"
+                                    : "Valider"),
                               )
                             ],
                           ),
@@ -194,17 +207,19 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                                         Spacer(),
                                         CircleAvatar(
                                           backgroundColor: Color(0xff2ebc4f),
-                                          child: IconButton(icon: Icon(Icons.download),
-                                          onPressed: (){
-                                            _launchURL("$baseUrlprotocol/download/attachement/${appController.currentPermis!.attachements}?token=${appController.user!.token}");
-                                          },
+                                          child: IconButton(
+                                              icon: Icon(Icons.download),
+                                              onPressed: () {
+                                                _launchURL(
+                                                    "$baseUrlprotocol/download/attachement/${appController.currentPermis!.attachements}?token=${appController.user!.token}");
+                                              },
                                               color: Colors.white),
                                         ),
                                       ],
                                     ),
                                     Spacer(),
                                     Text(
-                                        appController.currentPermis!.buildType,
+                                      appController.currentPermis!.buildType,
                                       style: TextStyle(
                                         color: Color(0xff333333),
                                         fontWeight: FontWeight.bold,
@@ -242,19 +257,30 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                                 ),
                                 onPressed: () {
                                   setState(() {
-                                    if (checkboxList.where((c) => c == true).toList().isEmpty) {
-                                      for (int i=0; i<checkboxList.length;i++){
-                                          checkboxList[i] = true;
+                                    if (checkboxList
+                                        .where((c) => c == true)
+                                        .toList()
+                                        .isEmpty) {
+                                      for (int i = 0;
+                                          i < checkboxList.length;
+                                          i++) {
+                                        checkboxList[i] = true;
                                       }
-                                    }
-                                    else {
-                                      for (int i=0; i<checkboxList.length;i++){
-                                          checkboxList[i] = false;
+                                    } else {
+                                      for (int i = 0;
+                                          i < checkboxList.length;
+                                          i++) {
+                                        checkboxList[i] = false;
                                       }
                                     }
                                   });
                                 },
-                                child: Text( checkboxList.where((c) => c == true).toList().isEmpty ? "Tout cocher" : "Tout Décocher"),
+                                child: Text(checkboxList
+                                        .where((c) => c == true)
+                                        .toList()
+                                        .isEmpty
+                                    ? "Tout cocher"
+                                    : "Tout Décocher"),
                               )
                             ],
                           ),
@@ -299,14 +325,14 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
                                     ],
                                   ),
                                 ),
-                               Checkbox(
-                                  checkColor: Colors.white,
-                                  value: checkboxList[id],
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      checkboxList[id] = value!;
-                                    });               
-                                  })
+                                Checkbox(
+                                    checkColor: Colors.white,
+                                    value: checkboxList[id],
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        checkboxList[id] = value!;
+                                      });
+                                    })
                               ],
                             ),
                           );
@@ -323,69 +349,67 @@ class _ValidationAdmin extends State<ValidationAdmin>  {
     );
   }
 
-    void refusMotif(context) {
+  void refusMotif(context) {
     showDialog(
         context: context,
         builder: (BuildContext context) => BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
-              child: SimpleDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          insetPadding: EdgeInsets.all(10),
-          backgroundColor: Colors.white,
-          title: Text("Le motif de votre refus"),
-          children: [
-  
-         Column(
-                children: [
-                  TextField(
-                    maxLines: 5,
-                    maxLength: 500,
-                    textCapitalization: TextCapitalization.sentences,
-                    decoration: InputDecoration(
-                      labelText: '    Motif pas plus 500 caractères',
-                      hintText: '   Votre texte ici...',
+            filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+            child: SimpleDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              insetPadding: EdgeInsets.all(10),
+              backgroundColor: Colors.white,
+              title: Text("Le motif de votre refus"),
+              children: [
+                Column(
+                  children: [
+                    TextField(
+                      maxLines: 5,
+                      maxLength: 500,
+                      textCapitalization: TextCapitalization.sentences,
+                      decoration: InputDecoration(
+                        labelText: '    Motif pas plus 500 caractères',
+                        hintText: '   Votre texte ici...',
+                      ),
+                      onChanged: (text) => setState(() {}),
                     ),
-                    onChanged: (text) => setState(() {}),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.red,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
                           ),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("Annuler"),
                         ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text("Annuler"),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.blue,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
+                        SizedBox(
+                          width: 50,
+                        ),
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.blue,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
                           ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Text("  Ouvrir  "),
-                      )
-                    ],
-                  )
-                ],
-              ),
-          ],
-        )   ));
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text("  Ouvrir  "),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            )));
   }
-
 }
