@@ -17,7 +17,7 @@ class AppController extends GetxController {
   final box = GetStorage();
   // configuration user 
   String lang = 'fr';
-  late User user;
+  User? user;
   // VERIFICATION OPTIONS
   bool isscanning = false;
   TextEditingController numPermisController = TextEditingController();
@@ -48,6 +48,7 @@ class AppController extends GetxController {
           barBlur: 0,
           duration: const Duration(seconds: 2),
         );
+        btnController.reset();
           } 
       else {
         Timer(Duration(seconds: 2), (){
@@ -57,6 +58,8 @@ class AppController extends GetxController {
         box.write('user', jsonEncode(user));
         box.save();
         btnController.success();
+        update();
+        Get.back();
       }
     }
     else {
@@ -72,11 +75,11 @@ class AppController extends GetxController {
           barBlur: 0,
           duration: const Duration(seconds: 2),
         );
+        btnController.reset();
     }
         
   } 
   catch (e) {
-    print(e);
       Get.snackbar(
         translate("erreur", lang),
         translate("erreur_produite", lang),

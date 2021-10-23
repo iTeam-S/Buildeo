@@ -1,6 +1,6 @@
 var langages = {
   "bienvenue": {"fr": "Bienvenue", "en": "Welcome", "mg": "Tongasoa"},
-  "incorrect_pass": {
+  "AUTH_FAILED": {
     "fr": "Mot de passe ou Nom d\"utilisateur incorrecte",
     "en": "Password or Username invalid",
     "mg": "Misy diso ny anarana na soratra miafina nampidirinao",
@@ -157,10 +157,10 @@ var langages = {
     "en": "Validations list",
     "mg": "Lisitrin'ny fankatoavana",
   },
-  "VALIDATION_ADMIN": {
-    "fr": "Validation administrateurs",
-    "en": "Administrator Validation",
-    "mg": "Fanamafisana ny mpitantana",
+  "PERMI_A_TRAITER": {
+    "fr": "Permis à traiter",
+    "en": "License to process",
+    "mg": "Fahazoan-dàlana amboarina",
   },
   "VALIDATION_MAIRE": {
     "fr": "Validation de maire",
@@ -212,6 +212,11 @@ var langages = {
     "en": "Maps and stats",
     "mg": "Sarintany sy antontan'isa",
   },
+  "CONNECTE" : {
+    "fr" : "Connecté",
+    "en" : "",
+    "mg" : ""
+  }
 };
 
 String translate(String cle, String lang) {

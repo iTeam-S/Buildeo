@@ -163,3 +163,25 @@ def get_listcommune_view(request):
     except Exception as err:
         print(err)
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+
+
+@csrf_exempt
+def get_listpermit_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        commune_id = data.get("commune_id")
+        if not commune_id:
+            return JsonResponse({'status_code': 404, 'status': 'MISSING_USERID', 'data': None})
+        try:
+            permis = Permis.objects.filter(commune_id=commune_id).order_by("-id")[:20]
+            list_permi = []
+            for permi in permis:
+                permi = dict(permi.__dict__)
+                permi.pop('_state')
+                list_permi.append(permi)
+                print(list_permi)
+            return JsonResponse({'status_code': 200, 'status': 'OK', 'data': list_permi})
+        except Exception as err:
+            print(err)
+            return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+    return Http404()
