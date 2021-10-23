@@ -121,11 +121,9 @@ def get_userpermis_view(request):
 
 
 @csrf_exempt
-@verif_token
 def requestpermis(request):
     if request.method == "POST":
         token = request.POST.get('token')
-
         try:
             jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
         except Exception as err:
@@ -140,7 +138,7 @@ def requestpermis(request):
         build_type = request.POST.get('build_type')
         build_adress = request.POST.get('build_adress')
 
-        if attachement :
+        if not attachement :
             return JsonResponse({'status_code': 404, 'status': 'MISSING_ATTACHEMENT', 'data': None})
         try:
             filename = str(time.time()) + '_' + secure_filename(attachement.name)
