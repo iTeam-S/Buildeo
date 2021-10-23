@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/model/user.dart';
 import 'package:buildeo/view/formulaire.dart';
+import 'package:buildeo/view/gestion_user.dart';
 import 'package:buildeo/view/info.dart';
 import 'package:buildeo/view/admin_page.dart';
 import 'package:buildeo/view/liste_permis.dart';
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
         '/info': (context) => const InfoScreen(),
         '/form': (context) => const FormPage(),
         '/remplir': (context) => const Remplissage(),
-        '/liste': (context) => ListePermis()
+        '/liste': (context) => ListePermis(),
+        '/identite': (context) => GestionUser()
       },
     );
   }
