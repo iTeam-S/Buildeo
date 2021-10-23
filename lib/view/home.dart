@@ -129,14 +129,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           alignment: Alignment.center,
                           width: Get.width * 0.8,
                           margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * 0.04,
+                            top: isMobile(context) ? Get.height * 0.044 : Get.width * 0.075,
                           ),
                           child: Text(
                               translate(
                                   "DEMANDER_ET_RECEVER", appController.lang),
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontSize: 14.5, color: Colors.white))),
+                              style: TextStyle(
+                                  fontSize: Get.width * 0.042 , color: Colors.white))),
                       Container(
                         alignment: Alignment.centerLeft,
                         width: Get.width * 0.6,
@@ -163,8 +163,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-                margin: EdgeInsets.only(top: 25, left: 12),
-                child: Text("Centre d'information",
+                margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
+                child: Text(translate("CENTRE_INFO", appController.lang),
                     style: TextStyle(
                         fontSize: 21,
                         fontWeight: FontWeight.bold,
@@ -181,8 +181,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   title: Text(
-                    "Sur Buildeo, vous trouverez toutes les informations nécessaires pour mèner à bien la création de votre permis de construction.",
-                    style: TextStyle(color: Colors.black87, fontSize: 14),
+                    translate("INFO_COURTE", appController.lang),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black87, fontSize: 15),
                   ),
                   subtitle: Container(
                     margin: EdgeInsets.only(
@@ -200,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       valueColor: Color(0xffeb3446),
                       borderRadius: 90,
-                      child: Text("Tout voir",
+                      child: Text(translate("VOIR", appController.lang),
                           style: TextStyle(color: Color(0xffeb3446))),
                     ),
                   ),
@@ -208,8 +209,8 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 25, left: 12),
-              child: Text("Services",
+              margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
+              child: Text(translate("SERVICES", appController.lang),
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.bold,
@@ -218,19 +219,25 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(children: [
               Card(
                 color: Colors.white,
-                elevation: 2,
                 margin: EdgeInsets.only(
                   left: Get.width * 0.015,
                 ),
                 child: Container(
                   width: Get.width * 0.31,
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        blurRadius: 9.0,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     CircleAvatar(
-                        radius: 20,
+                        radius: Get.height * 0.04,
                         backgroundColor: Color(0xffeb3446),
                         child: IconButton(
                             onPressed: () {},
@@ -241,9 +248,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8),
                       child: Text(
-                        "Demande",
+                        translate("DEMANDE_PERM_CONST", appController.lang),
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                        style: TextStyle(color: Colors.black87, fontSize: 15),
                       ),
                     ),
                   ]),
@@ -256,13 +263,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     horizontal: Get.width * 0.02, vertical: 6.0),
                 child: Container(
                   width: Get.width * 0.31,
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        blurRadius: 9.0,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     CircleAvatar(
-                        radius: 20,
+                        radius: Get.height * 0.04,
                         backgroundColor: Color(0xff6d5ced),
                         child: Icon(
                           Icons.qr_code_scanner,
@@ -271,9 +285,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8),
                       child: Text(
-                        "Vérification",
+                        translate("VERIFICATION_PERM_CONST", appController.lang),
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                        style: TextStyle(color: Colors.black87, fontSize: 15),
                       ),
                     ),
                   ]),
@@ -286,13 +300,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     horizontal: Get.width * 0.001, vertical: 6.0),
                 child: Container(
                   width: Get.width * 0.31,
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                   decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.shade300,
+                        blurRadius: 9.0,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     CircleAvatar(
-                        radius: 20,
+                        radius: Get.height * 0.04,
                         backgroundColor: Color(0xff15d48e),
                         child: Icon(
                           Icons.text_fields,
@@ -301,9 +322,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       margin: EdgeInsets.only(top: 8),
                       child: Text(
-                        "Modèles",
+                        translate("DOWN_MOD_LETTRES", appController.lang),
                         textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                        style: TextStyle(color: Colors.black87, fontSize: 15),
                       ),
                     ),
                   ]),
@@ -311,8 +332,8 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ]),
             Container(
-              margin: EdgeInsets.only(top: 25, left: 12),
-              child: Text("Modèles de lettre",
+              margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
+              child: Text(translate("MOD_LETTRES", appController.lang),
                   style: TextStyle(
                       fontSize: 21,
                       fontWeight: FontWeight.bold,
@@ -329,15 +350,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: Get.width * 0.47,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 9.0,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     Image.asset('assets/images/docx.png',
                         width: Get.width * 0.13),
                     Container(
                       margin: EdgeInsets.only(top: 8),
                       child: Text(
-                        "Modèle pour le fokontany",
+                        translate("MOD_FOK", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
@@ -367,15 +395,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: Get.width * 0.47,
                   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade300,
+                          blurRadius: 9.0,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: Column(children: [
                     Image.asset('assets/images/docx.png',
                         width: Get.width * 0.13),
                     Container(
                       margin: EdgeInsets.only(top: 8),
                       child: Text(
-                        "Modèle pour la commune",
+                        translate("MOD_COM", appController.lang),
                         textAlign: TextAlign.center,
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
