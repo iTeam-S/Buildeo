@@ -91,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Stack(
               children: [
                 Image.asset(
-                  'assets/images/cover.jpg',
+                  'assets/images/cover2.jpg',
                   width: MediaQuery.of(context).size.width,
                 ),
                 Container(

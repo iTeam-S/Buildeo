@@ -157,10 +157,10 @@ var langages = {
     "en": "Validations list",
     "mg": "Lisitrin'ny fankatoavana",
   },
-  "VALIDATION_ADMIN": {
-    "fr": "Validation administrateurs",
-    "en": "Administrator Validation",
-    "mg": "Fanamafisana ny mpitantana",
+  "PERMI_A_TRAITER": {
+    "fr": "Permis à traiter",
+    "en": "License to process",
+    "mg": "Fahazoan-dàlana amboarina",
   },
   "VALIDATION_MAIRE": {
     "fr": "Validation de maire",

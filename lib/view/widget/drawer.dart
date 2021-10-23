@@ -151,8 +151,8 @@ class AppDrawer extends StatelessWidget {
                               size: 16,
                             ),
                           ),
-                          title: Text(translate(
-                              "VALIDATION_ADMIN", appController.lang)),
+                          title: Text(
+                              translate("PERMI_A_TRAITER", appController.lang)),
                           onTap: () {
                             Get.toNamed("/pageAmin");
                           },
