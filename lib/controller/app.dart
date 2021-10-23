@@ -225,6 +225,7 @@ class AppController extends GetxController {
   }
   
   void getAllPermis(int? commune) async {
+    try{
       permis.clear();
       var res = await apiController.getallpermis(commune, user!);
       if (res[0]) {
@@ -267,10 +268,8 @@ class AppController extends GetxController {
           barBlur: 0,
           duration: const Duration(seconds: 2),
         );
-    }
-        
- 
-  
+    } } catch (e) {
+      print(e);
       Get.snackbar(
         translate("erreur", lang),
         translate("erreur_produite", lang),
@@ -283,7 +282,7 @@ class AppController extends GetxController {
         barBlur: 0,
         duration: const Duration(seconds: 2),
       );
-    }
+    }}
 
 
   void getListCommune() async {
