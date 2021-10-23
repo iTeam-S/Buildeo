@@ -129,7 +129,7 @@ class AppDrawer extends StatelessWidget {
               ],
             ),
             SizedBox(
-                height: MediaQuery.of(context).size.height * 0.73,
+                height: MediaQuery.of(context).size.height * 0.75,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -211,7 +211,9 @@ class AppDrawer extends StatelessWidget {
                           ),
                           title: Text(
                               translate("DEMANDE_PERMIS", appController.lang)),
-                          onTap: () {},
+                          onTap: () {
+                            Get.toNamed('/form');
+                          },
                           hoverColor: const Color(0xffceeaf2),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -227,7 +229,9 @@ class AppDrawer extends StatelessWidget {
                           ),
                           title: Text(
                               translate("CENTRE_INFO", appController.lang)),
-                          onTap: () {},
+                          onTap: () {
+                            Get.toNamed('/info');
+                          },
                           hoverColor: const Color(0xffe5c2fc),
                           trailing: const Icon(Icons.chevron_right),
                         ),
@@ -261,7 +265,7 @@ class AppDrawer extends StatelessWidget {
                             radius: 15,
                             backgroundColor: const Color(0xff0cab56),
                             child: const Icon(
-                              Icons.sort_by_alpha,
+                              Icons.translate,
                               color: Colors.white,
                               size: 16,
                             ),
@@ -291,7 +295,7 @@ class AppDrawer extends StatelessWidget {
                           },
                           hoverColor: const Color(0xffceeaf2),
                         ),
-                        ListTile(
+                        /*ListTile(
                           leading: CircleAvatar(
                             radius: 15,
                             backgroundColor: const Color(0xffeb3446),
@@ -307,7 +311,7 @@ class AppDrawer extends StatelessWidget {
                             Navigator.pop(context);
                           },
                           hoverColor: const Color(0xfffad9dd),
-                        ),
+                        ),*/
                       ]),
                     ]))
           ],
@@ -328,11 +332,11 @@ class AppDrawer extends StatelessWidget {
                   translate("se_connecter", appController.lang),
                   textAlign: TextAlign.center,
                 ),
-                contentPadding:
-                    const EdgeInsets.only(right: 20, left: 20, top: 50),
+                contentPadding: EdgeInsets.only(
+                    right: 20, left: 20, top: Get.width * .05, bottom: 10),
                 children: [
                   SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.40,
+                      height: MediaQuery.of(context).size.height * 0.4,
                       child: Card(
                           elevation: 0.0,
                           shape: RoundedRectangleBorder(
@@ -353,8 +357,7 @@ class AppDrawer extends StatelessWidget {
                                         MediaQuery.of(context).size.height *
                                             0.0113),
                                 child: TextFormField(
-                                  onSaved: (value) {},
-                                  validator: (value) {},
+                                  controller: appController.usrController,
                                   style: TextStyle(
                                       fontSize: 13, color: Colors.grey[800]),
                                   decoration: InputDecoration(
@@ -386,8 +389,7 @@ class AppDrawer extends StatelessWidget {
                                 height:
                                     MediaQuery.of(context).size.height * 0.08,
                                 child: TextFormField(
-                                  onSaved: (value) {},
-                                  validator: (value) {},
+                                  controller: appController.passwdController,
                                   style: const TextStyle(
                                       fontSize: 13, color: Color(0xffeb3446)),
                                   obscureText: true,

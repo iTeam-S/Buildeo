@@ -162,10 +162,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Container(
-              margin: EdgeInsets.only(top: 25, left: 12),
-              child: Text("Centre d'information",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            ),
+                margin: EdgeInsets.only(top: 25, left: 12),
+                child: Text("Centre d'information",
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey))),
             Card(
               color: Color(0xffedf7fa),
               elevation: 0,
@@ -193,9 +195,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: const Color(0xfffad9dd),
                       successColor: Colors.blue,
                       onPressed: () {
-                        Get.to('/confirm_pass');
+                        Get.toNamed('/info');
                       },
-                      valueColor: Colors.white,
+                      valueColor: Color(0xffeb3446),
                       borderRadius: 90,
                       child: Text("Tout voir",
                           style: TextStyle(color: Color(0xffeb3446))),
@@ -207,7 +209,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               margin: EdgeInsets.only(top: 25, left: 12),
               child: Text("Services",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey)),
             ),
             Row(children: [
               Card(
@@ -226,10 +231,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     CircleAvatar(
                         radius: 20,
                         backgroundColor: Color(0xffeb3446),
-                        child: Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                        )),
+                        child: IconButton(
+                            onPressed: () {
+                              Get.toNamed('/form');
+                            },
+                            icon: Icon(
+                              Icons.edit,
+                              color: Colors.white,
+                            ))),
                     Container(
                       margin: EdgeInsets.only(top: 8),
                       child: Text(
@@ -305,7 +314,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               margin: EdgeInsets.only(top: 25, left: 12),
               child: Text("Modèles de lettre",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  style: TextStyle(
+                      fontSize: 21,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blueGrey)),
             ),
             Row(children: [
               Card(

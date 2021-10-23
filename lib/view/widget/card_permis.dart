@@ -30,7 +30,7 @@ class MyContainer extends StatelessWidget {
               padding: EdgeInsets.all(25),
               margin: EdgeInsets.only(bottom: 25, top: 25, left: 15, right: 15),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(25),
                 boxShadow: [
                   BoxShadow(
@@ -53,7 +53,7 @@ class MyContainer extends StatelessWidget {
                           child: Container(
                             padding: EdgeInsets.all(15),
                             decoration: BoxDecoration(
-                              color: Colors.black12,
+                              color: Color(0xffeb3446),
                               borderRadius: BorderRadius.circular(9),
                             ),
                             child: Icon(
@@ -67,7 +67,7 @@ class MyContainer extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(15),
                           decoration: BoxDecoration(
-                            color: Colors.black12,
+                            color: Color(0xffeb3446),
                             borderRadius: BorderRadius.circular(9),
                           ),
                           child: Icon(
@@ -80,9 +80,8 @@ class MyContainer extends StatelessWidget {
                         child: Container(
                           padding: EdgeInsets.all(10),
                           child: CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                "https://avatars.githubusercontent.com/u/43904633?v=4"),
-                          ),
+                              backgroundImage:
+                                  ExactAssetImage("assets/images/user.png")),
                         ),
                       ),
                     ],
@@ -93,7 +92,7 @@ class MyContainer extends StatelessWidget {
                   Text(
                     "Getan Jonathan Bakary",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black45,
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
                     ),

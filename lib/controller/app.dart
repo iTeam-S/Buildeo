@@ -16,12 +16,29 @@ class AppController extends GetxController {
   // LOGIN 
   TextEditingController usrController = TextEditingController();
   TextEditingController passwdController = TextEditingController();
-  
-
 
   final ApiController apiController = Get.put(ApiController());
 
-   void getPermis(String permisID) async {
+  void login(usr, passwd){
+    try {
+
+        
+    } catch (e) {
+      Get.snackbar(
+        translate("erreur", lang),
+        translate("erreur_produite", lang),
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+        borderColor: Colors.red,
+        borderRadius: 10,
+        borderWidth: 2,
+        barBlur: 0,
+        duration: const Duration(seconds: 2),
+      );
+    }
+  }
+  void getPermis(String permisID) async {
     try {
       var res = await apiController.getPermis(permisID);
       if (res[0]) {

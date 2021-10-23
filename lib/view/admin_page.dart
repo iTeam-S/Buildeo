@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:buildeo/responsive.dart';
-import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 
 late final height, widht;
 
