@@ -274,7 +274,7 @@ def update_status(request):
 @csrf_exempt
 def generate_permis(request):
     token = request.GET.get("token")
-    req_user_id = request.GET.get("req_user_id")
+    req_user_id = request.GET.get("user_id")
     try:
         jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
     except Exception as err:
