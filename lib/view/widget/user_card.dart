@@ -60,7 +60,7 @@ class _UserIDState extends State<UserID> {
               child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(25)),
+                    borderRadius: BorderRadius.circular(15)),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
