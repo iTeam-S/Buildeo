@@ -274,7 +274,7 @@ def update_status(request):
 @csrf_exempt
 def generate_permis(request):
     token = request.GET.get("token")
-
+    req_user_id = request.GET.get("req_user_id")
     try:
         jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
     except Exception as err:
@@ -290,29 +290,58 @@ def generate_permis(request):
         doc = DocxTemplate("template_permis.docx")
 
         Permis.objects.filter(id=permis_id)
-        permi = Permis.objects.get(id=permis_id)
-        nom_user = permi.req_user_id.first_name.capitalize() + " " + permi.req_user_id.last_name.capitalize()
-        numero_permis = f'{permis_id}/{permi.delivery_date.strftime("%Y")}/{permi.commune_id.nom}'
-        context = { 
-            'commune' : permi.commune_id.nom,
-            'nom_user': nom_user,
-            'build_type': permi.build_type,
-            'adresse': permi.build_adress,
-            'date_validation': permi.delivery_date.strftime("%d %B %Y"),
-            'numero_permis': numero_permis
-        }
-        doc.replace_pic('qrcode.png', 'qr_new.png')
+        permi = Permis.objects.filter(id=permis_id, req_user_id=req_user_id)
+        if permi:
+            nom_user = permi.req_user_id.first_name.capitalize() + " " + permi.req_user_id.last_name.capitalize()
+            numero_permis = f'{permis_id}/{permi.delivery_date.strftime("%Y")}/{permi.commune_id.nom}'
+            context = { 
+                'commune' : permi.commune_id.nom,
+                'nom_user': nom_user,
+                'build_type': permi.build_type,
+                'adresse': permi.build_adress,
+                'date_validation': permi.delivery_date.strftime("%d %B %Y"),
+                'numero_permis': numero_permis
+            }
+            doc.replace_pic('qrcode.png', 'qr_new.png')
 
-        doc.render(context)
-        filename = f"Permis num {permis_id}.docx"
-        doc.save(filename)
+            doc.render(context)
+            filename = f"Permis num {permis_id}.docx"
+            doc.save(filename)
 
-        fl = open('generated_doc.docx', 'rb')
-        mime_type, _ = mimetypes.guess_type(filename)
-        response = HttpResponse(fl, content_type=mime_type)
-        response['Content-Disposition'] = "attachment; filename=%s" % filename
-        return response
+            fl = open(filename, 'rb')
+            mime_type, _ = mimetypes.guess_type(filename)
+            response = HttpResponse(fl, content_type=mime_type)
+            response['Content-Disposition'] = "attachment; filename=%s" % filename
+            return response
+
+        return JsonResponse({'status_code': 404, 'status': 'PERMIS_INEXISTANT', 'data': None})
 
     except Exception as err:
         print(err)
         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+
+# @csrf_exempt
+# def generate_qrcode(request):
+#     token = request.GET.get("token")
+#     req_user_id = request.GET.get("req_user_id")
+#     try:
+#         jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+#     except Exception as err:
+#         return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
+
+#     permis_id = request.GET.get("permis_id")
+#     if not permis_id:
+#         return JsonResponse({'status_code': 404, 'status': 'MISSING_NUM_PERMIS', 'data': None})
+#     try:
+#         img = qrcode.make(permis_id)
+#         img.save("qr_new.png")
+            
+#         fl = open('generated_doc.docx', 'rb')
+#         mime_type, _ = mimetypes.guess_type("qr_new.png")
+#         response = HttpResponse(fl, content_type=mime_type)
+#         response['Content-Disposition'] = "attachment; filename=qr_new.png"
+#         return response
+
+#     except Exception as err:
+#         print(err)
+#         return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
