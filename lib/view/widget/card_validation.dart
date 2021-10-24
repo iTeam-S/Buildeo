@@ -10,7 +10,7 @@ class CardValidated extends StatelessWidget {
     return Card(
         color: Colors.transparent,
         elevation: 0.0,
-        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        margin: EdgeInsets.only(left: 10.0, right: 10.0,  top: 10, bottom: 6.0),
         child: Container(
           height: 90,
           decoration: BoxDecoration(boxShadow: [
