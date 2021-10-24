@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:io';
 import 'dart:ui';
+import 'package:buildeo/controller/api.dart';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/translate.dart';
@@ -13,6 +14,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -34,6 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   QRViewController? controller;
   bool isLoadingPath = false;
+
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   void onFocusChange() {
     debugPrint("Focus: " + appController.qRfocus.hasFocus.toString());
@@ -387,7 +397,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _launchURL(
+                                    "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
+                              },
                               icon: Icon(Icons.download,
                                   size: 20, color: Colors.black54)),
                           IconButton(
@@ -432,7 +445,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
+<<<<<<< HEAD
+                              onPressed: () {
+                                _launchURL(
+                                    "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
+                              },
+=======
                               onPressed: () {},
+>>>>>>> 3b4ef694ec5ccf08fcfe189d1d1845376bdc44d2
                               icon: Icon(Icons.download,
                                   size: 20, color: Colors.black54)),
                           IconButton(

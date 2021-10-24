@@ -28,5 +28,6 @@ urlpatterns = [
     path('api/affectation/', views.affectation_view),
     path('download/attachement/<str:filename>', views.download_attachement),
     path('download/model/<str:filename>', views.download_model),
-    path('api/updatestatus/', views.update_status)
+    path('api/updatestatus/', views.update_status),
+    path('api/generatepermis/', views.generate_permis)
 ]

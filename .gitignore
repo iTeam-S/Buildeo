@@ -54,3 +54,4 @@ linux/
 web/
 pubspec.lock
 migrations/
+*generated_doc.docx*
