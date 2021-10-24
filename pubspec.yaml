@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.14.0 <3.0.0"
+  sdk: ">=2.13.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -53,8 +53,7 @@ dependencies:
   dropdownfield: ^1.0.3
   autocomplete_textfield: ^1.7.3
   substring_highlight: ^1.0.33
-  url_launcher: ^6.0.12
-
+  url_launcher: 
 dev_dependencies:
   flutter_test:
     sdk: flutter

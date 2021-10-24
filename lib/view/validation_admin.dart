@@ -41,7 +41,6 @@ class _ValidationAdmin extends State<ValidationAdmin> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkboxList = [false, false, false, false, false];
   }
