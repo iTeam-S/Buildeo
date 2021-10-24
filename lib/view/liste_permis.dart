@@ -141,8 +141,11 @@ class ListePermis extends StatelessWidget {
   Widget permisListe(perm, context) {
     return InkWell(
       onTap: () {
-        showDialog(
-            context: context, builder: (BuildContext context) => PopDownload());
+      if (perm.status == 'VALIDE'){
+          showDialog(
+            context: context, builder: (BuildContext context) => PopDownload(permis: perm,));
+      }
+        
       },
       child: Container(
         height: Get.height * 0.23,
