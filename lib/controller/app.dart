@@ -106,17 +106,17 @@ class AppController extends GetxController {
         if (res[1]['status_code'] != 200) {
           Get.bottomSheet(
               SizedBox(
-                height: Get.height * .10,
+                height: Get.height * .13,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(bottom: 10.0),
+                        margin: const EdgeInsets.only(bottom: 2.0, top:10),
                         child: Text(
                           translate("VERIFICATON_PERMIS", lang),
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 17, color: Colors.blueGrey),
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -142,42 +142,42 @@ class AppController extends GetxController {
           var data = res[1]['data'];
           Get.bottomSheet(
               SizedBox(
-                height: Get.height * .20,
+                height: Get.height * .30,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(bottom: 10.0),
+                        margin: const EdgeInsets.only(bottom: 4.0, top: 10.0),
                         child: Text(
                           translate("VERIFICATON_PERMIS", lang),
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(fontSize: 17, color: Colors.blueGrey),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Text(
                         "${data['numero_permis']}",
                         style: const TextStyle(
-                            fontSize: 14, color: Color(0xffeb3446)),
+                            fontSize: 14, color: Color(0xff2ebc4f)),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         "${data['demande']}",
                         style: const TextStyle(
-                            fontSize: 14, color: Color(0xffeb3446)),
+                            fontSize: 14, color: Color(0xff2ebc4f)),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         "${translate('DELIVRE', lang)} ${data['delivery_date']}",
                         style: const TextStyle(
-                            fontSize: 14, color: Color(0xffeb3446)),
+                            fontSize: 14, color: Color(0xff2ebc4f)),
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         "${data['adress']}",
                         style: const TextStyle(
-                            fontSize: 14, color: Color(0xffeb3446)),
+                            fontSize: 14, color: Color(0xff2ebd4f)),
                         textAlign: TextAlign.center,
                       ),
                     ],

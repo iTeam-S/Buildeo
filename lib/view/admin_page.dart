@@ -61,7 +61,7 @@ class AdminPage extends StatelessWidget {
                             ),
                             IconButton(
                               onPressed: () {
-
+                                Get.toNamed("/home");
                               },
                               icon: Icon(
                                 Icons.home_filled,
