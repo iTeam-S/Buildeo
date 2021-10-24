@@ -256,7 +256,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextField(
                                       focusNode: uploadController.focus,
                                       controller: uploadController.filename,
-                                      keyboardType: TextInputType.none,
+                                      keyboardType: TextInputType.text,
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.grey[800]),

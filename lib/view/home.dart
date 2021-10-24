@@ -445,14 +445,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-<<<<<<< HEAD
-                              onPressed: () {
-                                _launchURL(
-                                    "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
-                              },
-=======
                               onPressed: () {},
->>>>>>> 3b4ef694ec5ccf08fcfe189d1d1845376bdc44d2
                               icon: Icon(Icons.download,
                                   size: 20, color: Colors.black54)),
                           IconButton(
