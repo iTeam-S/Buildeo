@@ -83,16 +83,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                   ),
                   Expanded(
                     child: Row(
-                      children: <Widget>[
-                        Container(
-                          height: Get.height * 0.25,
-                          width: Get.width * 0.25,
-                          padding: EdgeInsets.all(9.0),
-                          child: CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              backgroundImage:
-                                  ExactAssetImage("assets/images/logo_b.png")),
-                        ),
+                      children: [
                         SizedBox(width: 13),
                         Expanded(
                           child: Column(
@@ -100,7 +91,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Demande de permis n°${appController.currentPermis!.id}",
+                                "Demande de permis n°${appController.currentPermis!.id}", textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -336,7 +327,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                                                   color: Colors.blueGrey[700],
                                                   fontFamily: "ProductSans",
                                                   // fontWeight: FontWeight.bold,
-                                                  fontSize: 17),
+                                                  fontSize: 16),
                                             ),
                                           ],
                                         ),
@@ -375,20 +366,19 @@ class _ValidationAdmin extends State<ValidationAdmin> {
             filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
             child: SimpleDialog(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20)),
-              insetPadding: EdgeInsets.all(10),
+              borderRadius: BorderRadius.circular(20)),
+              contentPadding: EdgeInsets.all(15),
               backgroundColor: Colors.white,
-              title: Text("Le motif de votre refus"),
+              title: Text("Motif de refus", textAlign: TextAlign.center,),
               children: [
                 Column(
                   children: [
                     TextField(
-                      maxLines: 5,
+                      maxLines: 3,
                       maxLength: 500,
                       textCapitalization: TextCapitalization.sentences,
                       decoration: InputDecoration(
-                        labelText: '    Motif pas plus 500 caractères',
-                        hintText: '   Votre texte ici...',
+                        hintText: "Votre motif ici..."
                       ),
                       onChanged: (text) => setState(() {}),
                     ),
@@ -399,7 +389,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.red,
+                            primary: Colors.red[400],
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -414,7 +404,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: Colors.blue,
+                            primary: Colors.blueAccent[400],
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),

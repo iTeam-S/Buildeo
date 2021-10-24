@@ -173,9 +173,9 @@ var langages = {
     "mg": "Bebe kokoa",
   },
   "LISTE_PERMIS": {
-    "fr": "Liste des permis",
-    "en": "License list",
-    "mg": "Lisitrin'ny fahazoan-dàlana",
+    "fr": "Liste de vos demandes",
+    "en": "Requests list",
+    "mg": "Lisitrin'ny fangatahana",
   },
   "DEMANDE_PERMIS": {
     "fr": "Faire une demande de permis",

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:buildeo/responsive.dart';
-import 'package:buildeo/view/widget/card_validation.dart';
 import 'package:buildeo/view/widget/pop_up.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,7 +28,7 @@ class ListePermis extends StatelessWidget {
           Column(
             children: <Widget>[
               Container(
-                  height: Get.height * .23,
+                  height: Get.height * .16,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
                     begin: Alignment.topLeft,
@@ -66,15 +65,15 @@ class ListePermis extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: Text("Liste de vos permis",
+                        child: Text("Liste de vos demandes",
                             textAlign: TextAlign.center,
                             style:
-                                TextStyle(fontSize: 30, color: Colors.white)),
+                                TextStyle(fontSize: 22, color: Colors.white)),
                       ),
                     ],
                   )),
               Container(
-                height: Get.height * .77,
+                height: Get.height * .84,
                 decoration: BoxDecoration(
                   color: Color(0xfff0f7ff),
                   borderRadius: BorderRadius.only(
@@ -102,7 +101,6 @@ class ListePermis extends StatelessWidget {
                                 /**mettre en boucle pour le fetching */
                                 PermisListe(),
                                 PermisListe(),
-                                CardValidated(),
                                 PermisListe(),
                                 PermisListe(),
                                 PermisListe(),
@@ -145,7 +143,7 @@ class PermisListe extends StatelessWidget {
       child: Card(
           color: Colors.transparent,
           elevation: 0.0,
-          margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0,  top: 10, bottom: 6.0),
           child: Container(
             height: 90,
             decoration: BoxDecoration(boxShadow: [
@@ -173,17 +171,21 @@ class PermisListe extends StatelessWidget {
                         style: TextStyle(color: Colors.black45))
                   ],
                 ),
-                trailing: CircleAvatar(
-                    radius: 14,
-                    backgroundColor: Color(0xff2ebc4f),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.check,
-                        color: Colors.white,
-                        size: 13,
-                      ),
-                      onPressed: () {},
-                    ))),
+                trailing: Container(
+                  padding: EdgeInsets.only(
+                    top: 10, bottom: 10, left: 15, right: 15
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xfff0f7ff),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: Text("Validé", style: TextStyle(color: Color(0xff2ebc4f)),),
+                )),
           )),
     );
   }
