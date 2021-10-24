@@ -9,8 +9,6 @@ import 'package:buildeo/translate.dart';
 import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:file_picker/file_picker.dart';
-
-//import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -445,7 +443,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _launchURL(
+                                    "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
+                              },
                               icon: Icon(Icons.download,
                                   size: 20, color: Colors.black54)),
                           IconButton(

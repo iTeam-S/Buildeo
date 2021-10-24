@@ -274,9 +274,8 @@ def update_status(request):
 @csrf_exempt
 def generate_permis(request):
     token = request.GET.get("token")
-
     try:
-        jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+        user_id = jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
     except Exception as err:
         return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
 
@@ -289,8 +288,9 @@ def generate_permis(request):
 
         doc = DocxTemplate("template_permis.docx")
 
-        Permis.objects.filter(id=permis_id)
         permi = Permis.objects.get(id=permis_id)
+        if permi.req_user_id.id !=  user_id:
+            return JsonResponse({'status_code': 403, 'status': 'INTERDIT', 'data': None})
         nom_user = permi.req_user_id.first_name.capitalize() + " " + permi.req_user_id.last_name.capitalize()
         numero_permis = f'{permis_id}/{permi.delivery_date.strftime("%Y")}/{permi.commune_id.nom}'
         context = { 
@@ -307,10 +307,36 @@ def generate_permis(request):
         filename = f"Permis num {permis_id}.docx"
         doc.save(filename)
 
-        fl = open('generated_doc.docx', 'rb')
+        fl = open(filename, 'rb')
         mime_type, _ = mimetypes.guess_type(filename)
         response = HttpResponse(fl, content_type=mime_type)
         response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
+
+
+@csrf_exempt
+def generate_qrcode(request):
+    token = request.GET.get("token")
+    try:
+        user_id = jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+    except Exception as err:
+        return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
+
+    permis_id = request.GET.get("permis_id")
+    if not permis_id:
+        return JsonResponse({'status_code': 404, 'status': 'MISSING_NUM_PERMIS', 'data': None})
+    try:
+        img = qrcode.make(permis_id)
+        img.save("qr_new.png")
+
+        fl = open('qr_new.png', 'rb')
+        mime_type, _ = mimetypes.guess_type("qr_new.png")
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=qr_new.png"
         return response
 
     except Exception as err:
