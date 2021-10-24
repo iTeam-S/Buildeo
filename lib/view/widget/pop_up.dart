@@ -117,7 +117,9 @@ class PopDownload extends StatelessWidget {
                   ),
                   child: MaterialButton(
                       onPressed: () {
-
+                          _launchURL(
+                          "$baseUrlprotocol/api/generateqrcode/?token=${appController.user!.token}&permis_id=${permis.id}"
+                        );
                       },
                       child: Column(
                         children: [
@@ -146,7 +148,7 @@ class PopDownload extends StatelessWidget {
                           backgroundColor: Colors.red,
                           child: Icon(Icons.file_download),
                         ),
-                        Text("PDF")
+                        Text("DOCX")
                       ])),
                 ),
               ],
