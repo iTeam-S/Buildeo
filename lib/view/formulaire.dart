@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:buildeo/controller/upload.dart';
@@ -256,7 +258,7 @@ class _FormPageState extends State<FormPage> {
                                     child: TextField(
                                       focusNode: uploadController.focus,
                                       controller: uploadController.filename,
-                                      keyboardType: TextInputType.none,
+                                      keyboardType: TextInputType.text,
                                       style: TextStyle(
                                           fontSize: 13,
                                           color: Colors.grey[800]),
