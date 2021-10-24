@@ -73,7 +73,7 @@ class ListePermis extends StatelessWidget {
                     ],
                   )),
               Container(
-                height: Get.height * .84,
+                height: Get.height * .797,
                 decoration: BoxDecoration(
                   color: Color(0xfff0f7ff),
                   borderRadius: BorderRadius.only(
