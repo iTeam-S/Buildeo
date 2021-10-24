@@ -53,7 +53,6 @@ class ApiController extends GetxController {
 
   Future<List> getallpermis(int? commune, User user) async {
     try {
-      print(commune);
       var response = await client.post(
         "/api/listpermit/",
         data: {"commune_id": commune, "user_id": user.id, "token": user.token},
@@ -88,6 +87,25 @@ class ApiController extends GetxController {
       print(e);
       return [false, "Une erreur s'est produite"];
     }
+  }
+
+  Future<List> updateStatus(status, motif, permis, user) async {
+    try {
+     var response = await client.post(
+        "/api/updatestatus/",
+        data: {"permis_id": permis, "status": status, "motif_status": motif, "user_id": user.id, "token": user.token});
+      return [true, response.data];
+    } on dio.DioError catch (err) {
+      if (err.response!.statusCode == 403) {
+        return [false, err.response!.data['status']];
+      } else {
+        return [false, err.message];
+      }
+    } catch (e) {
+      print(e);
+      return [false, "Une erreur s'est produite"];
+    }
+
   }
 
 }

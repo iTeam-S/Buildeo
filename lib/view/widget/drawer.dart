@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:js';
 import 'dart:ui';
 
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/get.dart';
@@ -133,6 +135,7 @@ class AppDrawer extends StatelessWidget {
                                     appController.user = null;
                                     box.remove('user');
                                     appController.update();
+                                    Get.toNamed('/home');
                                   }
                                 },
                                 valueColor: Colors.white,
@@ -586,7 +589,12 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate("DEMANDE_PERMIS",
                                             appController.lang)),
                                         onTap: () {
-                                          Get.toNamed('/form');
+                                          if (appController.user == null){
+                                            loginModal(context);
+                                          } 
+                                          else {
+                                            Get.toNamed('/form');
+                                          }
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
@@ -626,7 +634,9 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "CHANGE_LANG", appController.lang)),
                                         onTap: () {
-                                          showDialog(
+                                          
+                                          
+                                                 showDialog(
                                               context: context,
                                               builder: (BuildContext context) =>
                                                   BackdropFilter(
@@ -667,7 +677,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'mg';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .malagasy;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -691,7 +711,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'fr';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .frantsay;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -715,7 +745,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'en';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .english;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -731,7 +771,10 @@ class AppDrawer extends StatelessWidget {
                                                               )),
                                                         ],
                                                       )));
-                                        },
+                                     
+                                          
+                                          
+                                               },
                                         trailing:
                                             const Icon(Icons.chevron_right),
                                         hoverColor: const Color(0xffddffdd),

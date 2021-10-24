@@ -289,7 +289,7 @@ class AppController extends GetxController {
     try {
       var res = await apiController.listCommune();
       if (res[0]) {
-        if (res[1]['status_code'] != 200) {
+        if (res[1]['status_code'] == 200) {
           for (Map<String, dynamic> res in res[1]['data']) {
             communes.add(Commune.fromJson(res));
           }
@@ -298,6 +298,46 @@ class AppController extends GetxController {
     } catch (e) {
       // ignore: avoid_print
       print(e);
+      Get.snackbar(
+      translate("erreur", lang),
+      translate("erreur_produite", lang),
+      colorText: Colors.white,
+      backgroundColor: Colors.red,
+      snackPosition: SnackPosition.BOTTOM,
+      borderColor: Colors.red,
+      borderRadius: 10,
+      borderWidth: 2,
+      barBlur: 0,
+      duration: const Duration(seconds: 2),
+      );
     }
   }
+
+  void updateStatus(status, motif, permis) async {
+ 
+      print("$status, $motif, $permis");
+      var res = await apiController.updateStatus(status, motif, permis, user);
+      print("tonga aketo");
+      if (res[0]) {
+         Get.snackbar(
+          "Succès",
+          "Action effectuée",
+          colorText: Colors.white,
+          backgroundColor: Colors.green,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.green,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+        Timer(Duration(seconds: 2), (){
+            getAllPermis(user!.commune);
+            Get.toNamed("/pageAmin");
+        });
+      
+
+      // ignore: avoid_print
+  
+  }}
 }

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
+
 import 'package:buildeo/controller/api.dart';
 import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
@@ -40,6 +41,13 @@ class _ValidationAdmin extends State<ValidationAdmin> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkboxList = [false, false, false, false, false];
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -70,7 +78,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                             Get.back();
                           },
                           icon: Icon(
-                            Icons.arrow_back,
+                            Icons.chevron_left,
                             color: Colors.white,
                           )),
                     ],
@@ -161,14 +169,16 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                 ),
-                                onPressed: () {},
-                                child: Text(checkboxList
-                                            .where((c) => c == true)
-                                            .toList()
-                                            .length !=
-                                        checkboxList.length
-                                    ? "Réfuser"
-                                    : "Valider"),
+                                onPressed: () {
+                                  if (checkboxList.where((c) => c == true).toList().length != checkboxList.length) {
+                                    refusMotif(context);
+                                  }
+                                  else {
+                                    appController.updateStatus("ATTENTE_VALIDATION", "", appController.currentPermis!.id);
+                                  }
+                                },
+                                child: Text(  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? 
+                                  "Réfuser": "Valider"),
                               )
                             ],
                           ),
@@ -403,7 +413,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text("  Ouvrir  "),
+                          child: Text("  Envoyer  "),
                         )
                       ],
                     )
