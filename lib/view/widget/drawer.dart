@@ -203,6 +203,8 @@ class AppDrawer extends StatelessWidget {
                                               "VALIDATION_MAIRE",
                                               appController.lang)),
                                           onTap: () {
+                                            appController.getAllPermis(
+                                                appController.user!.commune);
                                             Get.toNamed("/validMaire");
                                           },
                                           hoverColor: const Color(0xffe5c2fc),
