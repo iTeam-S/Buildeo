@@ -34,8 +34,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(milliseconds: 3000), () {
-      if (box.hasData('user'))
+      if (box.hasData('user')) {
         appController.user = User.fromJson(jsonDecode(box.read('user')));
+      }
       Get.offNamed('/home');
     });
 
