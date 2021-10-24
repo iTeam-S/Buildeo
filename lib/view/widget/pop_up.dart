@@ -1,8 +1,11 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors
+// ignore_for_file: avoid_unnecessary_containers, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:ui';
-
+import 'package:buildeo/controller/api.dart';
+import 'package:buildeo/model/permis.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 final Color darkBlue = Color.fromARGB(255, 18, 32, 47);
 
@@ -81,7 +84,16 @@ class PopUpMotif extends StatelessWidget {
 }
 
 class PopDownload extends StatelessWidget {
-  PopDownload({Key? key}) : super(key: key);
+  final Permis permis;
+  const PopDownload({Key? key,  required this.permis}) : super(key: key);
+
+   _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +116,9 @@ class PopDownload extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                       child: Column(
                         children: [
                           CircleAvatar(
@@ -122,11 +136,15 @@ class PopDownload extends StatelessWidget {
                     borderRadius: BorderRadius.circular(50),
                   ),
                   child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _launchURL(
+                          "$baseUrlprotocol/api/generatepermis/?token=${appController.user!.token}&user_id=${appController.user!.id}&permis_id=${permis.id}"
+                        );
+                      },
                       child: Column(children: [
                         CircleAvatar(
                           backgroundColor: Colors.red,
-                          child: Icon(Icons.picture_as_pdf),
+                          child: Icon(Icons.file_download),
                         ),
                         Text("PDF")
                       ])),
