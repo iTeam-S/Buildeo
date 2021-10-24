@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
-import 'package:buildeo/view/widget/card_permis.dart';
+//import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/get.dart';
@@ -256,7 +256,7 @@ class AppDrawer extends StatelessWidget {
                                         leading: CircleAvatar(
                                           radius: 15,
                                           backgroundColor:
-                                              const Color(0xff0d94bd),
+                                              const Color(0xFF5E00AA),
                                           child: const Icon(
                                             Icons.recent_actors,
                                             color: Colors.white,
@@ -268,7 +268,7 @@ class AppDrawer extends StatelessWidget {
                                         onTap: () {
                                           Get.toNamed('/identite');
                                         },
-                                        hoverColor: const Color(0xffceeaf2),
+                                        hoverColor: const Color(0xA4BF9FDA),
                                         trailing:
                                             const Icon(Icons.chevron_right),
                                       ),
@@ -587,10 +587,9 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate("DEMANDE_PERMIS",
                                             appController.lang)),
                                         onTap: () {
-                                          if (appController.user == null){
+                                          if (appController.user == null) {
                                             loginModal(context);
-                                          } 
-                                          else {
+                                          } else {
                                             Get.toNamed('/form');
                                           }
                                         },
@@ -632,9 +631,7 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "CHANGE_LANG", appController.lang)),
                                         onTap: () {
-                                          
-                                          
-                                                 showDialog(
+                                          showDialog(
                                               context: context,
                                               builder: (BuildContext context) =>
                                                   BackdropFilter(
@@ -769,10 +766,7 @@ class AppDrawer extends StatelessWidget {
                                                               )),
                                                         ],
                                                       )));
-                                     
-                                          
-                                          
-                                               },
+                                        },
                                         trailing:
                                             const Icon(Icons.chevron_right),
                                         hoverColor: const Color(0xffddffdd),

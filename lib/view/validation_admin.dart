@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
-
 import 'package:buildeo/controller/api.dart';
 import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
@@ -170,15 +169,26 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  if (checkboxList.where((c) => c == true).toList().length != checkboxList.length) {
+                                  if (checkboxList
+                                          .where((c) => c == true)
+                                          .toList()
+                                          .length !=
+                                      checkboxList.length) {
                                     refusMotif(context);
-                                  }
-                                  else {
-                                    appController.updateStatus("ATTENTE_VALIDATION", "", appController.currentPermis!.id);
+                                  } else {
+                                    appController.updateStatus(
+                                        "ATTENTE_VALIDATION",
+                                        "",
+                                        appController.currentPermis!.id);
                                   }
                                 },
-                                child: Text(  checkboxList.where((c) => c == true).toList().length != checkboxList.length ? 
-                                  "Réfuser": "Valider"),
+                                child: Text(checkboxList
+                                            .where((c) => c == true)
+                                            .toList()
+                                            .length !=
+                                        checkboxList.length
+                                    ? "Réfuser"
+                                    : "Valider"),
                               )
                             ],
                           ),
