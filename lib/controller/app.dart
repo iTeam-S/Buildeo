@@ -303,10 +303,7 @@ class AppController extends GetxController {
   }
 
   void updateStatus(status, motif, permis) async {
- 
-      print("$status, $motif, $permis");
       var res = await apiController.updateStatus(status, motif, permis, user);
-      print("tonga aketo");
       if (res[0]) {
          Get.snackbar(
           "Succès",
@@ -321,8 +318,13 @@ class AppController extends GetxController {
           duration: const Duration(seconds: 2),
         );
         Timer(Duration(seconds: 2), (){
-            getAllPermis(user!.commune);
-            Get.toNamed("/pageAmin");
+          getAllPermis(user!.commune);
+          if (status == "VALIDE"){
+            Get.toNamed("/validMaire");
+          }else {
+              Get.toNamed("/pageAmin");
+          }
+            
         });
       
 

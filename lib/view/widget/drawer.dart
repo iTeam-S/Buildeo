@@ -203,6 +203,8 @@ class AppDrawer extends StatelessWidget {
                                               "VALIDATION_MAIRE",
                                               appController.lang)),
                                           onTap: () {
+                                            appController.getAllPermis(
+                                                appController.user!.commune);
                                             Get.toNamed("/validMaire");
                                           },
                                           hoverColor: const Color(0xffe5c2fc),
@@ -227,6 +229,8 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate("LISTE_PERMIS",
                                             appController.lang)),
                                         onTap: () {
+                                            appController.getAllPermis(
+                                                appController.user!.commune);
                                           Get.toNamed("/liste");
                                         },
                                         hoverColor: const Color(0xfffcdfca),

@@ -3,3 +3,4 @@ django-environ
 qrcode
 PyJWT
 django-cors-headers
+docxtpl
