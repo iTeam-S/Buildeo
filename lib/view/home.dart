@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/translate.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -42,6 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     appController.qRfocus.addListener(onFocusChange);
+    if (appController.user != null){
+      appController.getListCommune();
+    }
+      
   }
 
   dynamic _openFileExplorer() async {

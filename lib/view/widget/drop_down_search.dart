@@ -1,8 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:buildeo/controller/app.dart';
+import 'package:buildeo/controller/upload.dart';
+import 'package:buildeo/model/commune.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:substring_highlight/substring_highlight.dart';
+
+final AppController appController = Get.put(AppController());
+final UploadController uploadController = Get.put(UploadController());
 
 class Dropdowncommune extends StatefulWidget {
   const Dropdowncommune({Key? key}) : super(key: key);
@@ -15,22 +22,16 @@ class _DropdowncommuneState extends State<Dropdowncommune> {
 
   late List<String> autoCompleteData;
 
-  late TextEditingController controller;
-
   Future fetchAutoCompleteData() async {
     setState(() {
       isLoading = true;
     });
 
-    final List<dynamic> json = [
-      "Tanjombato",
-      "Ambatoroka",
-      "Andoharanofotsy",
-      "Analakely",
-      "Antanimena",
-      "Tananarive",
-      "Bonditsiry",
-    ];
+    List<String> tmp = []; 
+    for (Commune com in appController.communes){
+      tmp.add(com.nom);
+    }
+    final List<dynamic> json = tmp;
 
     final List<String> jsonStringData = json.cast<String>();
 
@@ -71,10 +72,10 @@ class _DropdowncommuneState extends State<Dropdowncommune> {
                   // title: Text(option.toString()),
                   title: SubstringHighlight(
                     text: option.toString(),
-                    term: controller.text,
+                    term: uploadController.commmune.text,
                     textStyleHighlight: TextStyle(fontWeight: FontWeight.w700),
                   ),
-                  subtitle: Text("This is subtitle"),
+                  subtitle: Text("Commune"),
                   onTap: () {
                     onSelected(option.toString());
                   },
@@ -89,10 +90,10 @@ class _DropdowncommuneState extends State<Dropdowncommune> {
           print(selectedString);
         },
         fieldViewBuilder: (context, controller, focusNode, onEditingComplete) {
-          this.controller = controller;
+          uploadController.commmune = controller;
 
           return TextField(
-            controller: controller,
+            controller: uploadController.commmune,
             focusNode: focusNode,
             onEditingComplete: onEditingComplete,
             decoration: InputDecoration(
