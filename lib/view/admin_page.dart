@@ -70,7 +70,7 @@ class AdminPage extends StatelessWidget {
                         ],
                       ),
                       Center(
-                        child: Text("Demandes en attente (${appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList().length})",
+                        child: Text("Demandes en attente (${appController.permis.where((element) => element.status == 'ATTENTE_TRTM' && element.trtUserID == null).toList().length})",
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 22, color: Colors.white)
                         ),
@@ -110,7 +110,7 @@ class AdminPage extends StatelessWidget {
                             children: [
                               for (Permis perm in appController.permis)
                                 if (perm.status == 'ATTENTE_TRTM' && perm.trtUserID == null)
-                                  cardListePermis(perm, appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList())
+                                  cardListePermis(perm, appController.permis.where((element) => element.status == 'ATTENTE_TRTM' && element.trtUserID == null).toList())
                             ],
                           );
                         }),
@@ -121,7 +121,7 @@ class AdminPage extends StatelessWidget {
                       children: [
                         for (Permis perm in appController.permis)
                           if (perm.status != 'ATTENTE_TRTM' && perm.trtUserID == null)
-                            cardListePermis(perm, appController.permis.where((element) => element.status != 'VALIDE' && element.trtUserID == null).toList())
+                            cardListePermis(perm, appController.permis.where((element) => element.status == 'ATTENTE_TRTM' && element.trtUserID == null).toList())
                       ],
                     ),)
                     //for (Permis perm in  appController.permis)

@@ -6,7 +6,6 @@ import 'dart:ui';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/view/widget/barde_progression.dart';
-import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:buildeo/view/widget/drawer.dart';
@@ -42,6 +41,13 @@ class _ValidationAdmin extends State<ValidationAdmin> {
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkboxList = [false, false, false, false, false];
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
@@ -72,7 +78,7 @@ class _ValidationAdmin extends State<ValidationAdmin> {
                             Get.back();
                           },
                           icon: Icon(
-                            Icons.arrow_back,
+                            Icons.chevron_left,
                             color: Colors.white,
                           )),
                     ],

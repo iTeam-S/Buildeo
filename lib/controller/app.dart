@@ -314,16 +314,18 @@ class AppController extends GetxController {
   }
 
   void updateStatus(status, motif, permis) async {
-    try {
+ 
+      print("$status, $motif, $permis");
       var res = await apiController.updateStatus(status, motif, permis, user);
+      print("tonga aketo");
       if (res[0]) {
          Get.snackbar(
           "Succès",
-          translate(res[1], lang),
-          colorText: Colors.teal[700],
-          backgroundColor: Colors.white,
+          "Action effectuée",
+          colorText: Colors.white,
+          backgroundColor: Colors.green,
           snackPosition: SnackPosition.BOTTOM,
-          borderColor: Colors.red,
+          borderColor: Colors.green,
           borderRadius: 10,
           borderWidth: 2,
           barBlur: 0,
@@ -333,10 +335,9 @@ class AppController extends GetxController {
             getAllPermis(user!.commune);
             Get.toNamed("/pageAmin");
         });
-      }
-    } catch (e) {
+      
+
       // ignore: avoid_print
-      print(e);
-    }
-  }
+  
+  }}
 }
