@@ -1,16 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:buildeo/model/permis.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 
-class CardValidated extends StatelessWidget {
-  const CardValidated({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
+  Widget cardValidated(Permis perm) {
     return Card(
         color: Colors.transparent,
         elevation: 0.0,
-        margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+        margin: EdgeInsets.only(left: 10.0, right: 10.0,  top: 10, bottom: 6.0),
         child: Container(
           height: 90,
           decoration: BoxDecoration(boxShadow: [
@@ -24,7 +23,7 @@ class CardValidated extends StatelessWidget {
               contentPadding:
                   EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               title: Text(
-                "Demande n°011/21/CR-Fdt",
+                "Demande n°${perm.id}",
                 style: TextStyle(
                     color: Colors.black54, fontWeight: FontWeight.bold),
               ),
@@ -32,7 +31,7 @@ class CardValidated extends StatelessWidget {
               subtitle: Row(
                 children: <Widget>[
                   Icon(Icons.watch_later_outlined, color: Colors.black45),
-                  Text(" Il y a deux jours",
+                  Text(perm.reqDate,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Colors.black45))
@@ -47,8 +46,10 @@ class CardValidated extends StatelessWidget {
                       color: Colors.white,
                       size: 13,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      appController.updateStatus('VALIDE', '', perm.id);
+                    },
                   ))),
         ));
   }
-}
+

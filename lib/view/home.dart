@@ -5,6 +5,8 @@ import 'package:buildeo/controller/api.dart';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/translate.dart';
+// ignore: unused_import
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -52,6 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     appController.qRfocus.addListener(onFocusChange);
+    if (appController.user != null) {
+      appController.getListCommune();
+    }
   }
 
   dynamic _openFileExplorer() async {
@@ -440,10 +445,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           IconButton(
+<<<<<<< HEAD
                               onPressed: () {
                                 _launchURL(
                                     "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
                               },
+=======
+                              onPressed: () {},
+>>>>>>> 3b4ef694ec5ccf08fcfe189d1d1845376bdc44d2
                               icon: Icon(Icons.download,
                                   size: 20, color: Colors.black54)),
                           IconButton(

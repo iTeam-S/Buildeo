@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:buildeo/controller/api.dart';
+import 'package:buildeo/controller/upload.dart';
 import 'package:buildeo/model/permis.dart';
 import 'package:buildeo/model/commune.dart';
 import 'package:buildeo/model/user.dart';
@@ -29,6 +30,7 @@ class AppController extends GetxController {
   TextEditingController qRfiletitre = TextEditingController();
   String qrfilepath = '';
   FocusNode qRfocus = FocusNode();
+  final UploadController uploadController = Get.put(UploadController());
 
   // LOGIN
   TextEditingController usrController = TextEditingController();
@@ -286,18 +288,126 @@ class AppController extends GetxController {
 
 
   void getListCommune() async {
-    try {
       var res = await apiController.listCommune();
       if (res[0]) {
-        if (res[1]['status_code'] != 200) {
+        if (res[1]['status_code'] == 200) {
           for (Map<String, dynamic> res in res[1]['data']) {
             communes.add(Commune.fromJson(res));
           }
         }
       }
-    } catch (e) {
+
       // ignore: avoid_print
-      print(e);
+  
+    
+  }
+
+  void updateStatus(status, motif, permis) async {
+      var res = await apiController.updateStatus(status, motif, permis, user);
+      if (res[0]) {
+         Get.snackbar(
+          "Succès",
+          "Action effectuée",
+          colorText: Colors.white,
+          backgroundColor: Colors.green,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.green,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: const Duration(seconds: 2),
+        );
+        Timer(Duration(seconds: 2), (){
+          getAllPermis(user!.commune);
+          if (status == "VALIDE"){
+            Get.toNamed("/validMaire");
+          }else {
+              Get.toNamed("/pageAmin");
+          }
+            
+        });
+      
+
+      // ignore: avoid_print
+  
+  }}
+
+
+  Future<dynamic> process(RoundedLoadingButtonController btnController, commune, adresse, type, filepath) async {
+    try {
+      uploadController.uploadPourcent = 0.0;
+      Get.bottomSheet(GetBuilder<UploadController>(
+          builder: (_) => Container(
+              margin: EdgeInsets.symmetric(
+                vertical: Get.height * 0.02,
+                horizontal: Get.width * 0.06,
+              ),
+              child: LinearProgressIndicator(
+                backgroundColor: Colors.grey,
+                value: uploadController.uploadPourcent,
+              ))));
+              int tmpCommune = 0;
+              for (Commune com in communes) {
+                if (com.nom == commune) tmpCommune = com.id;
+              }
+      var res = await apiController.uploadContent(
+          user,
+          tmpCommune,
+          type,
+          adresse,
+          filepath,
+      );
+      Get.back();
+      if (res[0]) {
+        Timer(Duration(seconds: 2), () {
+          btnController.reset();
+        });
+        btnController.success();
+        Get.snackbar(
+          "Ajout",
+          "Le contenue a bien été ajoutée.",
+          backgroundColor: Colors.grey,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.grey,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: Duration(seconds: 2),
+        );
+        return true;
+      } else {
+        btnController.reset();
+        Get.snackbar(
+          "Erreur",
+          "${res[1]}",
+          colorText: Colors.white,
+          backgroundColor: Colors.red,
+          snackPosition: SnackPosition.BOTTOM,
+          borderColor: Colors.red,
+          borderRadius: 10,
+          borderWidth: 2,
+          barBlur: 0,
+          duration: Duration(seconds: 2),
+        );
+        return false;
+      }
+    } catch (err) {
+      print("4---: $err");
+      Get.back();
+      Get.snackbar(
+        "Erreur",
+        "Vérfier votre connexion Internet.",
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+        snackPosition: SnackPosition.BOTTOM,
+        borderColor: Colors.red,
+        borderRadius: 10,
+        borderWidth: 2,
+        barBlur: 0,
+        duration: Duration(seconds: 2),
+      );
+      btnController.reset();
+      return false;
     }
   }
 }

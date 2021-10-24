@@ -4,6 +4,7 @@ import 'dart:ui';
 
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
+//import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/get.dart';
@@ -133,6 +134,7 @@ class AppDrawer extends StatelessWidget {
                                     appController.user = null;
                                     box.remove('user');
                                     appController.update();
+                                    Get.toNamed('/home');
                                   }
                                 },
                                 valueColor: Colors.white,
@@ -177,8 +179,9 @@ class AppDrawer extends StatelessWidget {
                                               "VALIDATION_ADMIN",
                                               appController.lang)),
                                           onTap: () {
-                                              appController.getAllPermis(appController.user!.commune);
-                                              Get.toNamed("/pageAmin");
+                                            appController.getAllPermis(
+                                                appController.user!.commune);
+                                            Get.toNamed("/pageAmin");
                                           },
                                           hoverColor: const Color(0xfffcdfca),
                                           trailing:
@@ -200,6 +203,8 @@ class AppDrawer extends StatelessWidget {
                                               "VALIDATION_MAIRE",
                                               appController.lang)),
                                           onTap: () {
+                                            appController.getAllPermis(
+                                                appController.user!.commune);
                                             Get.toNamed("/validMaire");
                                           },
                                           hoverColor: const Color(0xffe5c2fc),
@@ -247,6 +252,26 @@ class AppDrawer extends StatelessWidget {
                                           Get.toNamed('/form');
                                         },
                                         hoverColor: const Color(0xffceeaf2),
+                                        trailing:
+                                            const Icon(Icons.chevron_right),
+                                      ),
+                                      ListTile(
+                                        leading: CircleAvatar(
+                                          radius: 15,
+                                          backgroundColor:
+                                              const Color(0xFF5E00AA),
+                                          child: const Icon(
+                                            Icons.recent_actors,
+                                            color: Colors.white,
+                                            size: 16,
+                                          ),
+                                        ),
+                                        title: Text(translate(
+                                            "LISTE_USER", appController.lang)),
+                                        onTap: () {
+                                          Get.toNamed('/identite');
+                                        },
+                                        hoverColor: const Color(0xA4BF9FDA),
                                         trailing:
                                             const Icon(Icons.chevron_right),
                                       ),
@@ -506,7 +531,11 @@ class AppDrawer extends StatelessWidget {
                                                           ),
                                                           Divider(),
                                                           Center(
-                                                            child: Text(translate("APROPOS_TEXT", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "APROPOS_TEXT",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -521,7 +550,11 @@ class AppDrawer extends StatelessWidget {
                                                             color: Colors.white,
                                                           ),
                                                           Center(
-                                                            child: Text(translate("DEVELOP", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "DEVELOP",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -557,27 +590,11 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate("DEMANDE_PERMIS",
                                             appController.lang)),
                                         onTap: () {
-                                          Get.toNamed('/form');
-                                        },
-                                        hoverColor: const Color(0xffceeaf2),
-                                        trailing:
-                                            const Icon(Icons.chevron_right),
-                                      ),
-                                      ListTile(
-                                        leading: CircleAvatar(
-                                          radius: 15,
-                                          backgroundColor:
-                                              const Color(0xff0d94bd),
-                                          child: const Icon(
-                                            Icons.recent_actors,
-                                            color: Colors.white,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        title: Text(translate(
-                                            "LISTE_USER", appController.lang)),
-                                        onTap: () {
-                                          Get.toNamed('/identite');
+                                          if (appController.user == null) {
+                                            loginModal(context);
+                                          } else {
+                                            Get.toNamed('/form');
+                                          }
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
@@ -658,7 +675,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'mg';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .malagasy;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -682,7 +709,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'fr';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .frantsay;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -706,7 +743,17 @@ class AppDrawer extends StatelessWidget {
                                                                     _site,
                                                                 onChanged:
                                                                     (Language?
-                                                                        value) {},
+                                                                        value) {
+                                                                  navigator?.pop(
+                                                                      context);
+                                                                  appController
+                                                                          .lang =
+                                                                      'en';
+                                                                  appController
+                                                                      .update();
+                                                                  _site = Language
+                                                                      .english;
+                                                                },
                                                               ),
                                                               trailing:
                                                                   CircleAvatar(
@@ -785,7 +832,11 @@ class AppDrawer extends StatelessWidget {
                                                           ),
                                                           Divider(),
                                                           Center(
-                                                            child: Text(translate("APROPOS_TEXT", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "APROPOS_TEXT",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,
@@ -800,7 +851,11 @@ class AppDrawer extends StatelessWidget {
                                                             color: Colors.white,
                                                           ),
                                                           Center(
-                                                            child: Text(translate("DEVELOP", appController.lang),
+                                                            child: Text(
+                                                                translate(
+                                                                    "DEVELOP",
+                                                                    appController
+                                                                        .lang),
                                                                 textAlign:
                                                                     TextAlign
                                                                         .center,

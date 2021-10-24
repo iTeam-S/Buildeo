@@ -1,6 +1,6 @@
 class Commune {
   final int id;
-  String? nom;
+  String nom;
 
   Commune({
     required this.id,
@@ -8,11 +8,12 @@ class Commune {
   });
 
   Commune.fromJson(Map<String, dynamic> json)
-      : id = json['user_id'],
+      : id = json['id'],
         nom = json['nom'];
 
   Map<String, dynamic> toJson() => {
-        'user_id': id,
+        'id': id,
         'nom': nom,
       };
+  
 }

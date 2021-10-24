@@ -11,13 +11,13 @@ import 'package:flutter/material.dart';
             Text(
               "Traitement",
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
               ),
             ),
             Text(
-              "$pourcentage %",
+              "${pourcentage*100} %",
               style: TextStyle(
-                color: Colors.black,
+                color: Colors.white,
               ),
             )
           ],
@@ -27,7 +27,7 @@ import 'package:flutter/material.dart';
         ),
         LinearProgressIndicator(
           value: pourcentage,
-          backgroundColor: Colors.black45,
+          backgroundColor: Colors.black38,
           valueColor: AlwaysStoppedAnimation<Color>(
             Colors.green,
           ),
