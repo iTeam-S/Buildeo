@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
-import 'dart:js';
 import 'dart:ui';
 
 import 'package:buildeo/controller/app.dart';

@@ -120,7 +120,7 @@ class AdminPage extends StatelessWidget {
                     
                       children: [
                         for (Permis perm in appController.permis)
-                          if (perm.status != 'ATTENTE_TRTM' && perm.trtUserID == null)
+                          if (perm.status == 'ATTENTE_TRTM' && perm.trtUserID == null)
                             cardListePermis(perm, appController.permis.where((element) => element.status == 'ATTENTE_TRTM' && element.trtUserID == null).toList())
                       ],
                     ),)
