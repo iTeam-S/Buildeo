@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:js';
 import 'dart:ui';
 
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
+import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/get.dart';
@@ -587,7 +589,12 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate("DEMANDE_PERMIS",
                                             appController.lang)),
                                         onTap: () {
-                                          Get.toNamed('/form');
+                                          if (appController.user == null){
+                                            loginModal(context);
+                                          } 
+                                          else {
+                                            Get.toNamed('/form');
+                                          }
                                         },
                                         hoverColor: const Color(0xffceeaf2),
                                         trailing:
