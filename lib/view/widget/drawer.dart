@@ -255,7 +255,7 @@ class AppDrawer extends StatelessWidget {
                                         leading: CircleAvatar(
                                           radius: 15,
                                           backgroundColor:
-                                              const Color(0xff0d94bd),
+                                              const Color(0xFF5E00AA),
                                           child: const Icon(
                                             Icons.recent_actors,
                                             color: Colors.white,
@@ -267,7 +267,7 @@ class AppDrawer extends StatelessWidget {
                                         onTap: () {
                                           Get.toNamed('/identite');
                                         },
-                                        hoverColor: const Color(0xffceeaf2),
+                                        hoverColor: const Color(0xA4BF9FDA),
                                         trailing:
                                             const Icon(Icons.chevron_right),
                                       ),

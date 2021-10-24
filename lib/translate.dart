@@ -96,9 +96,11 @@ var langages = {
     "mg": "fakantsary",
   },
   "DEMANDER_ET_RECEVER": {
-    "fr":"Demandez, suivez et recevez votre permis de construction via Buildeo",
+    "fr":
+        "Demandez, suivez et recevez votre permis de construction via Buildeo",
     "en": "Request, follow, and receive your building license by Buildeo",
-    "mg":"Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
+    "mg":
+        "Angataho, araho ary raiso eto amin'ny Buildeo ny fahazoan-dàlana hanorina",
   },
   "DEMANDER": {
     "fr": "Demander",
@@ -217,20 +219,15 @@ var langages = {
     "mg": "Famoronana modely"
   },
   "INFO_COURTE": {
-    "fr": "Sur Buildeo, vous trouverez toutes les informations nécessaires pour méner à bien la création de votre permis de construction. Celle-ci vous donnera les aides qu'il vous sont nécessaires et surtout essentielles pour vos tâches et étapes.",
-    "en": "On Buildeo, you will find all the information you need to complete the creation of your building permit. This will give you the help you need and above all essential for your tasks and steps.",
-    "mg": "Ao amin'ny Buildeo dia ho hitanao ny fampahalalana rehetra ilainao amin'ny famitana ny famoronana fahazoan-dàlana hanorina anao. Izany dia hanome anao ny fanampiana ilainao ary ambonin'izany rehetra ilaina amin'ny asanao sy ny dingana ataonao."
+    "fr":
+        "Sur Buildeo, vous trouverez toutes les informations nécessaires pour méner à bien la création de votre permis de construction. Celle-ci vous donnera les aides qu'il vous sont nécessaires et surtout essentielles pour vos tâches et étapes.",
+    "en":
+        "On Buildeo, you will find all the information you need to complete the creation of your building permit. This will give you the help you need and above all essential for your tasks and steps.",
+    "mg":
+        "Ao amin'ny Buildeo dia ho hitanao ny fampahalalana rehetra ilainao amin'ny famitana ny famoronana fahazoan-dàlana hanorina anao. Izany dia hanome anao ny fanampiana ilainao ary ambonin'izany rehetra ilaina amin'ny asanao sy ny dingana ataonao."
   },
-  "VOIR": {
-    "fr": "Voir",
-    "en": "Take a look",
-    "mg": "Ijery"
-  },
-  "SERVICES": {
-    "fr": "Services",
-    "en": "Services",
-    "mg": "Tolotra"
-  },
+  "VOIR": {"fr": "Voir", "en": "Take a look", "mg": "Ijery"},
+  "SERVICES": {"fr": "Services", "en": "Services", "mg": "Tolotra"},
   "DEMANDE_PERM_CONST": {
     "fr": "Demande de permis de construction",
     "en": "Building permit application",
@@ -307,9 +304,12 @@ var langages = {
     "mg": "2000ar/m tsipika"
   },
   "APROPOS_TEXT": {
-    "fr": "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet",
-    "en": "Management of building permits, from the public to the administrative manager, all in a single platform and in a single project.",
-    "mg": "Ny fitantanana fahazoan-dàlana hanorina, manomboka amin'ny besinimaro ka hatramin'ny mpitantana fitantanan-draharaha, amin'ny sehatra tokana sy amin'ny tetikasa tokana."
+    "fr":
+        "Gestion de permis de construction, du public au responsable administratif, tout en une seule plateforme et en un seul projet",
+    "en":
+        "Management of building permits, from the public to the administrative manager, all in a single platform and in a single project.",
+    "mg":
+        "Ny fitantanana fahazoan-dàlana hanorina, manomboka amin'ny besinimaro ka hatramin'ny mpitantana fitantanan-draharaha, amin'ny sehatra tokana sy amin'ny tetikasa tokana."
   },
   "DEVELOP": {
     "fr": "Developpé par iTeam-\$",
@@ -317,7 +317,7 @@ var langages = {
     "mg": "Novolavolan'ny iTeam-\$"
   },
   "LISTE_USER": {
-    "fr": "Liste des users",
+    "fr": "Liste des utilisateurs",
     "en": "List of users",
     "mg": "Lisitry ny mpampiasa"
   },
