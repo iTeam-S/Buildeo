@@ -2,7 +2,9 @@ from .models import Commune, Permis, User
 import jwt
 import json
 import time
+import qrcode
 import mimetypes
+from docxtpl import DocxTemplate
 from os import environ
 from datetime import datetime
 from datetime import datetime, timedelta
@@ -228,7 +230,7 @@ def download_attachement(request, filename):
         return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
 
     try:
-        mime_type, _ = mimetypes.guess_type('media/'+filename)
+        mime_type, _ = mimetypes.guess_type('media/attachement/'+filename)
         response = HttpResponse(fl, content_type=mime_type)
         response['Content-Disposition'] = "attachment; filename=%s" % filename
         return response
@@ -240,7 +242,7 @@ def download_attachement(request, filename):
 def download_model(request, filename):
     try:
         fl = open('media/model/'+filename, 'rb')
-        mime_type, _ = mimetypes.guess_type('media/'+filename)
+        mime_type, _ = mimetypes.guess_type('media/model/'+filename)
         response = HttpResponse(fl, content_type=mime_type)
         response['Content-Disposition'] = "attachment; filename=%s" % filename
         return response
@@ -267,3 +269,50 @@ def update_status(request):
             print(err)
             return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})
     return Http404
+
+
+@csrf_exempt
+def generate_permis(request):
+    token = request.GET.get("token")
+
+    try:
+        jwt.decode(token, environ.get('TOKEN_KEY'), algorithms='HS256', options={"verify_signature": True})['sub']
+    except Exception as err:
+        return JsonResponse({'status_code': 404, 'status': 'INVALID_TOKEN', 'data': None})
+
+    permis_id = request.GET.get("permis_id")
+    if not permis_id:
+        return JsonResponse({'status_code': 404, 'status': 'MISSING_NUM_PERMIS', 'data': None})
+    try:
+        img = qrcode.make(permis_id)
+        img.save("qr_new.png")
+
+        doc = DocxTemplate("template_permis.docx")
+
+        Permis.objects.filter(id=permis_id)
+        permi = Permis.objects.get(id=permis_id)
+        nom_user = permi.req_user_id.first_name.capitalize() + " " + permi.req_user_id.last_name.capitalize()
+        numero_permis = f'{permis_id}/{permi.delivery_date.strftime("%Y")}/{permi.commune_id.nom}'
+        context = { 
+            'commune' : permi.commune_id.nom,
+            'nom_user': nom_user,
+            'build_type': permi.build_type,
+            'adresse': permi.build_adress,
+            'date_validation': permi.delivery_date.strftime("%d %B %Y"),
+            'numero_permis': numero_permis
+        }
+        doc.replace_pic('qrcode.png', 'qr_new.png')
+
+        doc.render(context)
+        filename = f"Permis num {permis_id}.docx"
+        doc.save(filename)
+
+        fl = open('generated_doc.docx', 'rb')
+        mime_type, _ = mimetypes.guess_type(filename)
+        response = HttpResponse(fl, content_type=mime_type)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
+        return response
+
+    except Exception as err:
+        print(err)
+        return JsonResponse({'status_code': 404, 'status': 'ERREUR', 'data': None})

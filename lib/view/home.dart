@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:io';
 import 'dart:ui';
+import 'package:buildeo/controller/api.dart';
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/responsive.dart';
 import 'package:buildeo/translate.dart';
+// ignore: unused_import
 import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:buildeo/view/widget/drawer.dart';
 import 'package:file_picker/file_picker.dart';
@@ -12,6 +14,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
@@ -34,6 +37,14 @@ class _HomeScreenState extends State<HomeScreen> {
   QRViewController? controller;
   bool isLoadingPath = false;
 
+  _launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   void onFocusChange() {
     debugPrint("Focus: " + appController.qRfocus.hasFocus.toString());
     if (appController.qRfocus.hasFocus) _openFileExplorer();
@@ -43,10 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     appController.qRfocus.addListener(onFocusChange);
-    if (appController.user != null){
+    if (appController.user != null) {
       appController.getListCommune();
     }
-      
   }
 
   dynamic _openFileExplorer() async {
@@ -89,150 +99,194 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       key: _key,
       drawer: drawer,
-      body: GetBuilder<AppController>(
-        builder: (_) {
-          return Container(
-            alignment: Alignment.center,
-            color: Colors.white,
-            child: ListView(
-              children: [
-                Stack(
-                  children: [
-                    Image.asset(
-                      isMobile(context) ? 'assets/images/cover.jpg' : 'assets/images/cover2.jpg' ,
-                      width: MediaQuery.of(context).size.width,
+      body: GetBuilder<AppController>(builder: (_) {
+        return Container(
+          alignment: Alignment.center,
+          color: Colors.white,
+          child: ListView(
+            children: [
+              Stack(
+                children: [
+                  Image.asset(
+                    isMobile(context)
+                        ? 'assets/images/cover.jpg'
+                        : 'assets/images/cover2.jpg',
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0,
                     ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      margin: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0,
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                              alignment: Alignment.topCenter,
-                              margin: EdgeInsets.only(
-                                right: MediaQuery.of(context).size.width * 0.02,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      //Get.to(AppDrawer());
-                                      _key.currentState!.openDrawer();
-                                    },
-                                    icon:
-                                        const Icon(Icons.sort, color: Colors.white),
-                                  ),
-                                  const Text("Buildeo",
-                                      style: TextStyle(
-                                        fontSize: 25,
-                                        color: Colors.white,
-                                      )),
-                                ],
-                              )),
-                          Container(
-                              alignment: Alignment.center,
-                              width: Get.width * 0.8,
-                              margin: EdgeInsets.only(
-                                top: isMobile(context) ? Get.height * 0.044 : Get.width * 0.075,
-                              ),
-                              child: Text(
-                                  translate(
-                                      "DEMANDER_ET_RECEVER", appController.lang),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: Get.width * 0.042 , color: Colors.white))),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            width: Get.width * 0.6,
+                    child: Column(
+                      children: [
+                        Container(
+                            alignment: Alignment.topCenter,
                             margin: EdgeInsets.only(
-                              // left: MediaQuery.of(context).size.width * 0.15,
-                              top: MediaQuery.of(context).size.height * 0.03,
+                              right: MediaQuery.of(context).size.width * 0.02,
                             ),
-                            child: RoundedLoadingButton(
-                              controller: _btnController,
-                              color: const Color(0xffeb3446),
-                              successColor: Colors.blue,
-                              onPressed: () {
-                                Get.toNamed('/form');
-                              },
-                              valueColor: Colors.white,
-                              borderRadius: 90,
-                              child: Text(translate("DEMANDER", appController.lang),
-                                  style: const TextStyle(color: Colors.white)),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconButton(
+                                  onPressed: () {
+                                    //Get.to(AppDrawer());
+                                    _key.currentState!.openDrawer();
+                                  },
+                                  icon: const Icon(Icons.sort,
+                                      color: Colors.white),
+                                ),
+                                const Text("Buildeo",
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                    )),
+                              ],
+                            )),
+                        Container(
+                            alignment: Alignment.center,
+                            width: Get.width * 0.8,
+                            margin: EdgeInsets.only(
+                              top: isMobile(context)
+                                  ? Get.height * 0.044
+                                  : Get.width * 0.075,
                             ),
+                            child: Text(
+                                translate(
+                                    "DEMANDER_ET_RECEVER", appController.lang),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: Get.width * 0.042,
+                                    color: Colors.white))),
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          width: Get.width * 0.6,
+                          margin: EdgeInsets.only(
+                            // left: MediaQuery.of(context).size.width * 0.15,
+                            top: MediaQuery.of(context).size.height * 0.03,
                           ),
-                        ],
+                          child: RoundedLoadingButton(
+                            controller: _btnController,
+                            color: const Color(0xffeb3446),
+                            successColor: Colors.blue,
+                            onPressed: () {
+                              Get.toNamed('/form');
+                            },
+                            valueColor: Colors.white,
+                            borderRadius: 90,
+                            child: Text(
+                                translate("DEMANDER", appController.lang),
+                                style: const TextStyle(color: Colors.white)),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
+                  child: Text(translate("CENTRE_INFO", appController.lang),
+                      style: TextStyle(
+                          fontSize: 21,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueGrey))),
+              Card(
+                color: Color(0xffedf7fa),
+                elevation: 0,
+                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Color(0xffedf7fa),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: ListTile(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                    title: Text(
+                      translate("INFO_COURTE", appController.lang),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.black87, fontSize: 15),
+                    ),
+                    subtitle: Container(
+                      margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.01,
+                      ),
+                      child: RoundedLoadingButton(
+                        elevation: 0,
+                        height: 37,
+                        width: 130,
+                        controller: _btnController,
+                        color: const Color(0xfffad9dd),
+                        successColor: Colors.blue,
+                        onPressed: () {
+                          Get.toNamed('/info');
+                        },
+                        valueColor: Color(0xffeb3446),
+                        borderRadius: 90,
+                        child: Text(translate("VOIR", appController.lang),
+                            style: TextStyle(color: Color(0xffeb3446))),
                       ),
                     ),
-                  ],
+                  ),
                 ),
-                Container(
-                    margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
-                    child: Text(translate("CENTRE_INFO", appController.lang),
-                        style: TextStyle(
-                            fontSize: 21,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.blueGrey))),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
+                child: Text(translate("SERVICES", appController.lang),
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey)),
+              ),
+              Row(children: [
                 Card(
-                  color: Color(0xffedf7fa),
-                  elevation: 0,
-                  margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+                  color: Colors.white,
+                  margin: EdgeInsets.only(
+                    left: Get.width * 0.015,
+                  ),
                   child: Container(
+                    width: Get.width * 0.31,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                     decoration: BoxDecoration(
-                        color: Color(0xffedf7fa),
-                        borderRadius: BorderRadius.circular(15)),
-                    child: ListTile(
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                      title: Text(
-                        translate("INFO_COURTE", appController.lang),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(color: Colors.black87, fontSize: 15),
-                      ),
-                      subtitle: Container(
-                        margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.01,
-                        ),
-                        child: RoundedLoadingButton(
-                          elevation: 0,
-                          height: 37,
-                          width: 130,
-                          controller: _btnController,
-                          color: const Color(0xfffad9dd),
-                          successColor: Colors.blue,
-                          onPressed: () {
-                            Get.toNamed('/info');
-                          },
-                          valueColor: Color(0xffeb3446),
-                          borderRadius: 90,
-                          child: Text(translate("VOIR", appController.lang),
-                              style: TextStyle(color: Color(0xffeb3446))),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 9.0,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(children: [
+                      CircleAvatar(
+                          radius: Get.height * 0.04,
+                          backgroundColor: Color(0xffeb3446),
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.edit,
+                                color: Colors.white,
+                              ))),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          translate("DEMANDE_PERM_CONST", appController.lang),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 15),
                         ),
                       ),
-                    ),
+                    ]),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
-                  child: Text(translate("SERVICES", appController.lang),
-                      style: TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey)),
-                ),
-                Row(children: [
-                  Card(
-                    color: Colors.white,
-                    margin: EdgeInsets.only(
-                      left: Get.width * 0.015,
-                    ),
-                    child: Container(
-                      width: Get.width * 0.31,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      decoration: BoxDecoration(
+                Card(
+                  color: Colors.white,
+                  elevation: 2,
+                  margin: EdgeInsets.symmetric(
+                      horizontal: Get.width * 0.02, vertical: 6.0),
+                  child: Container(
+                    width: Get.width * 0.31,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                    decoration: BoxDecoration(
                         boxShadow: [
                           BoxShadow(
                             color: Colors.grey.shade300,
@@ -240,210 +294,181 @@ class _HomeScreenState extends State<HomeScreen> {
                             offset: Offset(0, 3),
                           ),
                         ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(children: [
-                        CircleAvatar(
-                            radius: Get.height * 0.04,
-                            backgroundColor: Color(0xffeb3446),
-                            child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.edit,
-                                  color: Colors.white,
-                                ))),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            translate("DEMANDE_PERM_CONST", appController.lang),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 15),
-                          ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(children: [
+                      CircleAvatar(
+                          radius: Get.height * 0.04,
+                          backgroundColor: Color(0xff52a0ff),
+                          child: Icon(
+                            Icons.qr_code_scanner,
+                            color: Colors.white,
+                          )),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          translate(
+                              "VERIFICATION_PERM_CONST", appController.lang),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 15),
                         ),
-                      ]),
-                    ),
+                      ),
+                    ]),
                   ),
-                  Card(
-                    color: Colors.white,
-                    elevation: 2,
-                    margin: EdgeInsets.symmetric(
-                        horizontal: Get.width * 0.02, vertical: 6.0),
-                    child: Container(
-                      width: Get.width * 0.31,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade300,
-                            blurRadius: 9.0,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(children: [
-                        CircleAvatar(
-                            radius: Get.height * 0.04,
-                            backgroundColor: Color(0xff52a0ff),
-                            child: Icon(
-                              Icons.qr_code_scanner,
-                              color: Colors.white,
-                            )),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            translate("VERIFICATION_PERM_CONST", appController.lang),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 15),
-                          ),
-                        ),
-                      ]),
-                    ),
-                  ),
-                  Card(
-                    color: Colors.white,
-                    elevation: 2,
-                    margin: EdgeInsets.symmetric(
-                        horizontal: Get.width * 0.001, vertical: 6.0),
-                    child: Container(
-                      width: Get.width * 0.31,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.shade300,
-                            blurRadius: 9.0,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(children: [
-                        CircleAvatar(
-                            radius: Get.height * 0.04,
-                            backgroundColor: Color(0xff15d48e),
-                            child: Icon(
-                              Icons.text_fields,
-                              color: Colors.white,
-                            )),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            translate("DOWN_MOD_LETTRES", appController.lang),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 15),
-                          ),
-                        ),
-                      ]),
-                    ),
-                  )
-                ]),
-                Container(
-                  margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
-                  child: Text(translate("MOD_LETTRES", appController.lang),
-                      style: TextStyle(
-                          fontSize: 21,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blueGrey)),
                 ),
-                Row(children: [
-                  Card(
-                    color: Colors.white,
-                    elevation: 4,
-                    margin: EdgeInsets.only(
-                      left: Get.width * 0.020,
-                    ),
-                    child: Container(
-                      width: Get.width * 0.47,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade300,
-                              blurRadius: 9.0,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(children: [
-                        Image.asset('assets/images/docx.png',
-                            width: Get.width * 0.13),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            translate("MOD_FOK", appController.lang),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                Card(
+                  color: Colors.white,
+                  elevation: 2,
+                  margin: EdgeInsets.symmetric(
+                      horizontal: Get.width * 0.001, vertical: 6.0),
+                  child: Container(
+                    width: Get.width * 0.31,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 9.0,
+                            offset: Offset(0, 3),
                           ),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(children: [
+                      CircleAvatar(
+                          radius: Get.height * 0.04,
+                          backgroundColor: Color(0xff15d48e),
+                          child: Icon(
+                            Icons.text_fields,
+                            color: Colors.white,
+                          )),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          translate("DOWN_MOD_LETTRES", appController.lang),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 15),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.download,
-                                    size: 20, color: Colors.black54)),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.edit,
-                                    size: 20, color: Colors.black54)),
-                          ],
-                        )
-                      ]),
-                    ),
+                      ),
+                    ]),
                   ),
-                  Card(
-                    color: Colors.white,
-                    elevation: 4,
-                    margin: EdgeInsets.symmetric(
-                        horizontal: Get.width * 0.02, vertical: 6.0),
-                    child: Container(
-                      width: Get.width * 0.47,
-                      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.shade300,
-                              blurRadius: 9.0,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Column(children: [
-                        Image.asset('assets/images/docx.png',
-                            width: Get.width * 0.13),
-                        Container(
-                          margin: EdgeInsets.only(top: 8),
-                          child: Text(
-                            translate("MOD_COM", appController.lang),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                )
+              ]),
+              Container(
+                margin: EdgeInsets.only(top: 25, left: 12, bottom: 15),
+                child: Text(translate("MOD_LETTRES", appController.lang),
+                    style: TextStyle(
+                        fontSize: 21,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey)),
+              ),
+              Row(children: [
+                Card(
+                  color: Colors.white,
+                  elevation: 4,
+                  margin: EdgeInsets.only(
+                    left: Get.width * 0.020,
+                  ),
+                  child: Container(
+                    width: Get.width * 0.47,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 9.0,
+                            offset: Offset(0, 3),
                           ),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(children: [
+                      Image.asset('assets/images/docx.png',
+                          width: Get.width * 0.13),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          translate("MOD_FOK", appController.lang),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.download,
-                                    size: 20, color: Colors.black54)),
-                            IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.edit,
-                                    size: 20, color: Colors.black54)),
-                          ],
-                        ),
-                      ]),
-                    ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                _launchURL(
+                                    "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
+                              },
+                              icon: Icon(Icons.download,
+                                  size: 20, color: Colors.black54)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.edit,
+                                  size: 20, color: Colors.black54)),
+                        ],
+                      )
+                    ]),
                   ),
-                ]),
-              ],
-            ),
-          );
-        }
-      ),
+                ),
+                Card(
+                  color: Colors.white,
+                  elevation: 4,
+                  margin: EdgeInsets.symmetric(
+                      horizontal: Get.width * 0.02, vertical: 6.0),
+                  child: Container(
+                    width: Get.width * 0.47,
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.shade300,
+                            blurRadius: 9.0,
+                            offset: Offset(0, 3),
+                          ),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Column(children: [
+                      Image.asset('assets/images/docx.png',
+                          width: Get.width * 0.13),
+                      Container(
+                        margin: EdgeInsets.only(top: 8),
+                        child: Text(
+                          translate("MOD_COM", appController.lang),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+<<<<<<< HEAD
+                              onPressed: () {
+                                _launchURL(
+                                    "$baseUrlprotocol/download/model/formulaire_demande_permis.pdf");
+                              },
+=======
+                              onPressed: () {},
+>>>>>>> 3b4ef694ec5ccf08fcfe189d1d1845376bdc44d2
+                              icon: Icon(Icons.download,
+                                  size: 20, color: Colors.black54)),
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.edit,
+                                  size: 20, color: Colors.black54)),
+                        ],
+                      ),
+                    ]),
+                  ),
+                ),
+              ]),
+            ],
+          ),
+        );
+      }),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.qr_code_scanner_outlined),
           elevation: 10,
