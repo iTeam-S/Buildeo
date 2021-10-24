@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:js';
+//import 'dart:js';
 import 'dart:ui';
 
 import 'package:buildeo/controller/app.dart';
 import 'package:buildeo/translate.dart';
-import 'package:buildeo/view/widget/card_permis.dart';
+//import 'package:buildeo/view/widget/card_permis.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:get/get.dart';
@@ -589,10 +589,9 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate("DEMANDE_PERMIS",
                                             appController.lang)),
                                         onTap: () {
-                                          if (appController.user == null){
+                                          if (appController.user == null) {
                                             loginModal(context);
-                                          } 
-                                          else {
+                                          } else {
                                             Get.toNamed('/form');
                                           }
                                         },
@@ -634,9 +633,7 @@ class AppDrawer extends StatelessWidget {
                                         title: Text(translate(
                                             "CHANGE_LANG", appController.lang)),
                                         onTap: () {
-                                          
-                                          
-                                                 showDialog(
+                                          showDialog(
                                               context: context,
                                               builder: (BuildContext context) =>
                                                   BackdropFilter(
@@ -771,10 +768,7 @@ class AppDrawer extends StatelessWidget {
                                                               )),
                                                         ],
                                                       )));
-                                     
-                                          
-                                          
-                                               },
+                                        },
                                         trailing:
                                             const Icon(Icons.chevron_right),
                                         hoverColor: const Color(0xffddffdd),
