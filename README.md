@@ -38,6 +38,6 @@ Gestion de permis de construction, du public au responsable administratif, tout 
 
 [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
 
-<h3>CONTRIBUTEURS du projet Daz</h3>
+<h3>CONTRIBUTEURS du projet Buildeo</h3>
 
 ![Image des contributeurs GitHub](https://contrib.rocks/image?repo=iTeam-S/Buildeo)
