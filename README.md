@@ -27,3 +27,17 @@ Gestion de permis de construction, du public au responsable administratif, tout 
 - Historique et Traçage de chaque Transactions.
 - Suivi de chaque actions (public, administratif) dans la plateforme.
 - Suivi de traitement de chaque dossier, intervalle de temps de réalisation.
+
+
+
+[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com)
+
+[![forthebadge](https://forthebadge.com/images/badges/its-not-a-lie-if-you-believe-it.svg)](https://forthebadge.com)
+
+[![forthebadge](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://forthebadge.com)
+
+[![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com)
+
+<h3>CONTRIBUTEURS du projet Buildeo</h3>
+
+![Image des contributeurs GitHub](https://contrib.rocks/image?repo=iTeam-S/Buildeo)
